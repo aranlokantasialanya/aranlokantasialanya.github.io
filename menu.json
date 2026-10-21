@@ -10,12 +10,14 @@
         {
           "ad": "Mercimek Çorbası",
           "fiyat": 130,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Tavuk Çorbası",
           "fiyat": 130,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         }
       ]
     },
@@ -25,17 +27,20 @@
         {
           "ad": "Yumurtalı Fasülye Piyazı",
           "fiyat": 150,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Fasülye Piyazı",
           "fiyat": 140,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Bakla Piyazı",
           "fiyat": 130,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         }
       ]
     },
@@ -45,57 +50,68 @@
         {
           "ad": "Tas Kebap",
           "fiyat": 300,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Tavuk Haşlama (Sote)",
           "fiyat": 230,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Bamya",
           "fiyat": 150,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Patlıcan Musakka",
           "fiyat": 140,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Göleviz",
           "fiyat": 140,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Biber Dolma",
           "fiyat": 140,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Börülce",
           "fiyat": 140,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Kuru Fasülye",
           "fiyat": 130,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Nohut",
           "fiyat": 130,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Taze Fasülye",
           "fiyat": 130,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Yoğurtlu Kızartma",
           "fiyat": 130,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         }
       ]
     },
@@ -105,12 +121,14 @@
         {
           "ad": "Pirinç Pilavı",
           "fiyat": 100,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Bulgur Pilavı",
           "fiyat": 100,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         }
       ]
     },
@@ -120,17 +138,20 @@
         {
           "ad": "Izgara Köfte",
           "fiyat": 300,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Şiş Köfte",
           "fiyat": 300,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Tavuk Şiş",
           "fiyat": 250,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         }
       ]
     },
@@ -138,19 +159,22 @@
       "ad": "Salata ve Mezeler",
       "urunler": [
         {
-          "ad": "Çoban Salata",
-          "fiyat": 100,
-          "foto": "images/coban-salata.jpg"
-        },
-        {
           "ad": "Cacık",
           "fiyat": 100,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Yoğurt",
           "fiyat": 100,
-          "foto": ""
+          "foto": "",
+          "gizli": false
+        },
+        {
+          "ad": "Çoban Salatası",
+          "fiyat": 100,
+          "foto": "",
+          "gizli": false
         }
       ]
     },
@@ -160,17 +184,20 @@
         {
           "ad": "Tel Kadayıf",
           "fiyat": 100,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Sütlaç",
           "fiyat": 100,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Kemalpaşa",
           "fiyat": 100,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         }
       ]
     },
@@ -180,37 +207,44 @@
         {
           "ad": "Kutu Kola",
           "fiyat": 70,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Kola",
           "fiyat": 60,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Fanta",
           "fiyat": 60,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Niğde Gazozu",
           "fiyat": 60,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Ayran",
           "fiyat": 20,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Su",
           "fiyat": 20,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Çay",
           "fiyat": 20,
-          "foto": ""
+          "foto": "",
+          "gizli": false
         }
       ]
     }
