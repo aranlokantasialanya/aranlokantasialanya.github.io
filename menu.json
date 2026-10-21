@@ -55,7 +55,7 @@
         },
         {
           "ad": "Tavuk Haşlama (Sote)",
-          "fiyat": 230,
+          "fiyat": 250,
           "foto": "",
           "gizli": false
         },
@@ -159,6 +159,12 @@
       "ad": "Salata ve Mezeler",
       "urunler": [
         {
+          "ad": "Çoban Salatası",
+          "fiyat": 100,
+          "foto": "",
+          "gizli": false
+        },
+        {
           "ad": "Cacık",
           "fiyat": 100,
           "foto": "",
@@ -166,12 +172,6 @@
         },
         {
           "ad": "Yoğurt",
-          "fiyat": 100,
-          "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Çoban Salatası",
           "fiyat": 100,
           "foto": "",
           "gizli": false
