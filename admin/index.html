@@ -32,13 +32,19 @@
   .bilgi{background:#f4ece6;border-radius:12px;padding:12px 14px;font-size:15px;margin-top:14px;color:var(--yazi)}
 
   .kategori{margin-top:26px}
-  .kat-ust{display:flex;align-items:center;gap:8px;border-bottom:2px solid var(--bordo);padding-bottom:6px}
+  .kat-ust{display:flex;align-items:center;gap:4px;border-bottom:2px solid var(--bordo);padding-bottom:6px}
   .kat-ad{flex:1;min-width:0;font-family:var(--baslik);color:var(--bordo);font-size:18px;letter-spacing:1px;text-transform:uppercase;border:0;background:transparent;padding:6px 4px;border-radius:6px}
   .kat-ad:hover,.kat-ad:focus{background:#fff}
 
-  .urun{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--cizgi)}
+  .urun{display:flex;gap:8px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--cizgi)}
   .urun.gizli .foto-btn,.urun.gizli .ad{opacity:.45}
-  .foto-btn{width:72px;height:72px;flex-shrink:0;border-radius:12px;border:1.5px dashed #cdbab3;background:#f4ece6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;color:var(--soluk);overflow:hidden;position:relative;padding:0}
+  .tutamak{flex-shrink:0;width:28px;align-self:stretch;display:flex;align-items:center;justify-content:center;border:0;background:transparent;color:#b9a7a0;cursor:grab;touch-action:none;border-radius:8px;padding:0}
+  .tutamak:active{cursor:grabbing}
+  .tutamak svg{width:20px;height:20px}
+  .surukleniyor{opacity:.35}
+  .secili{background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.15);border-radius:12px}
+  .ipucu{font-size:13px;color:var(--soluk);margin-top:6px}
+  .foto-btn{width:64px;height:64px;flex-shrink:0;border-radius:12px;border:1.5px dashed #cdbab3;background:#f4ece6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;color:var(--soluk);overflow:hidden;position:relative;padding:0}
   .foto-btn img{width:100%;height:100%;object-fit:cover}
   .foto-btn.dolu{border:0}
   .foto-btn.dolu::after{content:"Değiştir";position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:2px 0}
@@ -47,11 +53,12 @@
   .ad{width:100%;border:1px solid var(--cizgi);background:var(--kart);border-radius:10px;padding:10px 12px;font-size:17px}
   .alt{display:flex;align-items:center;gap:6px}
   .fiyat-kutu{display:flex;align-items:center;border:1px solid var(--cizgi);background:var(--kart);border-radius:10px;overflow:hidden}
-  .fiyat{width:64px;border:0;padding:9px 10px;font-weight:700;font-size:17px;color:var(--bordo-koyu);font-variant-numeric:tabular-nums;background:transparent}
+  .fiyat::-webkit-outer-spin-button,.fiyat::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .fiyat{-moz-appearance:textfield;appearance:textfield;width:62px;border:0;padding:9px 4px 9px 10px;font-weight:700;font-size:17px;color:var(--bordo-koyu);font-variant-numeric:tabular-nums;background:transparent}
   .fiyat-kutu span{padding-right:10px;font-weight:700;color:var(--bordo-koyu)}
-  .yok{display:flex;align-items:center;gap:6px;font-size:14px;white-space:nowrap;color:var(--soluk);user-select:none;padding:6px 4px}
+  .yok{display:flex;align-items:center;gap:4px;font-size:14px;white-space:nowrap;color:var(--soluk);user-select:none;padding:6px 4px}
   .yok input{width:20px;height:20px;accent-color:var(--bordo)}
-  .sil{margin-left:auto;border:0;background:transparent;color:var(--soluk);padding:8px;border-radius:8px;font-size:14px;display:flex;align-items:center;gap:4px}
+  .sil{margin-left:auto;border:0;background:transparent;color:var(--soluk);padding:6px;border-radius:8px;font-size:14px;display:flex;align-items:center;gap:4px}
   .sil svg{width:20px;height:20px}
   .sil.emin{background:var(--kirmizi);color:#fff;font-weight:700}
 
@@ -98,6 +105,8 @@
 
 <input type="file" id="dosya" accept="image/*" hidden>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+
 <script>
 (function(){
   var DEMO = !!window.ARAN_DEMO;
@@ -125,6 +134,7 @@
   function slug(s){ return (s||'urun').toLocaleLowerCase('tr').replace(/ç/g,'c').replace(/ğ/g,'g').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ş/g,'s').replace(/ü/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'urun'; }
 
   var IKON_FOTO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+  var IKON_TUT='<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>';
   var IKON_SIL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>';
 
   function durum(metin, tur){ durumEl.textContent=metin; durumEl.className='durum'+(tur?' '+tur:''); }
@@ -192,6 +202,8 @@
   // ---------- Çizim ----------
   function urunSatiri(u, kat){
     var satir=el('div',{class:'urun'+(u.gizli?' gizli':'')});
+    satir._u=u;
+    satir.appendChild(el('button',{class:'tutamak',type:'button','aria-label':'Sürükleyerek sırala',title:'Basılı tutup sürükleyin',html:IKON_TUT}));
     var fb=el('button',{class:'foto-btn',type:'button','aria-label':u.ad+' fotoğrafını değiştir',onclick:function(){ fotoHedef=u; dosyaInput.value=''; dosyaInput.click(); }});
     var src=fotoAdresi(u);
     if(src){ fb.classList.add('dolu'); fb.appendChild(el('img',{src:src,alt:''})); }
@@ -212,7 +224,7 @@
         zaman=setTimeout(function(){ silBtn.classList.remove('emin'); silBtn.innerHTML=IKON_SIL; },3000);
         return;
       }
-      clearTimeout(zaman); kat.urunler.splice(kat.urunler.indexOf(u),1); degisiklik(); ciz();
+      clearTimeout(zaman); var k=satir.parentNode.parentNode._kat||kat; k.urunler.splice(k.urunler.indexOf(u),1); degisiklik(); ciz();
     });
 
     satir.appendChild(fb);
@@ -230,7 +242,7 @@
   function ciz(){
     var kaydirma=window.scrollY;
     ana.innerHTML='';
-    ana.appendChild(el('p',{class:'bilgi',text:'Fiyatı veya adı değiştirin, fotoğrafa dokunup yenisini seçin. Bitince alttaki Kaydet\'e basın.'}));
+    ana.appendChild(el('p',{class:'bilgi',text:'Fiyatı veya adı değiştirin, fotoğrafa dokunup yenisini seçin. Sırayı değiştirmek için soldaki ⠿ tutamağı basılı tutup sürükleyin. Bitince alttaki Kaydet\'e basın.'}));
     veri.kategoriler.forEach(function(kat){
       kat.urunler=kat.urunler||[];
       var katAd=el('input',{class:'kat-ad',value:kat.ad||'','aria-label':'Kategori adı'});
@@ -244,8 +256,11 @@
         }
         clearTimeout(z); veri.kategoriler.splice(veri.kategoriler.indexOf(kat),1); degisiklik(); ciz();
       });
-      var bolum=el('section',{class:'kategori'},[ el('div',{class:'kat-ust'},[katAd,katSil]) ]);
-      kat.urunler.forEach(function(u){ bolum.appendChild(urunSatiri(u,kat)); });
+      var katTut=el('button',{class:'tutamak kat-tutamak',type:'button','aria-label':'Kategoriyi sürükleyerek sırala',title:'Basılı tutup sürükleyin',html:IKON_TUT});
+      var liste=el('div',{class:'urun-listesi'});
+      var bolum=el('section',{class:'kategori'},[ el('div',{class:'kat-ust'},[katTut,katAd,katSil]), liste ]);
+      bolum._kat=kat;
+      kat.urunler.forEach(function(u){ liste.appendChild(urunSatiri(u,kat)); });
       bolum.appendChild(el('button',{class:'ekle',type:'button',text:'+ '+(kat.ad||'Bu kategoriye')+' ürün ekle',onclick:function(){
         var yeni={ad:'',fiyat:0,foto:'',gizli:false}; kat.urunler.push(yeni); degisiklik(); ciz();
         var son=ana.querySelectorAll('.kategori')[veri.kategoriler.indexOf(kat)].querySelectorAll('.ad');
@@ -268,7 +283,27 @@
     if(!DEMO) ana.appendChild(el('p',{style:'text-align:center;margin-top:24px'},[
       el('button',{type:'button',style:'border:0;background:none;color:var(--soluk);text-decoration:underline;font-size:14px',text:'Bu cihazdan çıkış yap',onclick:function(){ sakla(ANAHTAR_KEY,null); location.reload(); }})
     ]));
+    siralamaKur();
     window.scrollTo(0,kaydirma);
+  }
+
+  // ---------- Sürükleyerek sıralama ----------
+  function siradanOku(){
+    veri.kategoriler=[].map.call(ana.querySelectorAll('.kategori'),function(b){
+      b._kat.urunler=[].map.call(b.querySelectorAll('.urun'),function(r){ return r._u; });
+      return b._kat;
+    });
+    degisiklik();
+  }
+  var anaSiralama=null;
+  function siralamaKur(){
+    if(!window.Sortable) return;
+    var ortak={animation:180,handle:'.tutamak',ghostClass:'surukleniyor',chosenClass:'secili',delay:120,delayOnTouchOnly:true,onEnd:siradanOku};
+    ana.querySelectorAll('.urun-listesi').forEach(function(l){
+      Sortable.create(l,Object.assign({},ortak,{group:'urunler',draggable:'.urun',handle:'.urun > .tutamak'}));
+    });
+    if(anaSiralama) anaSiralama.destroy();
+    anaSiralama=Sortable.create(ana,Object.assign({},ortak,{draggable:'.kategori',handle:'.kat-tutamak'}));
   }
 
   // ---------- Fotoğraf seçme (küçültülerek) ----------
