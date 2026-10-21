@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Aran Lokantası Menü Yönetimi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Tek görünüm: krem zemin, bordo vurgu — menü sayfasıyla aynı kimlik */
+  :root{
+    color-scheme:light;
+    --bordo:#7b1f2e; --bordo-koyu:#5e1622; --krem:#fbf7f2; --kart:#ffffff;
+    --yazi:#2a2224; --soluk:#7d7073; --cizgi:#e8dcd6; --yesil:#2f7a4a; --kirmizi:#b3261e;
+    --baslik:"Libre Baskerville",Georgia,serif; --govde:"Source Sans 3",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--govde);background:var(--krem);color:var(--yazi);font-size:16px;line-height:1.4;padding-bottom:110px}
+  button,input{font:inherit;color:inherit}
+  button{cursor:pointer}
+  :focus-visible{outline:2px solid var(--bordo);outline-offset:2px}
+
+  header{background:var(--bordo);color:#fff;padding-block:18px 16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  header .ic{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  header h1{font-family:var(--baslik);font-size:20px;letter-spacing:1px}
+  header small{display:block;font-size:13px;opacity:.8;margin-top:2px}
+  header a{color:#fff;font-size:14px;font-weight:600;white-space:nowrap}
+
+  main{max-width:640px;margin:0 auto;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .bilgi{background:#f4ece6;border-radius:12px;padding:12px 14px;font-size:15px;margin-top:14px;color:var(--yazi)}
+
+  .kategori{margin-top:26px}
+  .kat-ust{display:flex;align-items:center;gap:8px;border-bottom:2px solid var(--bordo);padding-bottom:6px}
+  .kat-ad{flex:1;min-width:0;font-family:var(--baslik);color:var(--bordo);font-size:18px;letter-spacing:1px;text-transform:uppercase;border:0;background:transparent;padding:6px 4px;border-radius:6px}
+  .kat-ad:hover,.kat-ad:focus{background:#fff}
+
+  .urun{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--cizgi)}
+  .urun.gizli .foto-btn,.urun.gizli .ad{opacity:.45}
+  .foto-btn{width:72px;height:72px;flex-shrink:0;border-radius:12px;border:1.5px dashed #cdbab3;background:#f4ece6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;color:var(--soluk);overflow:hidden;position:relative;padding:0}
+  .foto-btn img{width:100%;height:100%;object-fit:cover}
+  .foto-btn.dolu{border:0}
+  .foto-btn.dolu::after{content:"Değiştir";position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:2px 0}
+  .foto-btn svg{width:24px;height:24px}
+  .sag{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+  .ad{width:100%;border:1px solid var(--cizgi);background:var(--kart);border-radius:10px;padding:10px 12px;font-size:17px}
+  .alt{display:flex;align-items:center;gap:6px}
+  .fiyat-kutu{display:flex;align-items:center;border:1px solid var(--cizgi);background:var(--kart);border-radius:10px;overflow:hidden}
+  .fiyat{width:64px;border:0;padding:9px 10px;font-weight:700;font-size:17px;color:var(--bordo-koyu);font-variant-numeric:tabular-nums;background:transparent}
+  .fiyat-kutu span{padding-right:10px;font-weight:700;color:var(--bordo-koyu)}
+  .yok{display:flex;align-items:center;gap:6px;font-size:14px;white-space:nowrap;color:var(--soluk);user-select:none;padding:6px 4px}
+  .yok input{width:20px;height:20px;accent-color:var(--bordo)}
+  .sil{margin-left:auto;border:0;background:transparent;color:var(--soluk);padding:8px;border-radius:8px;font-size:14px;display:flex;align-items:center;gap:4px}
+  .sil svg{width:20px;height:20px}
+  .sil.emin{background:var(--kirmizi);color:#fff;font-weight:700}
+
+  .ekle{margin-top:10px;width:100%;border:1.5px dashed var(--bordo);background:transparent;color:var(--bordo);font-weight:700;border-radius:12px;padding:12px;font-size:16px}
+  .ekle.buyuk{margin-top:28px;background:#fff}
+
+  details.isletme{margin-top:30px;background:var(--kart);border:1px solid var(--cizgi);border-radius:12px;padding:12px 14px}
+  details.isletme summary{font-weight:700;cursor:pointer}
+  details.isletme label{display:block;font-size:14px;color:var(--soluk);margin-top:12px}
+  details.isletme input{display:block;width:100%;margin-top:4px;border:1px solid var(--cizgi);border-radius:10px;padding:10px 12px}
+
+  .alt-bar{position:fixed;left:0;right:0;bottom:0;background:var(--kart);border-top:1px solid var(--cizgi);box-shadow:0 -4px 16px rgba(0,0,0,.06);padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));z-index:20}
+  .alt-bar .ic{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px}
+  .durum{flex:1;min-width:0;font-size:14px;color:var(--soluk)}
+  .durum.degisti{color:var(--bordo);font-weight:600}
+  .durum.tamam{color:var(--yesil);font-weight:600}
+  .durum.hata{color:var(--kirmizi);font-weight:600}
+  .kaydet{border:0;background:var(--bordo);color:#fff;font-weight:700;font-size:17px;padding:14px 22px;border-radius:12px;white-space:nowrap}
+  .kaydet:disabled{background:#c9b9b3;cursor:default}
+
+  .giris{max-width:440px;margin:40px auto;background:var(--kart);border:1px solid var(--cizgi);border-radius:16px;padding:22px}
+  .giris h2{font-family:var(--baslik);color:var(--bordo);font-size:20px;margin-bottom:8px}
+  .giris p{color:var(--soluk);font-size:15px}
+  .giris input{width:100%;margin-top:16px;border:1px solid var(--cizgi);border-radius:10px;padding:12px}
+  .giris button{width:100%;margin-top:12px;border:0;background:var(--bordo);color:#fff;font-weight:700;padding:14px;border-radius:12px;font-size:17px}
+  .giris .hata{color:var(--kirmizi);margin-top:10px;font-size:14px}
+  .yukleniyor{text-align:center;color:var(--soluk);padding:60px 0}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header><div class="ic">
+  <div><h1>ARAN LOKANTASI</h1><small>Menü Yönetimi</small></div>
+  <a href="../" target="_blank" rel="noopener">Menüyü gör ↗</a>
+</div></header>
+
+<main id="ana"><p class="yukleniyor">Yükleniyor…</p></main>
+
+<div class="alt-bar" id="altBar" hidden><div class="ic">
+  <div class="durum" id="durum">Değişiklik yok</div>
+  <button class="kaydet" id="kaydet" disabled>Kaydet</button>
+</div></div>
+
+<input type="file" id="dosya" accept="image/*" hidden>
+
+<script>
+(function(){
+  var DEMO = !!window.ARAN_DEMO;
+  // GitHub Pages adresinden (kullaniciadi.github.io/aran-menu) depo bilgisi otomatik bulunur
+  var SAHIP = window.ARAN_SAHIP || location.hostname.split('.')[0];
+  var DEPO  = window.ARAN_DEPO  || location.pathname.split('/').filter(Boolean)[0] || 'aran-menu';
+  var API = 'https://api.github.com/repos/' + SAHIP + '/' + DEPO;
+  var ANAHTAR_KEY = 'aran-anahtar';
+
+  var ana = document.getElementById('ana'), altBar = document.getElementById('altBar');
+  var durumEl = document.getElementById('durum'), kaydetBtn = document.getElementById('kaydet');
+  var dosyaInput = document.getElementById('dosya');
+  var onbellek = {}, veri = null, degisti = false, anahtar = null, dal = 'main', fotoHedef = null;
+
+  function sakla(k,v){ try{ v==null?localStorage.removeItem(k):localStorage.setItem(k,v); }catch(e){} }
+  function oku(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function el(tag, attrs, kids){
+    var e=document.createElement(tag);
+    for(var k in (attrs||{})){ if(k==='text') e.textContent=attrs[k]; else if(k==='html') e.innerHTML=attrs[k]; else if(k.slice(0,2)==='on') e.addEventListener(k.slice(2),attrs[k]); else e.setAttribute(k,attrs[k]); }
+    (kids||[]).forEach(function(c){ if(c) e.appendChild(c); });
+    return e;
+  }
+  function slug(s){ return (s||'urun').toLocaleLowerCase('tr').replace(/ç/g,'c').replace(/ğ/g,'g').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ş/g,'s').replace(/ü/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'urun'; }
+
+  var IKON_FOTO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+  var IKON_SIL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>';
+
+  function durum(metin, tur){ durumEl.textContent=metin; durumEl.className='durum'+(tur?' '+tur:''); }
+  function degisiklik(){ degisti=true; kaydetBtn.disabled=false; durum('Kaydedilmemiş değişiklik var','degisti'); }
+  window.addEventListener('beforeunload',function(e){ if(degisti){ e.preventDefault(); e.returnValue=''; } });
+
+  function gh(yol, secenek){
+    secenek=secenek||{};
+    var h={'Authorization':'Bearer '+anahtar,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
+    if(secenek.raw) h.Accept='application/vnd.github.raw+json';
+    return fetch(API+yol,{method:secenek.method||'GET',headers:h,body:secenek.body?JSON.stringify(secenek.body):undefined,cache:'no-store'})
+      .then(function(r){ if(!r.ok){ var err=new Error('GitHub '+r.status); err.status=r.status; throw err; } return secenek.raw?r.text():r.json(); });
+  }
+
+  // ---------- Giriş ----------
+  function girisEkrani(hataMetni){
+    altBar.hidden=true;
+    var inp=el('input',{type:'password',id:'anahtar',placeholder:'github_pat_…',autocomplete:'off'});
+    var hata=el('p',{class:'hata',text:hataMetni||''});
+    var btn=el('button',{text:'Giriş yap',onclick:function(){
+      var v=inp.value.trim(); if(!v){ hata.textContent='Giriş anahtarını yapıştırın.'; return; }
+      anahtar=v; btn.disabled=true; btn.textContent='Kontrol ediliyor…';
+      gh('').then(function(repo){
+        if(!repo.permissions || !repo.permissions.push) throw Object.assign(new Error(),{status:403});
+        sakla(ANAHTAR_KEY,v); dal=repo.default_branch||'main'; yukle();
+      }).catch(function(e){
+        btn.disabled=false; btn.textContent='Giriş yap';
+        hata.textContent = e.status===401 ? 'Anahtar geçersiz. Doğru kopyaladığınızdan emin olun.' :
+                           e.status===404 ? 'Anahtar bu menüye erişemiyor. Anahtarı oluştururken "aran-menu" deposunu seçtiğinizden emin olun.' :
+                           e.status===403 ? 'Anahtarın yazma izni yok. "Contents" iznini "Read and write" yapın.' :
+                           'Bağlantı kurulamadı. İnternetinizi kontrol edip tekrar deneyin.';
+      });
+    }});
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') btn.click(); });
+    ana.innerHTML='';
+    ana.appendChild(el('div',{class:'giris'},[
+      el('h2',{text:'Giriş'}),
+      el('p',{text:'GitHub\'dan aldığınız giriş anahtarını bir kez yapıştırın. Bu cihaz sizi hatırlar.'}),
+      inp, btn, hata
+    ]));
+    setTimeout(function(){ inp.focus(); },50);
+  }
+
+  // ---------- Yükleme ----------
+  function yukle(){
+    ana.innerHTML='<p class="yukleniyor">Menü yükleniyor…</p>';
+    var p = DEMO ? fetch('menu.json').then(function(r){ return r.json(); })
+                 : gh('/contents/menu.json?ref='+encodeURIComponent(dal),{raw:true}).then(JSON.parse);
+    p.then(function(d){
+      veri=d; veri.isletme=veri.isletme||{}; veri.kategoriler=veri.kategoriler||[];
+      degisti=false; ciz(); altBar.hidden=false; kaydetBtn.disabled=true; durum('Değişiklik yok');
+    }).catch(function(e){
+      if(e.status===401){ sakla(ANAHTAR_KEY,null); girisEkrani('Anahtarın süresi dolmuş olabilir. Yeni anahtar yapıştırın.'); }
+      else ana.innerHTML='<p class="yukleniyor">Menü yüklenemedi. Sayfayı yenileyip tekrar deneyin.</p>';
+    });
+  }
+
+  function fotoAdresi(u){
+    if(u._yeniFoto) return u._yeniFoto.dataUrl;
+    if(!u.foto) return '';
+    if(onbellek[u.foto]) return onbellek[u.foto];
+    return DEMO ? u.foto : '../'+u.foto;
+  }
+
+  // ---------- Çizim ----------
+  function urunSatiri(u, kat){
+    var satir=el('div',{class:'urun'+(u.gizli?' gizli':'')});
+    var fb=el('button',{class:'foto-btn',type:'button','aria-label':u.ad+' fotoğrafını değiştir',onclick:function(){ fotoHedef=u; dosyaInput.value=''; dosyaInput.click(); }});
+    var src=fotoAdresi(u);
+    if(src){ fb.classList.add('dolu'); fb.appendChild(el('img',{src:src,alt:''})); }
+    else { fb.innerHTML=IKON_FOTO+'<span>Foto ekle</span>'; }
+
+    var ad=el('input',{class:'ad',value:u.ad||'',placeholder:'Ürün adı','aria-label':'Ürün adı'});
+    ad.addEventListener('input',function(){ u.ad=ad.value; degisiklik(); });
+    var fiyat=el('input',{class:'fiyat',type:'number',inputmode:'numeric',min:'0',value:u.fiyat!=null?u.fiyat:'', 'aria-label':'Fiyat'});
+    fiyat.addEventListener('input',function(){ u.fiyat=fiyat.value===''?0:Math.max(0,parseInt(fiyat.value,10)||0); degisiklik(); });
+    var yokK=el('input',{type:'checkbox'}); yokK.checked=!!u.gizli;
+    yokK.addEventListener('change',function(){ u.gizli=yokK.checked; satir.classList.toggle('gizli',u.gizli); degisiklik(); });
+
+    var silBtn=el('button',{class:'sil',type:'button','aria-label':'Ürünü sil',html:IKON_SIL});
+    var zaman=null;
+    silBtn.addEventListener('click',function(){
+      if(!silBtn.classList.contains('emin')){
+        silBtn.classList.add('emin'); silBtn.innerHTML='Silinsin mi?';
+        zaman=setTimeout(function(){ silBtn.classList.remove('emin'); silBtn.innerHTML=IKON_SIL; },3000);
+        return;
+      }
+      clearTimeout(zaman); kat.urunler.splice(kat.urunler.indexOf(u),1); degisiklik(); ciz();
+    });
+
+    satir.appendChild(fb);
+    satir.appendChild(el('div',{class:'sag'},[
+      ad,
+      el('div',{class:'alt'},[
+        el('label',{class:'fiyat-kutu'},[fiyat, el('span',{text:'₺'})]),
+        el('label',{class:'yok'},[yokK, el('span',{text:'Bugün yok'})]),
+        silBtn
+      ])
+    ]));
+    return satir;
+  }
+
+  function ciz(){
+    var kaydirma=window.scrollY;
+    ana.innerHTML='';
+    ana.appendChild(el('p',{class:'bilgi',text:'Fiyatı veya adı değiştirin, fotoğrafa dokunup yenisini seçin. Bitince alttaki Kaydet\'e basın.'}));
+    veri.kategoriler.forEach(function(kat){
+      kat.urunler=kat.urunler||[];
+      var katAd=el('input',{class:'kat-ad',value:kat.ad||'','aria-label':'Kategori adı'});
+      katAd.addEventListener('input',function(){ kat.ad=katAd.value; degisiklik(); });
+      var katSil=el('button',{class:'sil',type:'button','aria-label':'Kategoriyi sil',html:IKON_SIL});
+      var z=null;
+      katSil.addEventListener('click',function(){
+        if(!katSil.classList.contains('emin')){
+          katSil.classList.add('emin'); katSil.innerHTML='Kategori silinsin mi?';
+          z=setTimeout(function(){ katSil.classList.remove('emin'); katSil.innerHTML=IKON_SIL; },3000); return;
+        }
+        clearTimeout(z); veri.kategoriler.splice(veri.kategoriler.indexOf(kat),1); degisiklik(); ciz();
+      });
+      var bolum=el('section',{class:'kategori'},[ el('div',{class:'kat-ust'},[katAd,katSil]) ]);
+      kat.urunler.forEach(function(u){ bolum.appendChild(urunSatiri(u,kat)); });
+      bolum.appendChild(el('button',{class:'ekle',type:'button',text:'+ '+(kat.ad||'Bu kategoriye')+' ürün ekle',onclick:function(){
+        var yeni={ad:'',fiyat:0,foto:'',gizli:false}; kat.urunler.push(yeni); degisiklik(); ciz();
+        var son=ana.querySelectorAll('.kategori')[veri.kategoriler.indexOf(kat)].querySelectorAll('.ad');
+        if(son.length) son[son.length-1].focus();
+      }}));
+      ana.appendChild(bolum);
+    });
+    ana.appendChild(el('button',{class:'ekle buyuk',type:'button',text:'+ Yeni kategori ekle',onclick:function(){
+      veri.kategoriler.push({ad:'Yeni Kategori',urunler:[]}); degisiklik(); ciz();
+      var k=ana.querySelectorAll('.kat-ad'); k[k.length-1].focus(); k[k.length-1].select();
+    }}));
+
+    var tel=el('input',{id:'tel',value:veri.isletme.telefon||''}); tel.addEventListener('input',function(){ veri.isletme.telefon=tel.value; degisiklik(); });
+    var adr=el('input',{id:'adres',value:veri.isletme.adres||''}); adr.addEventListener('input',function(){ veri.isletme.adres=adr.value; degisiklik(); });
+    ana.appendChild(el('details',{class:'isletme'},[
+      el('summary',{text:'Telefon ve adres'}),
+      el('label',{for:'tel',text:'Paket servis telefonu'}), tel,
+      el('label',{for:'adres',text:'Adres'}), adr
+    ]));
+    if(!DEMO) ana.appendChild(el('p',{style:'text-align:center;margin-top:24px'},[
+      el('button',{type:'button',style:'border:0;background:none;color:var(--soluk);text-decoration:underline;font-size:14px',text:'Bu cihazdan çıkış yap',onclick:function(){ sakla(ANAHTAR_KEY,null); location.reload(); }})
+    ]));
+    window.scrollTo(0,kaydirma);
+  }
+
+  // ---------- Fotoğraf seçme (küçültülerek) ----------
+  dosyaInput.addEventListener('change',function(){
+    var f=dosyaInput.files[0], u=fotoHedef; if(!f||!u) return;
+    var url=URL.createObjectURL(f), img=new Image();
+    img.onload=function(){
+      var max=900, o=Math.min(1,max/Math.max(img.width,img.height));
+      var c=document.createElement('canvas'); c.width=Math.round(img.width*o); c.height=Math.round(img.height*o);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      var dataUrl=c.toDataURL('image/jpeg',0.8);
+      u._yeniFoto={dataUrl:dataUrl,base64:dataUrl.split(',')[1],yol:'images/'+slug(u.ad)+'-'+Date.now()+'.jpg'};
+      URL.revokeObjectURL(url); degisiklik(); ciz();
+    };
+    img.onerror=function(){ durum('Bu fotoğraf açılamadı. Başka bir fotoğraf deneyin.','hata'); };
+    img.src=url;
+  });
+
+  // ---------- Kaydetme: tek seferde menü + yeni fotoğraflar ----------
+  function temizVeri(){
+    return {
+      isletme:{telefon:(veri.isletme.telefon||'').trim(),adres:(veri.isletme.adres||'').trim()},
+      kategoriler:veri.kategoriler.map(function(k){ return {ad:(k.ad||'').trim(),urunler:k.urunler.filter(function(u){ return (u.ad||'').trim(); }).map(function(u){
+        return {ad:u.ad.trim(),fiyat:Number(u.fiyat)||0,foto:u._yeniFoto?u._yeniFoto.yol:(u.foto||''),gizli:!!u.gizli};
+      })}; }).filter(function(k){ return k.ad; })
+    };
+  }
+
+  kaydetBtn.addEventListener('click',function(){
+    kaydetBtn.disabled=true; durum('Kaydediliyor…');
+    var yeniFotolar=[]; veri.kategoriler.forEach(function(k){ k.urunler.forEach(function(u){ if(u._yeniFoto) yeniFotolar.push(u); }); });
+    var temiz=temizVeri();
+
+    if(DEMO){
+      setTimeout(function(){ degisti=false; durum('Önizleme: gerçek panelde menünüz şimdi güncellenirdi','tamam'); },600);
+      return;
+    }
+    var bas, agac;
+    gh('/git/ref/heads/'+encodeURIComponent(dal)).then(function(ref){
+      bas=ref.object.sha; return gh('/git/commits/'+bas);
+    }).then(function(c){
+      agac=c.tree.sha;
+      return Promise.all(yeniFotolar.map(function(u){
+        return gh('/git/blobs',{method:'POST',body:{content:u._yeniFoto.base64,encoding:'base64'}}).then(function(b){ return {path:u._yeniFoto.yol,mode:'100644',type:'blob',sha:b.sha}; });
+      }));
+    }).then(function(fotoGirdileri){
+      fotoGirdileri.push({path:'menu.json',mode:'100644',type:'blob',content:JSON.stringify(temiz,null,2)+'\n'});
+      return gh('/git/trees',{method:'POST',body:{base_tree:agac,tree:fotoGirdileri}});
+    }).then(function(t){
+      return gh('/git/commits',{method:'POST',body:{message:'Menü güncellendi',tree:t.sha,parents:[bas]}});
+    }).then(function(c){
+      return gh('/git/refs/heads/'+encodeURIComponent(dal),{method:'PATCH',body:{sha:c.sha}});
+    }).then(function(){
+      yeniFotolar.forEach(function(u){ onbellek[u._yeniFoto.yol]=u._yeniFoto.dataUrl; });
+      veri=JSON.parse(JSON.stringify(temiz)); degisti=false; ciz();
+      durum('Kaydedildi ✓ Menü 1–2 dakika içinde güncellenir','tamam');
+    }).catch(function(e){
+      kaydetBtn.disabled=false;
+      if(e.status===401){ durum('Oturum süresi dolmuş. Çıkış yapıp yeni anahtarla girin.','hata'); }
+      else if(e.status===422||e.status===409){ durum('Menü başka yerden değişmiş. Sayfayı yenileyin.','hata'); }
+      else durum('Kaydedilemedi. İnternetinizi kontrol edip tekrar Kaydet\'e basın.','hata');
+    });
+  });
+
+  // ---------- Başlangıç ----------
+  if(DEMO){ yukle(); return; }
+  anahtar=oku(ANAHTAR_KEY);
+  if(!anahtar){ girisEkrani(); return; }
+  gh('').then(function(repo){ dal=repo.default_branch||'main'; yukle(); })
+        .catch(function(e){ if(e.status===401||e.status===404){ sakla(ANAHTAR_KEY,null); girisEkrani('Lütfen tekrar giriş yapın.'); } else yukle(); });
+})();
+</script>
+</body>
+</html>

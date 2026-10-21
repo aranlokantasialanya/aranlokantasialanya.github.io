@@ -1,0 +1,218 @@
+{
+  "isletme": {
+    "telefon": "+90 242 512 61 22",
+    "adres": "Şekerhane Mah. Yunus Gücü Sok. Yaşam Hastanesi Karşısı, Alanya / Antalya"
+  },
+  "kategoriler": [
+    {
+      "ad": "Çorbalar",
+      "urunler": [
+        {
+          "ad": "Mercimek Çorbası",
+          "fiyat": 130,
+          "foto": ""
+        },
+        {
+          "ad": "Tavuk Çorbası",
+          "fiyat": 130,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "ad": "Piyazlar",
+      "urunler": [
+        {
+          "ad": "Yumurtalı Fasülye Piyazı",
+          "fiyat": 150,
+          "foto": ""
+        },
+        {
+          "ad": "Fasülye Piyazı",
+          "fiyat": 140,
+          "foto": ""
+        },
+        {
+          "ad": "Bakla Piyazı",
+          "fiyat": 130,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "ad": "Yemekler",
+      "urunler": [
+        {
+          "ad": "Tas Kebap",
+          "fiyat": 300,
+          "foto": ""
+        },
+        {
+          "ad": "Tavuk Haşlama (Sote)",
+          "fiyat": 230,
+          "foto": ""
+        },
+        {
+          "ad": "Bamya",
+          "fiyat": 150,
+          "foto": ""
+        },
+        {
+          "ad": "Patlıcan Musakka",
+          "fiyat": 140,
+          "foto": ""
+        },
+        {
+          "ad": "Göleviz",
+          "fiyat": 140,
+          "foto": ""
+        },
+        {
+          "ad": "Biber Dolma",
+          "fiyat": 140,
+          "foto": ""
+        },
+        {
+          "ad": "Börülce",
+          "fiyat": 140,
+          "foto": ""
+        },
+        {
+          "ad": "Kuru Fasülye",
+          "fiyat": 130,
+          "foto": ""
+        },
+        {
+          "ad": "Nohut",
+          "fiyat": 130,
+          "foto": ""
+        },
+        {
+          "ad": "Taze Fasülye",
+          "fiyat": 130,
+          "foto": ""
+        },
+        {
+          "ad": "Yoğurtlu Kızartma",
+          "fiyat": 130,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "ad": "Pilavlar",
+      "urunler": [
+        {
+          "ad": "Pirinç Pilavı",
+          "fiyat": 100,
+          "foto": ""
+        },
+        {
+          "ad": "Bulgur Pilavı",
+          "fiyat": 100,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "ad": "Izgaralar",
+      "urunler": [
+        {
+          "ad": "Izgara Köfte",
+          "fiyat": 300,
+          "foto": ""
+        },
+        {
+          "ad": "Şiş Köfte",
+          "fiyat": 300,
+          "foto": ""
+        },
+        {
+          "ad": "Tavuk Şiş",
+          "fiyat": 250,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "ad": "Salata ve Mezeler",
+      "urunler": [
+        {
+          "ad": "Çoban Salata",
+          "fiyat": 100,
+          "foto": "images/coban-salata.jpg"
+        },
+        {
+          "ad": "Cacık",
+          "fiyat": 100,
+          "foto": ""
+        },
+        {
+          "ad": "Yoğurt",
+          "fiyat": 100,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "ad": "Tatlılar",
+      "urunler": [
+        {
+          "ad": "Tel Kadayıf",
+          "fiyat": 100,
+          "foto": ""
+        },
+        {
+          "ad": "Sütlaç",
+          "fiyat": 100,
+          "foto": ""
+        },
+        {
+          "ad": "Kemalpaşa",
+          "fiyat": 100,
+          "foto": ""
+        }
+      ]
+    },
+    {
+      "ad": "İçecekler",
+      "urunler": [
+        {
+          "ad": "Kutu Kola",
+          "fiyat": 70,
+          "foto": ""
+        },
+        {
+          "ad": "Kola",
+          "fiyat": 60,
+          "foto": ""
+        },
+        {
+          "ad": "Fanta",
+          "fiyat": 60,
+          "foto": ""
+        },
+        {
+          "ad": "Niğde Gazozu",
+          "fiyat": 60,
+          "foto": ""
+        },
+        {
+          "ad": "Ayran",
+          "fiyat": 20,
+          "foto": ""
+        },
+        {
+          "ad": "Su",
+          "fiyat": 20,
+          "foto": ""
+        },
+        {
+          "ad": "Çay",
+          "fiyat": 20,
+          "foto": ""
+        }
+      ]
+    }
+  ]
+}

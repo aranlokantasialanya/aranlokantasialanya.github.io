@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aran Lokantası | Menü</title>
+<meta name="description" content="Aran Lokantası menüsü – Alanya / Antalya">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bordo:#7b1f2e;--bordo-koyu:#5e1622;--krem:#fbf7f2;--yazi:#2a2224;--cizgi:#e8dcd6}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:64px}
+  body{font-family:"Source Sans 3",system-ui,sans-serif;background:var(--krem);color:var(--yazi);line-height:1.4;-webkit-font-smoothing:antialiased}
+  header{background:var(--bordo);color:#fff;text-align:center;padding:36px 16px 30px;position:relative}
+  header::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.35);pointer-events:none}
+  .logo{font-family:"Libre Baskerville",serif;font-size:42px;letter-spacing:6px}
+  .logo-cizgi{width:60px;height:2px;background:#fff;margin:10px auto}
+  .alt-logo{letter-spacing:8px;font-size:15px;text-transform:uppercase}
+  nav{position:sticky;top:0;z-index:10;background:var(--krem);border-bottom:1px solid var(--cizgi);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{display:inline-block;padding:14px;font-weight:600;font-size:14px;color:var(--bordo);text-decoration:none;letter-spacing:.5px}
+  nav a:first-child{padding-left:16px}
+  main{max-width:640px;margin:0 auto;padding:8px 16px 24px;min-height:50vh}
+  section{margin-top:28px}
+  h2{font-family:"Libre Baskerville",serif;color:var(--bordo);font-size:19px;letter-spacing:2px;text-transform:uppercase;padding-bottom:8px;border-bottom:2px solid var(--bordo);margin-bottom:4px}
+  .urun{display:flex;align-items:center;gap:10px;padding:12px 2px;border-bottom:1px solid var(--cizgi);font-size:17px}
+  .urun:last-child{border-bottom:none}
+  .nokta{flex:1;border-bottom:1px dotted #c9b9b3;min-width:16px}
+  .fiyat{font-weight:700;white-space:nowrap;color:var(--bordo-koyu)}
+  .foto{width:60px;height:60px;border-radius:10px;flex-shrink:0;object-fit:cover}
+  img.foto{cursor:zoom-in;box-shadow:0 1px 3px rgba(0,0,0,.15);background:#eee}
+  .foto.bos{border:1.5px dashed #d6c6bf;background:#f4ece6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c4aea6' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='7'/%3E%3Ccircle cx='12' cy='12' r='3.5'/%3E%3C/svg%3E") center/28px no-repeat}
+  .durum{text-align:center;color:#8a7d80;padding:48px 0}
+  #buyuk{position:fixed;inset:0;z-index:50;background:rgba(20,10,12,.88);display:none;align-items:center;justify-content:center;flex-direction:column;padding:16px;cursor:zoom-out}
+  #buyuk.acik{display:flex}
+  #buyuk img{max-width:100%;max-height:78vh;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+  #buyuk .baslik{color:#fff;margin-top:14px;font-family:"Libre Baskerville",serif;font-size:18px;text-align:center}
+  #buyuk .kapat{position:absolute;top:12px;right:16px;color:#fff;font-size:34px;line-height:1;background:none;border:0;cursor:pointer}
+  footer{background:var(--bordo);color:#fff;text-align:center;padding:28px 16px 36px;margin-top:36px}
+  .paket{font-family:"Libre Baskerville",serif;font-size:18px;margin-bottom:14px}
+  .btn{display:inline-block;background:#fff;color:var(--bordo);text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px;margin:4px;font-size:16px}
+  .btn.outline{background:transparent;color:#fff;border:1.5px solid #fff}
+  .adres{margin-top:16px;font-size:14px;opacity:.9}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ARAN</div>
+  <div class="logo-cizgi"></div>
+  <div class="alt-logo">Lokantası</div>
+</header>
+
+<nav id="nav"></nav>
+<main id="menu"><p class="durum">Menü yükleniyor…</p></main>
+
+<footer>
+  <div class="paket">Paket Servis</div>
+  <a class="btn" id="tel" href="tel:+902425126122">📞 0242 512 61 22</a>
+  <a class="btn outline" id="harita" target="_blank" rel="noopener" href="#">📍 Yol Tarifi</a>
+  <div class="adres" id="adres"></div>
+</footer>
+
+<div id="buyuk" role="dialog" aria-label="Fotoğraf">
+  <button class="kapat" aria-label="Kapat">&times;</button>
+  <img alt="">
+  <div class="baslik"></div>
+</div>
+
+<script>
+(function(){
+  function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+  function slug(s){ return s.toLocaleLowerCase('tr').replace(/ç/g,'c').replace(/ğ/g,'g').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ş/g,'s').replace(/ü/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+  function telGoster(t){ var d=t.replace(/\D/g,''); if(d.indexOf('90')===0) d=d.slice(2); return '0'+d.slice(0,3)+' '+d.slice(3,6)+' '+d.slice(6,8)+' '+d.slice(8); }
+
+  var kutu=document.getElementById('buyuk'), bi=kutu.querySelector('img'), bb=kutu.querySelector('.baslik');
+  kutu.addEventListener('click',function(){ kutu.classList.remove('acik'); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') kutu.classList.remove('acik'); });
+
+  fetch('menu.json?v='+Date.now(),{cache:'no-store'}).then(function(r){ return r.json(); }).then(function(d){
+    var nav=document.getElementById('nav'), main=document.getElementById('menu');
+    main.innerHTML='';
+    (d.kategoriler||[]).forEach(function(k){
+      if(!k.urunler || !k.urunler.length) return;
+      var id=slug(k.ad);
+      var a=el('a',null,k.ad); a.href='#'+id; nav.appendChild(a);
+      var s=el('section'); s.id=id; s.appendChild(el('h2',null,k.ad));
+      k.urunler.forEach(function(u){
+        if(u.gizli) return;
+        var row=el('div','urun');
+        if(u.foto){
+          var img=el('img','foto'); img.src=u.foto; img.alt=u.ad; img.loading='lazy';
+          img.addEventListener('click',function(){ bi.src=u.foto; bb.textContent=u.ad; kutu.classList.add('acik'); });
+          row.appendChild(img);
+        } else row.appendChild(el('span','foto bos'));
+        row.appendChild(el('span','ad',u.ad));
+        row.appendChild(el('span','nokta'));
+        row.appendChild(el('span','fiyat',u.fiyat+' ₺'));
+        s.appendChild(row);
+      });
+      main.appendChild(s);
+    });
+    var i=d.isletme||{};
+    if(i.telefon){ var t=document.getElementById('tel'); t.href='tel:'+i.telefon.replace(/\s/g,''); t.textContent='📞 '+telGoster(i.telefon); }
+    if(i.adres){
+      document.getElementById('adres').textContent=i.adres;
+      document.getElementById('harita').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Aran Lokantası '+i.adres);
+    }
+  }).catch(function(){
+    document.getElementById('menu').innerHTML='<p class="durum">Menü yüklenemedi. Lütfen sayfayı yenileyin.</p>';
+  });
+})();
+</script>
+</body>
+</html>
