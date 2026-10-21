@@ -103,7 +103,9 @@
   var DEMO = !!window.ARAN_DEMO;
   // GitHub Pages adresinden (kullaniciadi.github.io/aran-menu) depo bilgisi otomatik bulunur
   var SAHIP = window.ARAN_SAHIP || location.hostname.split('.')[0];
-  var DEPO  = window.ARAN_DEPO  || location.pathname.split('/').filter(Boolean)[0] || 'aran-menu';
+  var ilk = location.pathname.split('/').filter(Boolean)[0];
+  // kullaniciadi.github.io deposu ise adres sadece kullaniciadi.github.io olur
+  var DEPO  = window.ARAN_DEPO  || ((!ilk || ilk==='admin') ? location.hostname : ilk);
   var API = 'https://api.github.com/repos/' + SAHIP + '/' + DEPO;
   var ANAHTAR_KEY = 'aran-anahtar';
 
@@ -151,7 +153,7 @@
       }).catch(function(e){
         btn.disabled=false; btn.textContent='Giriş yap';
         hata.textContent = e.status===401 ? 'Anahtar geçersiz. Doğru kopyaladığınızdan emin olun.' :
-                           e.status===404 ? 'Anahtar bu menüye erişemiyor. Anahtarı oluştururken "aran-menu" deposunu seçtiğinizden emin olun.' :
+                           e.status===404 ? 'Anahtar bu menüye erişemiyor. Anahtarı oluştururken menü deposunu seçtiğinizden emin olun.' :
                            e.status===403 ? 'Anahtarın yazma izni yok. "Contents" iznini "Read and write" yapın.' :
                            'Bağlantı kurulamadı. İnternetinizi kontrol edip tekrar deneyin.';
       });
