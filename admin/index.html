@@ -110,11 +110,9 @@
 <script>
 (function(){
   var DEMO = !!window.ARAN_DEMO;
-  // GitHub Pages adresinden (kullaniciadi.github.io/aran-menu) depo bilgisi otomatik bulunur
-  var SAHIP = window.ARAN_SAHIP || location.hostname.split('.')[0];
-  var ilk = location.pathname.split('/').filter(Boolean)[0];
-  // kullaniciadi.github.io deposu ise adres sadece kullaniciadi.github.io olur
-  var DEPO  = window.ARAN_DEPO  || ((!ilk || ilk==='admin') ? location.hostname : ilk);
+  // Menünün kayıtlı olduğu GitHub deposu (site hangi adreste yayınlanırsa yayınlansın aynı kalır)
+  var SAHIP = window.ARAN_SAHIP || 'aranlokantasialanya';
+  var DEPO  = window.ARAN_DEPO  || 'aranlokantasialanya.github.io';
   var API = 'https://api.github.com/repos/' + SAHIP + '/' + DEPO;
   var ANAHTAR_KEY = 'aran-anahtar';
 
