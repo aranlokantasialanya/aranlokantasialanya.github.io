@@ -75,7 +75,7 @@
           "ad": "Göleviz",
           "fiyat": 140,
           "foto": "",
-          "gizli": false
+          "gizli": true
         },
         {
           "ad": "Biber Dolma",
