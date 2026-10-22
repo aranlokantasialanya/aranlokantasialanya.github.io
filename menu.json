@@ -87,13 +87,13 @@
           "ad": "Biber Dolma",
           "fiyat": 140,
           "foto": "",
-          "gizli": true
+          "gizli": false
         },
         {
           "ad": "Börülce",
           "fiyat": 140,
           "foto": "",
-          "gizli": true
+          "gizli": false
         },
         {
           "ad": "Kuru Fasülye",
@@ -134,7 +134,7 @@
           "ad": "Bulgur Pilavı",
           "fiyat": 100,
           "foto": "",
-          "gizli": true
+          "gizli": false
         }
       ]
     },
@@ -194,13 +194,13 @@
           "gizli": false
         },
         {
-          "ad": "Sütlaç",
+          "ad": "Kemalpaşa",
           "fiyat": 100,
-          "foto": "images/sutlac-1792648302931.jpg",
+          "foto": "",
           "gizli": false
         },
         {
-          "ad": "Kemalpaşa",
+          "ad": "Sütlaç",
           "fiyat": 100,
           "foto": "",
           "gizli": false
