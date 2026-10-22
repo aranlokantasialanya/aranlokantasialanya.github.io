@@ -51,7 +51,13 @@
           "ad": "Tas Kebap",
           "fiyat": 300,
           "foto": "",
-          "gizli": true
+          "gizli": false
+        },
+        {
+          "ad": "Yoğurtlu Köfte",
+          "fiyat": 300,
+          "foto": "",
+          "gizli": false
         },
         {
           "ad": "Tavuk Haşlama (Sote)",
@@ -63,7 +69,7 @@
           "ad": "Bamya",
           "fiyat": 150,
           "foto": "",
-          "gizli": true
+          "gizli": false
         },
         {
           "ad": "Patlıcan Musakka",
@@ -75,19 +81,19 @@
           "ad": "Göleviz",
           "fiyat": 140,
           "foto": "",
-          "gizli": true
+          "gizli": false
         },
         {
           "ad": "Biber Dolma",
           "fiyat": 140,
           "foto": "",
-          "gizli": true
+          "gizli": false
         },
         {
           "ad": "Börülce",
           "fiyat": 140,
           "foto": "",
-          "gizli": true
+          "gizli": false
         },
         {
           "ad": "Kuru Fasülye",
@@ -190,7 +196,7 @@
         {
           "ad": "Sütlaç",
           "fiyat": 100,
-          "foto": "",
+          "foto": "images/sutlac-1792648302931.jpg",
           "gizli": false
         },
         {
