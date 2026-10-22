@@ -87,13 +87,13 @@
           "ad": "Biber Dolma",
           "fiyat": 140,
           "foto": "",
-          "gizli": false
+          "gizli": true
         },
         {
           "ad": "Börülce",
           "fiyat": 140,
           "foto": "",
-          "gizli": false
+          "gizli": true
         },
         {
           "ad": "Kuru Fasülye",
