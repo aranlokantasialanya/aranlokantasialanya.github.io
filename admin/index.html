@@ -64,6 +64,9 @@
   .foto-btn.dolu{border:0}
   .foto-btn.dolu::after{content:"Değiştir";position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:2px 0}
   .foto-btn svg{width:24px;height:24px}
+  .foto-alan{position:relative;flex-shrink:0;width:64px;height:64px}
+  .foto-sil{position:absolute;top:-7px;right:-7px;width:26px;height:26px;border-radius:50%;border:2px solid var(--krem);background:var(--kirmizi);color:#fff;font-size:16px;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  .foto-sil.emin{width:auto;padding:0 8px;border-radius:13px;font-size:12px;right:-14px;white-space:nowrap}
   .sag{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
   .ad{width:100%;border:1px solid var(--cizgi);background:var(--kart);border-radius:10px;padding:10px 12px;font-size:17px}
   .alt{display:flex;align-items:center;gap:6px}
@@ -249,7 +252,20 @@
       clearTimeout(zaman); var k=satir.parentNode.parentNode._kat||kat; k.urunler.splice(k.urunler.indexOf(u),1); degisiklik(); ciz();
     });
 
-    satir.appendChild(fb);
+    var fotoAlan=el('div',{class:'foto-alan'},[fb]);
+    if(src){
+      var fSil=el('button',{class:'foto-sil',type:'button','aria-label':u.ad+' fotoğrafını kaldır',title:'Fotoğrafı kaldır',text:'×'});
+      var fz=null;
+      fSil.addEventListener('click',function(){
+        if(!fSil.classList.contains('emin')){
+          fSil.classList.add('emin'); fSil.textContent='Kaldır?';
+          fz=setTimeout(function(){ fSil.classList.remove('emin'); fSil.textContent='×'; },3000); return;
+        }
+        clearTimeout(fz); u.foto=''; delete u._yeniFoto; degisiklik(); ciz();
+      });
+      fotoAlan.appendChild(fSil);
+    }
+    satir.appendChild(fotoAlan);
     satir.appendChild(el('div',{class:'sag'},[
       ad,
       el('div',{class:'alt'},[
@@ -269,7 +285,7 @@
   function ciz(){
     var kaydirma=window.scrollY;
     ana.innerHTML='';
-    ana.appendChild(el('p',{class:'bilgi',text:'Fiyatı veya adı değiştirin, fotoğrafa dokunup yenisini seçin. Biten yemekte "Tükendi"yi işaretleyin. Sırayı değiştirmek için soldaki ⠿ tutamağı basılı tutup sürükleyin. Bitince alttaki Kaydet\'e basın.'}));
+    ana.appendChild(el('p',{class:'bilgi',text:'Fiyatı veya adı değiştirin, fotoğrafa dokunup yenisini seçin. Fotoğraftaki × ile fotoğrafı kaldırabilirsiniz. Biten yemekte "Tükendi"yi işaretleyin. Sırayı değiştirmek için soldaki ⠿ tutamağı basılı tutup sürükleyin. Bitince alttaki Kaydet\'e basın.'}));
     aracKutu=el('div',{class:'ust-arac'}); ana.appendChild(aracKutu); tukendiAraci();
     veri.kategoriler.forEach(function(kat){
       kat.urunler=kat.urunler||[];
