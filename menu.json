@@ -185,7 +185,7 @@
           "fiyat": 100,
           "foto": "",
           "gun": "",
-          "yildiz": false,
+          "yildiz": true,
           "tukendi": false,
           "gizli": false
         }
@@ -261,7 +261,7 @@
         {
           "ad": "Çoban Salata",
           "fiyat": 100,
-          "foto": "images/coban-salata.jpg",
+          "foto": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
