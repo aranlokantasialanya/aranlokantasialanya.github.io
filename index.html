@@ -2,74 +2,117 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aran Lokantası | Menü</title>
-<meta name="description" content="Aran Lokantası menüsü – Alanya / Antalya">
+<meta name="description" content="Aran Lokantası menüsü – 1986'dan beri, Alanya / Antalya">
 <meta name="theme-color" content="#7b1f2e">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-title" content="Aran Menü">
 <meta property="og:title" content="Aran Lokantası | Menü">
-<meta property="og:description" content="Çorbalar, ev yemekleri, ızgaralar ve tatlılar. Alanya / Antalya">
+<meta property="og:description" content="Çorbalar, ev yemekleri, ızgaralar ve tatlılar. 1986'dan beri, Alanya.">
 <meta property="og:image" content="https://aranlokantasialanya.github.io/og-image.png">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bordo:#7b1f2e;--bordo-koyu:#5e1622;--krem:#fbf7f2;--yazi:#2a2224;--cizgi:#e8dcd6}
+  /* Basılı A5 menünün dijital hali: bordo başlık bandı, serif bölüm başlıkları, kutulu fiyatlar, gün etiketleri */
+  :root{
+    color-scheme:light;
+    --bordo:#7b1f2e; --bordo-koyu:#5e1622; --pembe:#f6e3e5; --krem:#fbf7f2; --kart:#ffffff;
+    --yazi:#2a2224; --soluk:#857679; --cizgi:#e8dcd6; --nokta:#cbb9b3; --kirmizi:#b3261e;
+    --baslik:"Libre Baskerville",Georgia,serif; --govde:"Source Sans 3",system-ui,-apple-system,sans-serif;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:64px}
-  body{font-family:"Source Sans 3",system-ui,sans-serif;background:var(--krem);color:var(--yazi);line-height:1.4;-webkit-font-smoothing:antialiased}
-  header{background:var(--bordo);color:#fff;text-align:center;padding:36px 16px 30px;position:relative}
-  header::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.35);pointer-events:none}
-  .logo{font-family:"Libre Baskerville",serif;font-size:42px;letter-spacing:6px}
-  .logo-cizgi{width:60px;height:2px;background:#fff;margin:10px auto}
-  .alt-logo{letter-spacing:8px;font-size:15px;text-transform:uppercase}
-  nav{position:sticky;top:0;z-index:10;background:var(--krem);border-bottom:1px solid var(--cizgi);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  nav::-webkit-scrollbar{display:none}
-  nav a{display:inline-block;padding:14px;font-weight:600;font-size:14px;color:var(--bordo);text-decoration:none;letter-spacing:.5px}
-  nav a:first-child{padding-left:16px}
-  main{max-width:640px;margin:0 auto;padding:8px 16px 24px;min-height:50vh}
-  section{margin-top:28px}
-  h2{font-family:"Libre Baskerville",serif;color:var(--bordo);font-size:19px;letter-spacing:2px;text-transform:uppercase;padding-bottom:8px;border-bottom:2px solid var(--bordo);margin-bottom:4px}
-  .urun{display:flex;align-items:center;gap:10px;padding:12px 2px;border-bottom:1px solid var(--cizgi);font-size:17px}
-  .urun:last-child{border-bottom:none}
-  .nokta{flex:1;border-bottom:1px dotted #c9b9b3;min-width:16px}
-  .fiyat{font-weight:700;white-space:nowrap;color:var(--bordo-koyu)}
-  .foto{width:60px;height:60px;border-radius:10px;flex-shrink:0;object-fit:cover}
-  img.foto{cursor:zoom-in;box-shadow:0 1px 3px rgba(0,0,0,.15);background:#eee}
-  .foto.bos{border:1.5px dashed #d6c6bf;background:#f4ece6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c4aea6' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='7'/%3E%3Ccircle cx='12' cy='12' r='3.5'/%3E%3C/svg%3E") center/28px no-repeat}
-  .durum{text-align:center;color:#8a7d80;padding:48px 0}
+  html{scroll-behavior:smooth;scroll-padding-top:60px}
+  body{font-family:var(--govde);background:var(--krem);color:var(--yazi);line-height:1.35;-webkit-font-smoothing:antialiased}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  .ic{max-width:620px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+  /* Başlık bandı */
+  header{background:var(--bordo);color:#fff;text-align:center;padding-top:env(safe-area-inset-top,0px)}
+  header .ic{padding-block:14px}
+  .cerceve{border:1px solid rgba(255,255,255,.45);padding:22px 8px 18px}
+  .logo{font-family:var(--baslik);font-size:44px;letter-spacing:8px;line-height:1;padding-left:8px}
+  .cizgi-b{width:64px;height:2px;background:#fff;margin:12px auto}
+  .alt-logo{letter-spacing:7px;font-size:15px;text-transform:uppercase;padding-left:7px}
+  .slogan{margin-top:8px;font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:.85}
+
+  /* Kategori şeridi */
+  nav{position:sticky;top:0;z-index:10;background:var(--krem);border-bottom:1px solid var(--cizgi)}
+  nav .serit{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-block:8px}
+  nav .serit::-webkit-scrollbar{display:none}
+  nav a{flex-shrink:0;padding:7px 12px;border-radius:999px;font-weight:600;font-size:14px;color:var(--bordo);text-decoration:none;white-space:nowrap}
+  nav a.aktif{background:var(--bordo);color:#fff}
+
+  /* Bugünün yemeği */
+  .bugun{margin-top:18px;background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+  .bugun .etiket{flex-shrink:0;background:var(--bordo);color:#fff;font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;border-radius:8px;padding:6px 8px;text-align:center;line-height:1.15}
+  .bugun .metin{flex:1;min-width:0}
+  .bugun small{display:block;color:var(--soluk);font-size:13px}
+  .bugun strong{font-size:17px}
+  .bugun .fiyat{margin-left:auto}
+
+  main{padding-bottom:8px}
+  section{margin-top:26px}
+  h2{font-family:var(--baslik);color:var(--bordo);font-size:18px;letter-spacing:2px;text-transform:uppercase;padding-bottom:7px;border-bottom:2px solid var(--bordo);text-wrap:balance}
+
+  .urun{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--cizgi)}
+  .urun:last-of-type{border-bottom:0}
+  .foto{width:52px;height:52px;border-radius:10px;flex-shrink:0;object-fit:cover;max-width:100%}
+  img.foto{cursor:zoom-in;box-shadow:0 1px 3px rgba(0,0,0,.15);background:var(--cizgi)}
+  .foto.bos{background:#f3ebe5;border:1px dashed #e0d2cb}
+  .govde{flex:1;min-width:0;display:flex;align-items:center;gap:8px}
+  .isim{min-width:0;font-size:17px}
+  .isim .y{color:var(--bordo);font-weight:700;margin-left:1px}
+  .meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+  .gun{display:inline-block;background:var(--pembe);color:var(--bordo);font-weight:700;font-size:12px;border-radius:999px;padding:2px 9px}
+  .gun.bugun-gun{background:var(--bordo);color:#fff}
+  .yok{display:inline-block;background:var(--kirmizi);color:#fff;font-weight:700;font-size:12px;border-radius:999px;padding:2px 9px}
+  .nokta{flex:1;min-width:12px;border-bottom:1.5px dotted var(--nokta);align-self:flex-end;margin-bottom:7px}
+  .fiyat{flex-shrink:0;min-width:58px;text-align:center;border:1.5px solid var(--cizgi);background:var(--kart);border-radius:8px;padding:4px 8px;font-weight:700;font-size:16px;color:var(--bordo-koyu);font-variant-numeric:tabular-nums}
+  .urun.tukendi .isim,.urun.tukendi .foto{opacity:.45}
+  .urun.tukendi .fiyat{text-decoration:line-through;color:var(--soluk)}
+
+  .aciklama{margin-top:10px;background:var(--kart);border:1px solid var(--cizgi);border-radius:12px;padding:10px 12px;display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;font-size:14px;color:var(--soluk)}
+  .aciklama .y{color:var(--bordo);font-weight:700;text-align:center}
+
+  .durum{text-align:center;color:var(--soluk);padding:48px 0}
+
+  footer{background:var(--bordo);color:#fff;text-align:center;margin-top:34px;padding-bottom:env(safe-area-inset-bottom,0px)}
+  footer .ic{padding-block:26px 30px}
+  .paket{font-family:var(--baslik);font-size:18px;margin-bottom:12px}
+  .btn{display:inline-block;background:#fff;color:var(--bordo);text-decoration:none;font-weight:700;padding:11px 20px;border-radius:999px;margin:4px;font-size:16px}
+  .btn.cizgili{background:transparent;color:#fff;border:1.5px solid #fff}
+  .adres{margin-top:14px;font-size:14px;opacity:.9}
+
   #buyuk{position:fixed;inset:0;z-index:50;background:rgba(20,10,12,.88);display:none;align-items:center;justify-content:center;flex-direction:column;padding:16px;cursor:zoom-out}
   #buyuk.acik{display:flex}
-  #buyuk img{max-width:100%;max-height:78vh;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.4)}
-  #buyuk .baslik{color:#fff;margin-top:14px;font-family:"Libre Baskerville",serif;font-size:18px;text-align:center}
-  #buyuk .kapat{position:absolute;top:12px;right:16px;color:#fff;font-size:34px;line-height:1;background:none;border:0;cursor:pointer}
-  footer{background:var(--bordo);color:#fff;text-align:center;padding:28px 16px 36px;margin-top:36px}
-  .paket{font-family:"Libre Baskerville",serif;font-size:18px;margin-bottom:14px}
-  .btn{display:inline-block;background:#fff;color:var(--bordo);text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px;margin:4px;font-size:16px}
-  .btn.outline{background:transparent;color:#fff;border:1.5px solid #fff}
-  .adres{margin-top:16px;font-size:14px;opacity:.9}
+  #buyuk img{max-width:100%;max-height:78vh;border-radius:14px}
+  #buyuk .baslik{color:#fff;margin-top:14px;font-family:var(--baslik);font-size:18px;text-align:center}
+  #buyuk .kapat{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:16px;color:#fff;font-size:34px;line-height:1;background:none;border:0;cursor:pointer}
 </style>
 </head>
 <body>
 
-<header>
+<header><div class="ic"><div class="cerceve">
   <div class="logo">ARAN</div>
-  <div class="logo-cizgi"></div>
+  <div class="cizgi-b"></div>
   <div class="alt-logo">Lokantası</div>
-</header>
+  <div class="slogan" id="slogan">1986'dan beri</div>
+</div></div></header>
 
-<nav id="nav"></nav>
-<main id="menu"><p class="durum">Menü yükleniyor…</p></main>
+<nav><div class="ic serit" id="nav"></div></nav>
 
-<footer>
+<main class="ic" id="menu"><p class="durum">Menü yükleniyor…</p></main>
+
+<footer><div class="ic">
   <div class="paket">Paket Servis</div>
   <a class="btn" id="tel" href="tel:+902425126122">📞 0242 512 61 22</a>
-  <a class="btn outline" id="harita" target="_blank" rel="noopener" href="#">📍 Yol Tarifi</a>
+  <a class="btn cizgili" id="harita" target="_blank" rel="noopener" href="#">📍 Yol Tarifi</a>
   <div class="adres" id="adres"></div>
-</footer>
+</div></footer>
 
 <div id="buyuk" role="dialog" aria-label="Fotoğraf">
   <button class="kapat" aria-label="Kapat">&times;</button>
@@ -79,43 +122,96 @@
 
 <script>
 (function(){
-  function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+  var GUNLER=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+  var bugun='';
+  try{ bugun=new Intl.DateTimeFormat('tr-TR',{weekday:'long',timeZone:'Europe/Istanbul'}).format(new Date()); }catch(e){ bugun=GUNLER[new Date().getDay()]; }
+  bugun=bugun.charAt(0).toLocaleUpperCase('tr')+bugun.slice(1);
+
+  function el(tag,cls,text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
   function slug(s){ return s.toLocaleLowerCase('tr').replace(/ç/g,'c').replace(/ğ/g,'g').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ş/g,'s').replace(/ü/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
-  function telGoster(t){ var d=t.replace(/\D/g,''); if(d.indexOf('90')===0) d=d.slice(2); return '0'+d.slice(0,3)+' '+d.slice(3,6)+' '+d.slice(6,8)+' '+d.slice(8); }
+  function telGoster(t){ var d=t.replace(/\D/g,''); if(d.indexOf('90')===0) d=d.slice(2); if(d.charAt(0)!=='0') d='0'+d; return d.slice(0,4)+' '+d.slice(4,7)+' '+d.slice(7,9)+' '+d.slice(9); }
+  function fiyatYaz(f){ return (Number(f)||0).toLocaleString('tr-TR')+'₺'; }
 
   var kutu=document.getElementById('buyuk'), bi=kutu.querySelector('img'), bb=kutu.querySelector('.baslik');
+  function buyut(src,ad){ bi.src=src; bb.textContent=ad; kutu.classList.add('acik'); }
   kutu.addEventListener('click',function(){ kutu.classList.remove('acik'); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') kutu.classList.remove('acik'); });
+
+  function urunSatiri(u){
+    var row=el('div','urun'+(u.tukendi?' tukendi':''));
+    if(u.foto){
+      var img=el('img','foto'); img.src=u.foto; img.alt=u.ad; img.loading='lazy';
+      img.addEventListener('click',function(){ buyut(u.foto,u.ad); });
+      row.appendChild(img);
+    } else row.appendChild(el('span','foto bos'));
+    var govde=el('div','govde');
+    var isim=el('div','isim');
+    isim.appendChild(document.createTextNode(u.ad));
+    if(u.yildiz){ var y=el('span','y','*'); y.title='Her gün pişmez, lütfen sorunuz'; isim.appendChild(y); }
+    if(u.gun||u.tukendi){
+      var meta=el('div','meta');
+      if(u.gun) meta.appendChild(el('span','gun'+(u.gun===bugun?' bugun-gun':''), u.gun===bugun?'Bugün':u.gun));
+      if(u.tukendi) meta.appendChild(el('span','yok','Tükendi'));
+      isim.appendChild(meta);
+    }
+    govde.appendChild(isim);
+    govde.appendChild(el('span','nokta'));
+    row.appendChild(govde);
+    row.appendChild(el('span','fiyat',fiyatYaz(u.fiyat)));
+    return row;
+  }
 
   fetch('menu.json?v='+Date.now(),{cache:'no-store'}).then(function(r){ return r.json(); }).then(function(d){
     var nav=document.getElementById('nav'), main=document.getElementById('menu');
     main.innerHTML='';
+    var i=d.isletme||{};
+    if(i.slogan) document.getElementById('slogan').textContent=i.slogan;
+
+    // Bugünün yemeği kartı
+    var gunun=[];
+    (d.kategoriler||[]).forEach(function(k){ (k.urunler||[]).forEach(function(u){ if(!u.gizli && u.gun===bugun) gunun.push(u); }); });
+    if(gunun.length){
+      var u=gunun[0], kart=el('div','bugun');
+      var et=el('span','etiket'); et.innerHTML='Günün<br>yemeği'; kart.appendChild(et);
+      var m=el('div','metin'); m.appendChild(el('small',null,bugun)); m.appendChild(el('strong',null,u.ad));
+      if(u.tukendi) { m.appendChild(document.createTextNode(' ')); m.appendChild(el('span','yok','Tükendi')); }
+      kart.appendChild(m); kart.appendChild(el('span','fiyat',fiyatYaz(u.fiyat)));
+      main.appendChild(kart);
+    }
+
     (d.kategoriler||[]).forEach(function(k){
-      if(!k.urunler || !k.urunler.length) return;
+      var urunler=(k.urunler||[]).filter(function(u){ return !u.gizli; });
+      if(!urunler.length) return;
       var id=slug(k.ad);
       var a=el('a',null,k.ad); a.href='#'+id; nav.appendChild(a);
       var s=el('section'); s.id=id; s.appendChild(el('h2',null,k.ad));
-      k.urunler.forEach(function(u){
-        if(u.gizli) return;
-        var row=el('div','urun');
-        if(u.foto){
-          var img=el('img','foto'); img.src=u.foto; img.alt=u.ad; img.loading='lazy';
-          img.addEventListener('click',function(){ bi.src=u.foto; bb.textContent=u.ad; kutu.classList.add('acik'); });
-          row.appendChild(img);
-        } else row.appendChild(el('span','foto bos'));
-        row.appendChild(el('span','ad',u.ad));
-        row.appendChild(el('span','nokta'));
-        row.appendChild(el('span','fiyat',u.fiyat+' ₺'));
-        s.appendChild(row);
-      });
+      urunler.forEach(function(u){ s.appendChild(urunSatiri(u)); });
+      var gunVar=urunler.some(function(u){ return u.gun; }), yildizVar=urunler.some(function(u){ return u.yildiz; });
+      if(gunVar||yildizVar){
+        var ac=el('div','aciklama');
+        if(gunVar){ ac.appendChild(el('span','gun','Gün')); ac.appendChild(el('span',null,'Günün yemeği, sadece o gün pişer.')); }
+        if(yildizVar){ ac.appendChild(el('span','y','*')); ac.appendChild(el('span',null,'Her gün pişmez, lütfen sorunuz.')); }
+        s.appendChild(ac);
+      }
       main.appendChild(s);
     });
-    var i=d.isletme||{};
+
     if(i.telefon){ var t=document.getElementById('tel'); t.href='tel:'+i.telefon.replace(/\s/g,''); t.textContent='📞 '+telGoster(i.telefon); }
     if(i.adres){
       document.getElementById('adres').textContent=i.adres;
       document.getElementById('harita').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Aran Lokantası '+i.adres);
     }
+
+    // Kaydırdıkça aktif kategoriyi işaretle
+    var linkler=[].slice.call(nav.querySelectorAll('a')), bolumler=[].slice.call(main.querySelectorAll('section'));
+    function isaretle(){
+      var y=window.scrollY+80, aktif=0;
+      bolumler.forEach(function(b,ix){ if(b.offsetTop<=y) aktif=ix; });
+      linkler.forEach(function(l,ix){
+        var ol=ix===aktif; if(l.classList.contains('aktif')!==ol){ l.classList.toggle('aktif',ol); if(ol) nav.scrollLeft=l.offsetLeft-nav.clientWidth/2+l.offsetWidth/2; }
+      });
+    }
+    window.addEventListener('scroll',isaretle,{passive:true}); isaretle();
   }).catch(function(){
     document.getElementById('menu').innerHTML='<p class="durum">Menü yüklenemedi. Lütfen sayfayı yenileyin.</p>';
   });

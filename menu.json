@@ -1,5 +1,6 @@
 {
   "isletme": {
+    "slogan": "1986'dan beri",
     "telefon": "+90 242 512 61 22",
     "adres": "Şekerhane Mah. Yunus Gücü Sok. Yaşam Hastanesi Karşısı, Alanya / Antalya"
   },
@@ -11,35 +12,18 @@
           "ad": "Mercimek Çorbası",
           "fiyat": 130,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Tavuk Çorbası",
           "fiyat": 130,
           "foto": "",
-          "gizli": false
-        }
-      ]
-    },
-    {
-      "ad": "Piyazlar",
-      "urunler": [
-        {
-          "ad": "Yumurtalı Fasülye Piyazı",
-          "fiyat": 150,
-          "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Fasülye Piyazı",
-          "fiyat": 140,
-          "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Bakla Piyazı",
-          "fiyat": 130,
-          "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         }
       ]
@@ -51,72 +35,135 @@
           "ad": "Tas Kebap",
           "fiyat": 300,
           "foto": "",
+          "gun": "Pazartesi",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Tavuk Haşlama",
+          "fiyat": 250,
+          "foto": "",
+          "gun": "Salı",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Salçalı Köfte",
+          "fiyat": 300,
+          "foto": "",
+          "gun": "Çarşamba",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Tavuk Sote",
+          "fiyat": 250,
+          "foto": "",
+          "gun": "Perşembe",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Yoğurtlu Köfte",
           "fiyat": 300,
           "foto": "",
+          "gun": "Cuma",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
-          "ad": "Tavuk Haşlama (Sote)",
+          "ad": "Tavuk Haşlama",
           "fiyat": 250,
           "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Bamya",
-          "fiyat": 150,
-          "foto": "",
+          "gun": "Cumartesi",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Patlıcan Musakka",
           "fiyat": 140,
           "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Göleviz",
-          "fiyat": 140,
-          "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Biber Dolma",
-          "fiyat": 140,
-          "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Börülce",
-          "fiyat": 140,
-          "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Kuru Fasülye",
           "fiyat": 130,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Nohut",
           "fiyat": 130,
           "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Taze Fasülye",
-          "fiyat": 130,
-          "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Yoğurtlu Kızartma",
           "fiyat": 130,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Bamya",
+          "fiyat": 150,
+          "foto": "",
+          "gun": "",
+          "yildiz": true,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Biber Dolma",
+          "fiyat": 140,
+          "foto": "",
+          "gun": "",
+          "yildiz": true,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Göleviz",
+          "fiyat": 140,
+          "foto": "",
+          "gun": "",
+          "yildiz": true,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Börülce",
+          "fiyat": 140,
+          "foto": "",
+          "gun": "",
+          "yildiz": true,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Taze Fasülye",
+          "fiyat": 130,
+          "foto": "",
+          "gun": "",
+          "yildiz": true,
+          "tukendi": false,
           "gizli": false
         }
       ]
@@ -128,12 +175,50 @@
           "ad": "Pirinç Pilavı",
           "fiyat": 100,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Bulgur Pilavı",
           "fiyat": 100,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        }
+      ]
+    },
+    {
+      "ad": "Piyazlar",
+      "urunler": [
+        {
+          "ad": "Yumurtalı Fasülye Piyazı",
+          "fiyat": 150,
+          "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Fasülye Piyazı",
+          "fiyat": 140,
+          "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Bakla Piyazı",
+          "fiyat": 130,
+          "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         }
       ]
@@ -145,18 +230,27 @@
           "ad": "Izgara Köfte",
           "fiyat": 300,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Şiş Köfte",
           "fiyat": 300,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Tavuk Şiş",
           "fiyat": 250,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         }
       ]
@@ -165,21 +259,30 @@
       "ad": "Salata ve Mezeler",
       "urunler": [
         {
-          "ad": "Çoban Salatası",
+          "ad": "Çoban Salata",
           "fiyat": 100,
-          "foto": "",
+          "foto": "images/coban-salata.jpg",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Cacık",
           "fiyat": 100,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Yoğurt",
           "fiyat": 100,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         }
       ]
@@ -191,18 +294,27 @@
           "ad": "Tel Kadayıf",
           "fiyat": 100,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Sütlaç",
+          "fiyat": 100,
+          "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Kemalpaşa",
           "fiyat": 100,
           "foto": "",
-          "gizli": false
-        },
-        {
-          "ad": "Sütlaç",
-          "fiyat": 100,
-          "foto": "images/sutlac-1793089019374.jpg",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         }
       ]
@@ -214,42 +326,63 @@
           "ad": "Kutu Kola",
           "fiyat": 70,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Şişe Kola",
           "fiyat": 60,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Fanta",
           "fiyat": 70,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Niğde Gazozu",
           "fiyat": 60,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Ayran",
           "fiyat": 20,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Su",
           "fiyat": 20,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         },
         {
           "ad": "Çay",
           "fiyat": 20,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
           "gizli": false
         }
       ]

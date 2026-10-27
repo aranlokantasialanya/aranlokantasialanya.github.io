@@ -22,7 +22,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:var(--govde);background:var(--krem);color:var(--yazi);font-size:16px;line-height:1.4;padding-bottom:110px}
-  button,input{font:inherit;color:inherit}
+  button,input,select{font:inherit;color:inherit}
   button{cursor:pointer}
   :focus-visible{outline:2px solid var(--bordo);outline-offset:2px}
 
@@ -42,6 +42,17 @@
 
   .urun{display:flex;gap:8px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--cizgi)}
   .urun.gizli .foto-btn,.urun.gizli .ad{opacity:.45}
+  .urun.tukendi .ad{color:var(--soluk);text-decoration:line-through}
+  .secenekler{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+  .gun-sec{border:1px solid var(--cizgi);background:var(--kart);border-radius:10px;padding:7px 8px;font:inherit;font-size:14px;color:var(--yazi);max-width:100%}
+  .gun-sec.dolu{background:#f6e3e5;border-color:#e8c4c9;color:var(--bordo);font-weight:700}
+  .kucuk{display:flex;align-items:center;gap:4px;font-size:14px;color:var(--soluk);user-select:none;white-space:nowrap}
+  .kucuk input{width:18px;height:18px;accent-color:var(--bordo)}
+  .tukendi-k{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;white-space:nowrap;color:var(--soluk);user-select:none;padding:6px 10px;border:1.5px solid var(--cizgi);border-radius:10px;background:var(--kart)}
+  .tukendi-k input{width:20px;height:20px;accent-color:var(--kirmizi)}
+  .tukendi-k:has(input:checked){border-color:var(--kirmizi);color:var(--kirmizi);background:#fdecea}
+  .ust-arac{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .ust-arac button{border:1.5px solid var(--kirmizi);background:#fdecea;color:var(--kirmizi);font-weight:700;border-radius:10px;padding:9px 12px;font-size:14px}
   .tutamak{flex-shrink:0;width:28px;align-self:stretch;display:flex;align-items:center;justify-content:center;border:0;background:transparent;color:#b9a7a0;cursor:grab;touch-action:none;border-radius:8px;padding:0}
   .tutamak:active{cursor:grabbing}
   .tutamak svg{width:20px;height:20px}
@@ -203,7 +214,7 @@
 
   // ---------- Çizim ----------
   function urunSatiri(u, kat){
-    var satir=el('div',{class:'urun'+(u.gizli?' gizli':'')});
+    var satir=el('div',{class:'urun'+(u.gizli?' gizli':'')+(u.tukendi?' tukendi':'')});
     satir._u=u;
     satir.appendChild(el('button',{class:'tutamak',type:'button','aria-label':'Sürükleyerek sırala',title:'Basılı tutup sürükleyin',html:IKON_TUT}));
     var fb=el('button',{class:'foto-btn',type:'button','aria-label':u.ad+' fotoğrafını değiştir',onclick:function(){ fotoHedef=u; dosyaInput.value=''; dosyaInput.click(); }});
@@ -215,8 +226,17 @@
     ad.addEventListener('input',function(){ u.ad=ad.value; degisiklik(); });
     var fiyat=el('input',{class:'fiyat',type:'number',inputmode:'numeric',min:'0',value:u.fiyat!=null?u.fiyat:'', 'aria-label':'Fiyat'});
     fiyat.addEventListener('input',function(){ u.fiyat=fiyat.value===''?0:Math.max(0,parseInt(fiyat.value,10)||0); degisiklik(); });
-    var yokK=el('input',{type:'checkbox'}); yokK.checked=!!u.gizli;
-    yokK.addEventListener('change',function(){ u.gizli=yokK.checked; satir.classList.toggle('gizli',u.gizli); degisiklik(); });
+    var tukK=el('input',{type:'checkbox'}); tukK.checked=!!u.tukendi;
+    tukK.addEventListener('change',function(){ u.tukendi=tukK.checked; satir.classList.toggle('tukendi',u.tukendi); degisiklik(); tukendiAraci(); });
+    var gizK=el('input',{type:'checkbox'}); gizK.checked=!!u.gizli;
+    gizK.addEventListener('change',function(){ u.gizli=gizK.checked; satir.classList.toggle('gizli',u.gizli); degisiklik(); });
+    var yilK=el('input',{type:'checkbox'}); yilK.checked=!!u.yildiz;
+    yilK.addEventListener('change',function(){ u.yildiz=yilK.checked; degisiklik(); });
+    var gunS=el('select',{class:'gun-sec'+(u.gun?' dolu':''),'aria-label':'Pişme günü'});
+    [['','Her gün'],['Pazartesi'],['Salı'],['Çarşamba'],['Perşembe'],['Cuma'],['Cumartesi'],['Pazar']].forEach(function(g){
+      var o=el('option',{value:g[0],text:g[1]||('Sadece '+g[0])}); if((u.gun||'')===g[0]) o.selected=true; gunS.appendChild(o);
+    });
+    gunS.addEventListener('change',function(){ u.gun=gunS.value; gunS.classList.toggle('dolu',!!u.gun); degisiklik(); });
 
     var silBtn=el('button',{class:'sil',type:'button','aria-label':'Ürünü sil',html:IKON_SIL});
     var zaman=null;
@@ -234,8 +254,13 @@
       ad,
       el('div',{class:'alt'},[
         el('label',{class:'fiyat-kutu'},[fiyat, el('span',{text:'₺'})]),
-        el('label',{class:'yok'},[yokK, el('span',{text:'Bugün yok'})]),
+        el('label',{class:'tukendi-k'},[tukK, el('span',{text:'Tükendi'})]),
         silBtn
+      ]),
+      el('div',{class:'secenekler'},[
+        gunS,
+        el('label',{class:'kucuk',title:'Menüde adın yanında * çıkar'},[yilK, el('span',{text:'Her gün pişmez *'})]),
+        el('label',{class:'kucuk',title:'Ürün menüde hiç görünmez'},[gizK, el('span',{text:'Gizle'})])
       ])
     ]));
     return satir;
@@ -244,7 +269,8 @@
   function ciz(){
     var kaydirma=window.scrollY;
     ana.innerHTML='';
-    ana.appendChild(el('p',{class:'bilgi',text:'Fiyatı veya adı değiştirin, fotoğrafa dokunup yenisini seçin. Sırayı değiştirmek için soldaki ⠿ tutamağı basılı tutup sürükleyin. Bitince alttaki Kaydet\'e basın.'}));
+    ana.appendChild(el('p',{class:'bilgi',text:'Fiyatı veya adı değiştirin, fotoğrafa dokunup yenisini seçin. Biten yemekte "Tükendi"yi işaretleyin. Sırayı değiştirmek için soldaki ⠿ tutamağı basılı tutup sürükleyin. Bitince alttaki Kaydet\'e basın.'}));
+    aracKutu=el('div',{class:'ust-arac'}); ana.appendChild(aracKutu); tukendiAraci();
     veri.kategoriler.forEach(function(kat){
       kat.urunler=kat.urunler||[];
       var katAd=el('input',{class:'kat-ad',value:kat.ad||'','aria-label':'Kategori adı'});
@@ -264,7 +290,7 @@
       bolum._kat=kat;
       kat.urunler.forEach(function(u){ liste.appendChild(urunSatiri(u,kat)); });
       bolum.appendChild(el('button',{class:'ekle',type:'button',text:'+ '+(kat.ad||'Bu kategoriye')+' ürün ekle',onclick:function(){
-        var yeni={ad:'',fiyat:0,foto:'',gizli:false}; kat.urunler.push(yeni); degisiklik(); ciz();
+        var yeni={ad:'',fiyat:0,foto:'',gun:'',yildiz:false,tukendi:false,gizli:false}; kat.urunler.push(yeni); degisiklik(); ciz();
         var son=ana.querySelectorAll('.kategori')[veri.kategoriler.indexOf(kat)].querySelectorAll('.ad');
         if(son.length) son[son.length-1].focus();
       }}));
@@ -277,8 +303,10 @@
 
     var tel=el('input',{id:'tel',value:veri.isletme.telefon||''}); tel.addEventListener('input',function(){ veri.isletme.telefon=tel.value; degisiklik(); });
     var adr=el('input',{id:'adres',value:veri.isletme.adres||''}); adr.addEventListener('input',function(){ veri.isletme.adres=adr.value; degisiklik(); });
+    var slg=el('input',{id:'slogan',value:veri.isletme.slogan||''}); slg.addEventListener('input',function(){ veri.isletme.slogan=slg.value; degisiklik(); });
     ana.appendChild(el('details',{class:'isletme'},[
-      el('summary',{text:'Telefon ve adres'}),
+      el('summary',{text:'Telefon, adres ve slogan'}),
+      el('label',{for:'slogan',text:'Logonun altındaki yazı'}), slg,
       el('label',{for:'tel',text:'Paket servis telefonu'}), tel,
       el('label',{for:'adres',text:'Adres'}), adr
     ]));
@@ -287,6 +315,17 @@
     ]));
     siralamaKur();
     window.scrollTo(0,kaydirma);
+  }
+
+  // ---------- Tükendi işaretlerini topluca kaldır ----------
+  var aracKutu=null;
+  function tukendiAraci(){
+    if(!aracKutu) return;
+    var n=0; veri.kategoriler.forEach(function(k){ (k.urunler||[]).forEach(function(u){ if(u.tukendi) n++; }); });
+    aracKutu.innerHTML='';
+    if(n) aracKutu.appendChild(el('button',{type:'button',text:'Tükendi işaretlerini kaldır ('+n+')',onclick:function(){
+      veri.kategoriler.forEach(function(k){ (k.urunler||[]).forEach(function(u){ u.tukendi=false; }); }); degisiklik(); ciz();
+    }}));
   }
 
   // ---------- Sürükleyerek sıralama ----------
@@ -327,9 +366,9 @@
   // ---------- Kaydetme: tek seferde menü + yeni fotoğraflar ----------
   function temizVeri(){
     return {
-      isletme:{telefon:(veri.isletme.telefon||'').trim(),adres:(veri.isletme.adres||'').trim()},
+      isletme:{slogan:(veri.isletme.slogan||'').trim(),telefon:(veri.isletme.telefon||'').trim(),adres:(veri.isletme.adres||'').trim()},
       kategoriler:veri.kategoriler.map(function(k){ return {ad:(k.ad||'').trim(),urunler:k.urunler.filter(function(u){ return (u.ad||'').trim(); }).map(function(u){
-        return {ad:u.ad.trim(),fiyat:Number(u.fiyat)||0,foto:u._yeniFoto?u._yeniFoto.yol:(u.foto||''),gizli:!!u.gizli};
+        return {ad:u.ad.trim(),fiyat:Number(u.fiyat)||0,foto:u._yeniFoto?u._yeniFoto.yol:(u.foto||''),gun:u.gun||'',yildiz:!!u.yildiz,tukendi:!!u.tukendi,gizli:!!u.gizli};
       })}; }).filter(function(k){ return k.ad; })
     };
   }
