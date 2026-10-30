@@ -70,7 +70,7 @@
         {
           "ad": "Yoğurtlu Köfte",
           "fiyat": 300,
-          "foto": "images/yogurtlu-kofte-1793355111251.jpg",
+          "foto": "images/yogurtlu-kofte-1793362818365.jpg",
           "gun": "Cuma",
           "yildiz": false,
           "tukendi": false,
@@ -124,7 +124,7 @@
         {
           "ad": "Bamya",
           "fiyat": 150,
-          "foto": "images/bamya-1793355067682.jpg",
+          "foto": "images/bamya-1793362831383.jpg",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -227,9 +227,18 @@
       "ad": "Izgaralar",
       "urunler": [
         {
-          "ad": "Izgara Köfte",
+          "ad": "Izgara Köfte Porsiyon",
           "fiyat": 300,
           "foto": "",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Ekmek Arası Köfte",
+          "fiyat": 0,
+          "foto": "images/ekmek-arasi-kofte-1793362770534.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -247,7 +256,7 @@
         {
           "ad": "Tavuk Şiş",
           "fiyat": 250,
-          "foto": "",
+          "foto": "images/tavuk-sis-1793362801946.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
