@@ -261,7 +261,7 @@
         {
           "ad": "Çoban Salata",
           "fiyat": 100,
-          "foto": "",
+          "foto": "images/coban-salata-1793341062255.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -270,7 +270,7 @@
         {
           "ad": "Cacık",
           "fiyat": 100,
-          "foto": "",
+          "foto": "images/cacik-1793341003612.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -279,7 +279,7 @@
         {
           "ad": "Yoğurt",
           "fiyat": 100,
-          "foto": "",
+          "foto": "images/yogurt-1793340998730.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -293,7 +293,7 @@
         {
           "ad": "Tel Kadayıf",
           "fiyat": 100,
-          "foto": "",
+          "foto": "images/tel-kadayif-1793340975035.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -311,7 +311,7 @@
         {
           "ad": "Kemalpaşa",
           "fiyat": 100,
-          "foto": "",
+          "foto": "images/kemalpasa-1793340982922.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
