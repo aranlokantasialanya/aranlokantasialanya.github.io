@@ -325,7 +325,7 @@
         {
           "ad": "Kutu Kola",
           "fiyat": 70,
-          "foto": "",
+          "foto": "images/kutu-kola-1793343568870.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -334,16 +334,16 @@
         {
           "ad": "Şişe Kola",
           "fiyat": 60,
-          "foto": "",
+          "foto": "images/sise-kola-1793343579531.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
           "gizli": false
         },
         {
-          "ad": "Fanta",
+          "ad": "Yedigün",
           "fiyat": 70,
-          "foto": "",
+          "foto": "images/yedigun-fanta-1793343609224.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -352,7 +352,7 @@
         {
           "ad": "Niğde Gazozu",
           "fiyat": 60,
-          "foto": "",
+          "foto": "images/nigde-gazozu-1793343618011.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -361,7 +361,16 @@
         {
           "ad": "Ayran",
           "fiyat": 20,
-          "foto": "",
+          "foto": "images/ayran-1793343634192.jpg",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
+          "ad": "Sade Soda",
+          "fiyat": 20,
+          "foto": "images/sade-soda-1793343670154.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -370,7 +379,7 @@
         {
           "ad": "Su",
           "fiyat": 20,
-          "foto": "",
+          "foto": "images/su-1793343640030.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
