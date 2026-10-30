@@ -70,7 +70,7 @@
         {
           "ad": "Yoğurtlu Köfte",
           "fiyat": 300,
-          "foto": "",
+          "foto": "images/yogurtlu-kofte-1793355111251.jpg",
           "gun": "Cuma",
           "yildiz": false,
           "tukendi": false,
@@ -124,7 +124,7 @@
         {
           "ad": "Bamya",
           "fiyat": 150,
-          "foto": "",
+          "foto": "images/bamya-1793355067682.jpg",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -160,7 +160,7 @@
         {
           "ad": "Taze Fasülye",
           "fiyat": 130,
-          "foto": "",
+          "foto": "images/taze-fasulye-1793355076063.jpg",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -238,7 +238,7 @@
         {
           "ad": "Şiş Köfte",
           "fiyat": 300,
-          "foto": "",
+          "foto": "images/sis-kofte-1793355092326.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
