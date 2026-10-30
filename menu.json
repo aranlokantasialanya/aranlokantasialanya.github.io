@@ -88,7 +88,7 @@
         {
           "ad": "Patlıcan Musakka",
           "fiyat": 140,
-          "foto": "",
+          "foto": "images/patlican-musakka-1793346091222.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -133,7 +133,7 @@
         {
           "ad": "Biber Dolma",
           "fiyat": 140,
-          "foto": "",
+          "foto": "images/biber-dolma-1793346099405.jpg",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -174,7 +174,7 @@
         {
           "ad": "Pirinç Pilavı",
           "fiyat": 100,
-          "foto": "",
+          "foto": "images/pirinc-pilavi-1793346103918.jpg",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
