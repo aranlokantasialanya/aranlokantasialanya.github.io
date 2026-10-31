@@ -25,5 +25,20 @@
   },
   "ceviri": {},
   "sayac": "https://aran-sayac-default-rtdb.europe-west1.firebasedatabase.app",
-  "kampanyalar": []
+  "kampanyalar": [
+    {
+      "aktif": true,
+      "foto": "images/kampanya-1793486318198.jpg",
+      "anasayfa": true,
+      "menu": true,
+      "bitis": ""
+    },
+    {
+      "aktif": true,
+      "foto": "images/kampanya-1793486436993.jpg",
+      "anasayfa": true,
+      "menu": true,
+      "bitis": ""
+    }
+  ]
 }
