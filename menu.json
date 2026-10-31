@@ -34,7 +34,7 @@
       "urunler": [
         {
           "ad": "Tas Kebap",
-          "ad_en": "Tas Kebab (Beef Stew)",
+          "ad_en": "Beef Stew",
           "fiyat": 300,
           "foto": "",
           "kucuk": "",
@@ -45,7 +45,7 @@
         },
         {
           "ad": "Tavuk Haşlama",
-          "ad_en": "Poached Chicken with Vegetables",
+          "ad_en": "Chicken Stew with Vegetables",
           "fiyat": 250,
           "foto": "images/tavuk-haslama-1793432188033.jpg",
           "kucuk": "",
@@ -67,7 +67,7 @@
         },
         {
           "ad": "Tavuk Sote",
-          "ad_en": "Chicken Sauté",
+          "ad_en": "Sautéed Chicken",
           "fiyat": 250,
           "foto": "",
           "kucuk": "",
@@ -89,7 +89,7 @@
         },
         {
           "ad": "Tavuk Haşlama",
-          "ad_en": "Poached Chicken with Vegetables",
+          "ad_en": "Chicken Stew with Vegetables",
           "fiyat": 250,
           "foto": "images/tavuk-haslama-1793432195932.jpg",
           "kucuk": "",
@@ -155,6 +155,7 @@
         },
         {
           "ad": "Bezelye",
+          "ad_en": "Green Pea Stew",
           "fiyat": 140,
           "foto": "images/bezelye-1793438408137.jpg",
           "kucuk": "",
@@ -282,6 +283,7 @@
       "urunler": [
         {
           "ad": "Izgara Köfte Porsiyon",
+          "ad_en": "Grilled Turkish Meatballs (Portion)",
           "fiyat": 300,
           "foto": "",
           "kucuk": "",
@@ -292,6 +294,7 @@
         },
         {
           "ad": "Ekmek Arası Köfte",
+          "ad_en": "Meatball Sandwich",
           "fiyat": 300,
           "foto": "images/ekmek-arasi-kofte-1793362770534.jpg",
           "kucuk": "",
@@ -313,7 +316,7 @@
         },
         {
           "ad": "Tavuk Şiş",
-          "ad_en": "Chicken Shish Kebab",
+          "ad_en": "Grilled Chicken Skewers",
           "fiyat": 250,
           "foto": "images/tavuk-sis-1793362801946.jpg",
           "kucuk": "",
@@ -391,7 +394,7 @@
         },
         {
           "ad": "Kemalpaşa",
-          "ad_en": "Kemalpaşa (Cheese Dumplings in Syrup)",
+          "ad_en": "Kemalpaşa Dessert ( Balls in Syrup)",
           "fiyat": 100,
           "foto": "images/kemalpasa-1793340982922.jpg",
           "kucuk": "",
@@ -430,6 +433,7 @@
         },
         {
           "ad": "Yedigün",
+          "ad_en": "Yedigün Orange Soda",
           "fiyat": 70,
           "foto": "images/yedigun-1793343926904.jpg",
           "kucuk": "",
@@ -462,6 +466,7 @@
         },
         {
           "ad": "Sade Soda",
+          "ad_en": "Mineral Water",
           "fiyat": 20,
           "foto": "images/sade-soda-1793343670154.jpg",
           "kucuk": "",
