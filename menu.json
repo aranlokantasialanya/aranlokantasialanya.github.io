@@ -131,6 +131,15 @@
           "gizli": false
         },
         {
+          "ad": "Bezelye",
+          "fiyat": 140,
+          "foto": "images/bezelye-1793438408137.jpg",
+          "gun": "",
+          "yildiz": true,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
           "ad": "Biber Dolma",
           "fiyat": 140,
           "foto": "images/biber-dolma-1793346099405.jpg",
