@@ -1,17 +1,15 @@
 {
-  "isletme": {
-    "slogan": "1986'dan beri",
-    "telefon": "+90 242 512 61 22",
-    "adres": "Şekerhane Mah. Yunus Gücü Sok. Yaşam Hastanesi Karşısı, Alanya / Antalya"
-  },
   "kategoriler": [
     {
       "ad": "Çorbalar",
+      "ad_en": "Soups",
       "urunler": [
         {
           "ad": "Mercimek Çorbası",
+          "ad_en": "Red Lentil Soup",
           "fiyat": 130,
           "foto": "images/mercimek-corbasi-1793341485163.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -19,8 +17,10 @@
         },
         {
           "ad": "Tavuk Çorbası",
+          "ad_en": "Chicken Soup",
           "fiyat": 130,
           "foto": "images/tavuk-corbasi-1793344090755.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -30,11 +30,14 @@
     },
     {
       "ad": "Yemekler",
+      "ad_en": "Main Dishes",
       "urunler": [
         {
           "ad": "Tas Kebap",
+          "ad_en": "Tas Kebab (Beef Stew)",
           "fiyat": 300,
           "foto": "",
+          "kucuk": "",
           "gun": "Pazartesi",
           "yildiz": false,
           "tukendi": false,
@@ -42,8 +45,10 @@
         },
         {
           "ad": "Tavuk Haşlama",
+          "ad_en": "Poached Chicken with Vegetables",
           "fiyat": 250,
           "foto": "images/tavuk-haslama-1793432188033.jpg",
+          "kucuk": "",
           "gun": "Salı",
           "yildiz": false,
           "tukendi": false,
@@ -51,8 +56,10 @@
         },
         {
           "ad": "Salçalı Köfte",
+          "ad_en": "Meatballs in Tomato Sauce",
           "fiyat": 300,
           "foto": "",
+          "kucuk": "",
           "gun": "Çarşamba",
           "yildiz": false,
           "tukendi": false,
@@ -60,8 +67,10 @@
         },
         {
           "ad": "Tavuk Sote",
+          "ad_en": "Chicken Sauté",
           "fiyat": 250,
           "foto": "",
+          "kucuk": "",
           "gun": "Perşembe",
           "yildiz": false,
           "tukendi": false,
@@ -69,8 +78,10 @@
         },
         {
           "ad": "Yoğurtlu Köfte",
+          "ad_en": "Meatballs with Yogurt",
           "fiyat": 300,
           "foto": "images/yogurtlu-kofte-1793362818365.jpg",
+          "kucuk": "",
           "gun": "Cuma",
           "yildiz": false,
           "tukendi": false,
@@ -78,8 +89,10 @@
         },
         {
           "ad": "Tavuk Haşlama",
+          "ad_en": "Poached Chicken with Vegetables",
           "fiyat": 250,
           "foto": "images/tavuk-haslama-1793432195932.jpg",
+          "kucuk": "",
           "gun": "Cumartesi",
           "yildiz": false,
           "tukendi": false,
@@ -87,8 +100,10 @@
         },
         {
           "ad": "Patlıcan Musakka",
+          "ad_en": "Eggplant Moussaka",
           "fiyat": 140,
           "foto": "images/patlican-musakka-1793346091222.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -96,8 +111,10 @@
         },
         {
           "ad": "Kuru Fasülye",
+          "ad_en": "White Bean Stew",
           "fiyat": 130,
           "foto": "images/kuru-fasulye-1793345218860.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -105,8 +122,10 @@
         },
         {
           "ad": "Nohut",
+          "ad_en": "Chickpea Stew",
           "fiyat": 130,
           "foto": "images/nohut-1793345223155.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -114,8 +133,10 @@
         },
         {
           "ad": "Yoğurtlu Kızartma",
+          "ad_en": "Fried Vegetables with Yogurt",
           "fiyat": 130,
           "foto": "images/yogurtlu-kizartma-1793439926511.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -123,8 +144,10 @@
         },
         {
           "ad": "Bamya",
+          "ad_en": "Okra Stew",
           "fiyat": 150,
           "foto": "images/bamya-1793362831383.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -134,6 +157,7 @@
           "ad": "Bezelye",
           "fiyat": 140,
           "foto": "images/bezelye-1793438408137.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -141,8 +165,10 @@
         },
         {
           "ad": "Biber Dolma",
+          "ad_en": "Stuffed Peppers",
           "fiyat": 140,
           "foto": "images/biber-dolma-1793346099405.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -150,8 +176,10 @@
         },
         {
           "ad": "Göleviz",
+          "ad_en": "Taro Stew with Meat (Gölevez)",
           "fiyat": 140,
           "foto": "",
+          "kucuk": "",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -159,8 +187,10 @@
         },
         {
           "ad": "Börülce",
+          "ad_en": "Black-Eyed Pea Stew",
           "fiyat": 140,
           "foto": "",
+          "kucuk": "",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -168,8 +198,10 @@
         },
         {
           "ad": "Taze Fasülye",
+          "ad_en": "Green Bean Stew",
           "fiyat": 130,
           "foto": "images/taze-fasulye-1793355076063.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -179,11 +211,14 @@
     },
     {
       "ad": "Pilavlar",
+      "ad_en": "Rice & Bulgur",
       "urunler": [
         {
           "ad": "Pirinç Pilavı",
+          "ad_en": "Rice Pilaf",
           "fiyat": 100,
           "foto": "images/pirinc-pilavi-1793346103918.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -191,8 +226,10 @@
         },
         {
           "ad": "Bulgur Pilavı",
+          "ad_en": "Bulgur Pilaf",
           "fiyat": 100,
           "foto": "",
+          "kucuk": "",
           "gun": "",
           "yildiz": true,
           "tukendi": false,
@@ -202,11 +239,14 @@
     },
     {
       "ad": "Piyazlar",
+      "ad_en": "Bean Salads (Piyaz)",
       "urunler": [
         {
           "ad": "Yumurtalı Fasülye Piyazı",
+          "ad_en": "White Bean Salad with Egg",
           "fiyat": 150,
           "foto": "",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -214,8 +254,10 @@
         },
         {
           "ad": "Fasülye Piyazı",
+          "ad_en": "White Bean Salad",
           "fiyat": 140,
           "foto": "",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -223,8 +265,10 @@
         },
         {
           "ad": "Bakla Piyazı",
+          "ad_en": "Broad Bean Salad",
           "fiyat": 130,
           "foto": "",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -234,11 +278,13 @@
     },
     {
       "ad": "Izgaralar",
+      "ad_en": "Grills",
       "urunler": [
         {
           "ad": "Izgara Köfte Porsiyon",
           "fiyat": 300,
           "foto": "",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -248,6 +294,7 @@
           "ad": "Ekmek Arası Köfte",
           "fiyat": 300,
           "foto": "images/ekmek-arasi-kofte-1793362770534.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -255,8 +302,10 @@
         },
         {
           "ad": "Şiş Köfte",
+          "ad_en": "Meatball Skewer",
           "fiyat": 300,
           "foto": "images/sis-kofte-1793355092326.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -264,8 +313,10 @@
         },
         {
           "ad": "Tavuk Şiş",
+          "ad_en": "Chicken Shish Kebab",
           "fiyat": 250,
           "foto": "images/tavuk-sis-1793362801946.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -275,11 +326,14 @@
     },
     {
       "ad": "Salata ve Mezeler",
+      "ad_en": "Salads & Starters",
       "urunler": [
         {
           "ad": "Çoban Salata",
+          "ad_en": "Shepherd's Salad",
           "fiyat": 100,
           "foto": "images/coban-salata-1793341707521.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -287,8 +341,10 @@
         },
         {
           "ad": "Cacık",
+          "ad_en": "Cacık (Yogurt with Cucumber & Garlic)",
           "fiyat": 100,
           "foto": "images/cacik-1793341003612.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -296,8 +352,10 @@
         },
         {
           "ad": "Yoğurt",
+          "ad_en": "Plain Yogurt",
           "fiyat": 100,
           "foto": "images/yogurt-1793340998730.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -307,11 +365,14 @@
     },
     {
       "ad": "Tatlılar",
+      "ad_en": "Desserts",
       "urunler": [
         {
           "ad": "Tel Kadayıf",
+          "ad_en": "Kadayıf (Shredded Pastry in Syrup)",
           "fiyat": 100,
           "foto": "images/tel-kadayif-1793341725267.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -319,8 +380,10 @@
         },
         {
           "ad": "Sütlaç",
+          "ad_en": "Rice Pudding",
           "fiyat": 100,
           "foto": "images/sutlac-1793114931317.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -328,8 +391,10 @@
         },
         {
           "ad": "Kemalpaşa",
+          "ad_en": "Kemalpaşa (Cheese Dumplings in Syrup)",
           "fiyat": 100,
           "foto": "images/kemalpasa-1793340982922.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -339,11 +404,14 @@
     },
     {
       "ad": "İçecekler",
+      "ad_en": "Drinks",
       "urunler": [
         {
           "ad": "Kutu Kola",
+          "ad_en": "Cola (Can)",
           "fiyat": 70,
           "foto": "images/kutu-kola-1793343568870.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -351,8 +419,10 @@
         },
         {
           "ad": "Şişe Kola",
+          "ad_en": "Cola (Bottle)",
           "fiyat": 60,
           "foto": "images/sise-kola-1793343579531.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -362,6 +432,7 @@
           "ad": "Yedigün",
           "fiyat": 70,
           "foto": "images/yedigun-1793343926904.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -369,8 +440,10 @@
         },
         {
           "ad": "Niğde Gazozu",
+          "ad_en": "Niğde Gazoz (Turkish Soda)",
           "fiyat": 60,
           "foto": "images/nigde-gazozu-1793343618011.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -378,8 +451,10 @@
         },
         {
           "ad": "Ayran",
+          "ad_en": "Ayran (Salted Yogurt Drink)",
           "fiyat": 20,
           "foto": "images/ayran-1793343634192.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -389,6 +464,7 @@
           "ad": "Sade Soda",
           "fiyat": 20,
           "foto": "images/sade-soda-1793343670154.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -396,8 +472,10 @@
         },
         {
           "ad": "Su",
+          "ad_en": "Water",
           "fiyat": 20,
           "foto": "images/su-1793343640030.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
@@ -405,8 +483,10 @@
         },
         {
           "ad": "Çay",
+          "ad_en": "Turkish Tea",
           "fiyat": 20,
           "foto": "images/cay-1793343920725.jpg",
+          "kucuk": "",
           "gun": "",
           "yildiz": false,
           "tukendi": false,
