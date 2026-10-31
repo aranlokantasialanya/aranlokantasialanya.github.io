@@ -131,13 +131,17 @@
 
   /* Kampanya */
   .kmp-alan{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
-  .kmp-onizleme{position:relative;width:140px;aspect-ratio:9/16;border-radius:14px;border:1.5px dashed #cdbab3;background:var(--acik);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--soluk);font-size:13px;text-align:center;padding:0;overflow:visible;flex-shrink:0}
+  .kmp-onizleme{position:relative;width:110px;aspect-ratio:9/16;border-radius:14px;border:1.5px dashed #cdbab3;background:var(--acik);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--soluk);font-size:13px;text-align:center;padding:0;overflow:visible;flex-shrink:0}
   .kmp-onizleme img{width:100%;height:100%;object-fit:cover;border-radius:13px}
   .kmp-onizleme.dolu{border:0;box-shadow:0 2px 8px rgba(0,0,0,.15)}
   .kmp-onizleme svg{width:30px;height:30px}
-  .kmp-ayar{flex:1;min-width:200px;display:flex;flex-direction:column;gap:12px}
+  .kmp-ayar{flex:1;min-width:170px;display:flex;flex-direction:column;gap:12px}
   .anahtar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--acik);border-radius:12px;padding:12px 14px;font-weight:700}
   .anahtar input{width:24px;height:24px;accent-color:var(--yesil)}
+  .kmp-ust{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .kmp-ust strong{font-family:var(--baslik);color:var(--bordo);font-size:15px}
+  .kmp-ust .sil{margin-left:auto}
+  .kmp-kart .tutamak{align-self:center;height:32px}
   .durum-rozet{align-self:flex-start;display:inline-block;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700}
   .durum-rozet.acik{background:#e3f5ea;color:var(--yesil)}
   .durum-rozet.kapali{background:var(--acik);color:var(--soluk)}
@@ -288,7 +292,8 @@
       menu=r[0]||{}; menu.kategoriler=menu.kategoriler||[];
       site=r[1]||varsayilanSite(menu.isletme);
       site.isletme=site.isletme||{}; site.anasayfa=site.anasayfa||{}; site.anasayfa.bolumler=site.anasayfa.bolumler||[]; site.ceviri=site.ceviri||{};
-      site.kampanya=site.kampanya||{aktif:false,foto:'',anasayfa:true,menu:true,bitis:''};
+      if(!site.kampanyalar) site.kampanyalar = (site.kampanya && site.kampanya.foto) ? [site.kampanya] : [];
+      delete site.kampanya;
       // İngilizce adı boş olanlara hazır çeviriyi yerleştir (düzeltilebilir)
       menu.kategoriler.forEach(function(k){
         if(!k.ad_en && A.kategori[k.ad]) k.ad_en=A.kategori[k.ad];
@@ -485,8 +490,9 @@
     window.scrollTo(0,kaydirma);
   }
 
-  // ---------- Kampanya sekmesi ----------
+  // ---------- Kampanya sekmesi (birden fazla, sıralanabilir) ----------
   var kampanyaInput=el('input',{type:'file',accept:'image/*',hidden:'hidden'}); document.body.appendChild(kampanyaInput);
+  var kampanyaHedef=null; // null: yeni kampanya, nesne: görselini değiştir
   kampanyaInput.addEventListener('change',function(){
     var f=kampanyaInput.files[0]; if(!f) return;
     var url=URL.createObjectURL(f), img=new Image();
@@ -495,37 +501,26 @@
       var c=document.createElement('canvas'); c.width=Math.round(img.width*o); c.height=Math.round(img.height*o);
       var x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height); x.drawImage(img,0,0,c.width,c.height);
       var d=c.toDataURL('image/jpeg',0.82);
-      site._yeniKampanya={url:d,b64:d.split(',')[1],yol:'images/kampanya-'+Date.now()+'.jpg'};
-      site.kampanya.aktif=true;
+      var yeni={url:d,b64:d.split(',')[1],yol:'images/kampanya-'+Date.now()+'.jpg'};
+      if(kampanyaHedef){ kampanyaHedef._yeni=yeni; }
+      else site.kampanyalar.push({aktif:true,foto:'',anasayfa:true,menu:true,bitis:'',_yeni:yeni});
       URL.revokeObjectURL(url); degisiklik(); kampanyaCiz();
     };
     img.onerror=function(){ durum('Bu görsel açılamadı. Başka bir görsel deneyin.','hata'); };
     img.src=url;
   });
-  function kampanyaCiz(){
-    if(sekme!=='kampanya') return;
-    var k=site.kampanya; ana.innerHTML='';
-    ana.appendChild(el('p',{class:'bilgi',text:'Kampanya görselinizi yükleyin (Instagram hikâye boyutu, 1080×1920 önerilir). Açık olduğunda site açılırken ekranda gösterilir; ziyaretçi × ile kapatır. Her kişiye bir kez gösterilir.'}));
-    var kaynak=site._yeniKampanya?site._yeniKampanya.url:(k.foto?(onbellek[k.foto]||((/^(https?:|data:)/.test(k.foto)?'':KOK)+k.foto)):'');
-    var on=el('button',{class:'kmp-onizleme'+(kaynak?' dolu':''),type:'button','aria-label':'Kampanya görseli seç',onclick:function(){ kampanyaInput.value=''; kampanyaInput.click(); }});
-    if(kaynak){ on.appendChild(el('img',{src:kaynak,alt:'Kampanya görseli'})); }
-    else on.innerHTML=IKON_FOTO+'<span>Görsel yükle</span>';
-    var onKutu=el('div',{style:'position:relative'},[on]);
-    if(kaynak){
-      var sil=el('button',{class:'foto-sil',type:'button','aria-label':'Kampanya görselini kaldır',text:'×'}), z=null;
-      sil.addEventListener('click',function(){
-        if(!sil.classList.contains('emin')){ sil.classList.add('emin'); sil.textContent='Kaldır?'; z=setTimeout(function(){ sil.classList.remove('emin'); sil.textContent='×'; },3000); return; }
-        clearTimeout(z); delete site._yeniKampanya; k.foto=''; k.aktif=false; degisiklik(); kampanyaCiz();
-      });
-      onKutu.appendChild(sil);
-    }
-    var aktif=el('input',{type:'checkbox','aria-label':'Kampanyayı göster'}); aktif.checked=!!k.aktif;
+  function kampanyaSec(k){ kampanyaHedef=k||null; kampanyaInput.value=''; kampanyaInput.click(); }
+  function kampanyaKarti(k, sira){
+    var kaynak=k._yeni?k._yeni.url:(k.foto?(onbellek[k.foto]||((/^(https?:|data:)/.test(k.foto)?'':KOK)+k.foto)):'');
+    var on=el('button',{class:'kmp-onizleme'+(kaynak?' dolu':''),type:'button','aria-label':'Görseli değiştir',onclick:function(){ kampanyaSec(k); }});
+    if(kaynak) on.appendChild(el('img',{src:kaynak,alt:''})); else on.innerHTML=IKON_FOTO+'<span>Görsel seç</span>';
+    var aktif=el('input',{type:'checkbox','aria-label':'Göster'}); aktif.checked=!!k.aktif;
     var rozet=el('span',{class:'durum-rozet'});
     function rozetGuncelle(){
-      var bitti=k.bitis && (A.tarih?A.tarih():'') > k.bitis;
-      var gorunur=k.aktif && (k.foto||site._yeniKampanya) && (k.anasayfa||k.menu) && !bitti;
+      var bitti=k.bitis && (A.tarih?A.tarih():'') > k.bitis, var_=k.foto||k._yeni;
+      var gorunur=k.aktif && var_ && (k.anasayfa!==false||k.menu!==false) && !bitti;
       rozet.className='durum-rozet '+(gorunur?'acik':'kapali');
-      rozet.textContent=gorunur?'Sitede gösteriliyor':(bitti?'Süresi doldu':(!(k.foto||site._yeniKampanya)?'Görsel yok':'Gösterilmiyor'));
+      rozet.textContent=gorunur?'Sitede gösteriliyor':(bitti?'Süresi doldu':(!var_?'Görsel yok':'Gösterilmiyor'));
     }
     aktif.addEventListener('change',function(){ k.aktif=aktif.checked; degisiklik(); rozetGuncelle(); });
     var anaK=el('input',{type:'checkbox'}); anaK.checked=k.anasayfa!==false;
@@ -535,21 +530,36 @@
     var bitis=el('input',{type:'date',value:k.bitis||''});
     bitis.addEventListener('input',function(){ k.bitis=bitis.value; degisiklik(); rozetGuncelle(); });
     rozetGuncelle();
-    ana.appendChild(el('div',{class:'kart'},[
-      el('h3',{text:'Kampanya görseli'}),
+    var sil=silButonu('Kampanyayı sil','Silinsin mi?',function(){ site.kampanyalar.splice(site.kampanyalar.indexOf(k),1); degisiklik(); kampanyaCiz(); });
+    var kart=el('div',{class:'kart kmp-kart'},[
+      el('div',{class:'kmp-ust'},[ el('button',{class:'tutamak',type:'button','aria-label':'Sürükleyerek sırala',title:'Basılı tutup sürükleyin',html:IKON_TUT}), el('strong',{text:sira+'. kampanya'}), rozet, sil ]),
       el('div',{class:'kmp-alan'},[
-        onKutu,
+        on,
         el('div',{class:'kmp-ayar'},[
-          rozet,
-          el('label',{class:'anahtar'},[el('span',{text:'Kampanyayı göster'}), aktif]),
+          el('label',{class:'anahtar'},[el('span',{text:'Göster'}), aktif]),
           el('div',{},[ el('p',{class:'ipucu',style:'margin:0 0 6px',text:'Nerede gösterilsin?'}),
             el('label',{class:'kucuk',style:'margin-bottom:6px'},[anaK, el('span',{text:'Ana sayfa açılınca'})]),
             el('label',{class:'kucuk'},[menK, el('span',{text:'Menü açılınca (QR)'})]) ]),
-          el('label',{class:'alan'},[el('span',{text:'Bitiş tarihi (isteğe bağlı)'}), bitis, el('p',{class:'ipucu',text:'Bu tarihten sonra kendiliğinden gizlenir.'})])
+          el('label',{class:'alan'},[el('span',{text:'Bitiş tarihi (isteğe bağlı)'}), bitis])
         ])
       ])
-    ]));
-    ana.appendChild(el('p',{class:'ipucu',style:'margin-top:12px',text:'Görsele dokunarak değiştirebilirsiniz. Değişiklikten sonra Kaydet\'e basın.'}));
+    ]);
+    kart._k=k;
+    return kart;
+  }
+  function kampanyaCiz(){
+    if(sekme!=='kampanya') return;
+    var kaydirma=window.scrollY; ana.innerHTML='';
+    ana.appendChild(el('p',{class:'bilgi',text:'Kampanya görsellerinizi ekleyin (Instagram hikâye boyutu, 1080×1920). Birden fazla kampanya açıksa sitede yan yana çıkar, ziyaretçi parmağıyla kaydırarak gezer. Sırayı ⠿ ile değiştirin. Her kişiye bir kez gösterilir, × ile kapatılır.'}));
+    var liste=el('div',{id:'kmpListe'});
+    site.kampanyalar.forEach(function(k,i){ liste.appendChild(kampanyaKarti(k,i+1)); });
+    ana.appendChild(liste);
+    if(!site.kampanyalar.length) ana.appendChild(el('p',{class:'ipucu',style:'margin-top:14px',text:'Henüz kampanya yok.'}));
+    ana.appendChild(el('button',{class:'ekle buyuk',type:'button',text:'+ Yeni kampanya ekle',onclick:function(){ kampanyaSec(null); }}));
+    if(window.Sortable) Sortable.create(liste,{animation:180,handle:'.tutamak',ghostClass:'surukleniyor',chosenClass:'secili',delay:120,delayOnTouchOnly:true,onEnd:function(){
+      site.kampanyalar=[].map.call(liste.querySelectorAll('.kmp-kart'),function(r){ return r._k; }); degisiklik(); kampanyaCiz();
+    }});
+    window.scrollTo(0,kaydirma);
   }
 
   // ---------- Ziyaretçiler sekmesi ----------
@@ -670,8 +680,10 @@
     Object.keys(s.ceviri||{}).forEach(function(k){ if((s.ceviri[k]||'').trim()) c[k]=s.ceviri[k].trim(); });
     s.ceviri=c; s.sayac=(s.sayac||'').trim();
     s.anasayfa.bolumler=(s.anasayfa.bolumler||[]).filter(function(b){ return (b.baslik||'').trim()||(b.metin||'').trim(); });
-    delete s._yeniKampanya;
-    if(site._yeniKampanya) s.kampanya.foto=site._yeniKampanya.yol;
+    delete s.kampanya;
+    s.kampanyalar=(site.kampanyalar||[]).map(function(k){
+      return {aktif:!!k.aktif, foto:k._yeni?k._yeni.yol:(k.foto||''), anasayfa:k.anasayfa!==false, menu:k.menu!==false, bitis:k.bitis||''};
+    }).filter(function(k){ return k.foto; });
     if(s.isletme){ ['whatsapp','harita'].forEach(function(a){ if(s.isletme[a]!=null) s.isletme[a]=String(s.isletme[a]).trim(); }); }
     return s;
   }
@@ -702,7 +714,7 @@
   kaydetBtn.addEventListener('click',function(){
     kaydetBtn.disabled=true; durum('Kaydediliyor…');
     var yeniFotolar=[]; menu.kategoriler.forEach(function(k){ (k.urunler||[]).forEach(function(u){ if(u._yeniFoto) yeniFotolar.push(u); }); });
-    var tm=temizMenu(), ts=temizSite(), yeniKmp=site._yeniKampanya;
+    var tm=temizMenu(), ts=temizSite(), yeniKmp=(site.kampanyalar||[]).filter(function(k){ return k._yeni; }).map(function(k){ return k._yeni; });
 
     if(DEMO){ setTimeout(function(){ degisti=false; durum('Önizleme: gerçek panelde siteniz şimdi güncellenirdi','tamam'); },600); return; }
 
@@ -710,7 +722,7 @@
     durum('Fotoğraflar hazırlanıyor…');
     kucukKopyalar(tm, girdiler).then(function(){
       tm.kategoriler.forEach(function(k){ k.urunler.forEach(function(u){ if(u.foto) kullanilan[u.foto]=1; if(u.kucuk) kullanilan[u.kucuk]=1; }); });
-      if(ts.kampanya && ts.kampanya.foto) kullanilan[ts.kampanya.foto]=1;
+      (ts.kampanyalar||[]).forEach(function(k){ if(k.foto) kullanilan[k.foto]=1; });
       durum('Kaydediliyor…');
       return gh('/git/ref/heads/'+encodeURIComponent(dal));
     }).then(function(ref){
@@ -724,7 +736,7 @@
         if(n.type==='blob' && /^images\//.test(n.path) && !kullanilan[n.path]) girdiler.push({path:n.path,mode:'100644',type:'blob',sha:null});
       });
       var islemler=[];
-      if(yeniKmp) islemler.push(gh('/git/blobs',{method:'POST',body:{content:yeniKmp.b64,encoding:'base64'}}).then(function(b){ girdiler.push({path:yeniKmp.yol,mode:'100644',type:'blob',sha:b.sha}); }));
+      yeniKmp.forEach(function(y){ islemler.push(gh('/git/blobs',{method:'POST',body:{content:y.b64,encoding:'base64'}}).then(function(b){ girdiler.push({path:y.yol,mode:'100644',type:'blob',sha:b.sha}); })); });
       girdiler.filter(function(g){ return g._b64; }).forEach(function(g){
         islemler.push(gh('/git/blobs',{method:'POST',body:{content:g._b64,encoding:'base64'}}).then(function(b){ g.sha=b.sha; delete g._b64; }));
       });
@@ -748,8 +760,8 @@
       return gh('/git/refs/heads/'+encodeURIComponent(dal),{method:'PATCH',body:{sha:c.sha}});
     }).then(function(){
       yeniFotolar.forEach(function(u){ onbellek[u._yeniFoto.kyol]=u._yeniFoto.kucukUrl; onbellek[u._yeniFoto.yol]=u._yeniFoto.buyukUrl; });
-      if(yeniKmp) onbellek[yeniKmp.yol]=yeniKmp.url;
-      menu=kopya(tm); site=ts; site.ceviri=site.ceviri||{}; site.kampanya=site.kampanya||{aktif:false,foto:'',anasayfa:true,menu:true,bitis:''}; degisti=false; sekmeGoster(sekme);
+      yeniKmp.forEach(function(y){ onbellek[y.yol]=y.url; });
+      menu=kopya(tm); site=ts; site.ceviri=site.ceviri||{}; site.kampanyalar=site.kampanyalar||[]; degisti=false; sekmeGoster(sekme);
       durum('Kaydedildi ✓ Site 1–2 dakika içinde güncellenir','tamam');
     }).catch(function(e){
       kaydetBtn.disabled=false;
