@@ -110,8 +110,34 @@
 
   footer{text-align:center;color:var(--soluk);font-size:14px;padding:18px 0 28px}
 
+  /* WhatsApp */
+  .satir .s.wa{background:#e3f5ea;color:#1f9e57}
+  .satir .eylem.wa{color:#1a8a4b}
+  .alt-cubuk .ic2{display:flex;gap:10px}
+  .alt-cubuk .buton.dolu{flex:1}
+  .wa-yuvarlak{flex-shrink:0;width:56px;border-radius:14px;background:#1f9e57;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(31,158,87,.3)}
+  .wa-yuvarlak svg{width:26px;height:26px}
+
+  /* Harita */
+  .harita{border-radius:16px;overflow:hidden;border:1px solid var(--cizgi);background:#eee6df;aspect-ratio:4/3;max-width:100%}
+  .harita iframe{display:block;width:100%;height:100%;border:0}
+  .harita-adres{margin-top:12px;color:var(--soluk);font-size:15px}
+  .harita-btn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  .harita-btn a{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:13px 10px;font-weight:700;text-decoration:none;font-size:15px;text-align:center}
+  .harita-btn .yol{background:var(--bordo);color:#fff}
+  .harita-btn .ac{border:1.5px solid var(--bordo);color:var(--bordo);background:var(--kart)}
+  .harita-btn svg{width:18px;height:18px;flex-shrink:0}
+
+  /* Kampanya penceresi */
+  .kmp{position:fixed;inset:0;z-index:95;background:rgba(20,8,11,.82);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px));animation:kmp-gel .35s ease}
+  .kmp-kutu{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:100%}
+  .kmp-kutu img{display:block;max-width:min(100%,420px);max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px);border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.45);background:#222}
+  .kmp-kapat{position:absolute;top:-14px;right:-10px;width:44px;height:44px;border-radius:50%;border:2px solid #fff;background:var(--bordo);color:#fff;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.35);z-index:2}
+  .kmp-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-width:220px;border-radius:14px;padding:14px 22px;background:#fff;color:var(--bordo);font-weight:700;font-size:17px;text-decoration:none}
+  @keyframes kmp-gel{from{opacity:0}to{opacity:1}}
+
   @media (prefers-reduced-motion:reduce){
-    #acilis,#acilis *, #soru .kutu{animation:none!important;transition:none!important}
+    #acilis,#acilis *, #soru .kutu, .kmp{animation:none!important;transition:none!important}
     #acilis .logo,#acilis .alt,#acilis .yil,#acilis .cerceve::before,#acilis .cerceve::after{opacity:1;transform:none}
     #acilis .cizgi{width:70px}
   }
@@ -169,6 +195,10 @@
         <span class="s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
         <div class="d"><small>Telefon ve paket servis</small><div class="deger" id="telYazi">0242 512 61 22</div><a class="eylem" id="telLink" href="tel:+902425126122">Hemen ara</a></div>
       </div>
+      <div class="satir" id="waSatir" hidden>
+        <span class="s wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.6 2.4 5 5.2 5.6l1-1.1 2 .9-.4 1.8c-4.4.4-8.4-3.5-8.1-7.9l1.8-.4.9 2z" fill="currentColor" stroke="none"/></svg></span>
+        <div class="d"><small>WhatsApp ile sipariş ve bilgi</small><div class="deger" id="waYazi"></div><a class="eylem wa" id="waLink" target="_blank" rel="noopener" href="#">WhatsApp'tan yaz ↗</a></div>
+      </div>
       <div class="satir">
         <span class="s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
         <div class="d"><small>Adres</small><div class="deger" id="adresYazi">Şekerhane Mah. Yunus Gücü Sok. Yaşam Hastanesi Karşısı, Alanya / Antalya</div><a class="eylem" id="haritaLink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Aran%20Lokantas%C4%B1%20Alanya">Yol tarifi al ↗</a></div>
@@ -184,9 +214,20 @@
     </div>
   </section>
 
-  <div class="alt-cubuk">
+  <section class="bolum" aria-labelledby="yolB">
+    <h2 class="b" id="yolB">Yol Tarifi</h2>
+    <div class="harita"><iframe id="haritaFrame" title="Aran Lokantası haritası" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="https://www.google.com/maps?q=Aran%20Lokantas%C4%B1%2C%20%C5%9Eekerhane%20Mah.%20Yunus%20G%C3%BCc%C3%BC%20Sok.%2C%20Alanya&amp;hl=tr&amp;z=16&amp;output=embed"></iframe></div>
+    <p class="harita-adres" id="haritaAdres">Şekerhane Mah. Yunus Gücü Sok. Yaşam Hastanesi Karşısı, Alanya / Antalya</p>
+    <div class="harita-btn">
+      <a class="yol" id="yolBtn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Aran%20Lokantas%C4%B1%20Alanya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8z"/></svg>Yol tarifi al</a>
+      <a class="ac" id="haritaAc" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Aran%20Lokantas%C4%B1%20Alanya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Haritada aç</a>
+    </div>
+  </section>
+
+  <div class="alt-cubuk"><div class="ic2">
     <a class="buton dolu" href="menu/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h11a3 3 0 0 1 3 3v15H8a3 3 0 0 1-3-3z"/><path d="M9 7h6M9 10.5h6"/></svg>Menüyü Gör</a>
-  </div>
+    <a class="wa-yuvarlak" id="waAlt" target="_blank" rel="noopener" href="#" aria-label="WhatsApp'tan yaz" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.6 2.4 5 5.2 5.6l1-1.1 2 .9-.4 1.8c-4.4.4-8.4-3.5-8.1-7.9l1.8-.4.9 2z" fill="currentColor" stroke="none"/></svg></a>
+  </div></div>
 </div></main>
 
 <footer><div class="ic" id="altYazi">© Aran Lokantası · 1986'dan beri</div></footer>
@@ -211,16 +252,27 @@
   soru.addEventListener('click',function(e){ if(e.target===soru) soruKapat(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !soru.hidden) soruKapat(); });
 
+  // Açılış bitince: kampanya varsa onu (Menüyü Gör butonuyla), yoksa menü sorusunu göster
+  var siteVeri=null, acilisBitti=false, siraGeldi=false;
+  function sonrasi(){
+    if(!acilisBitti || !siteVeri || siraGeldi) return;
+    siraGeldi=true;
+    if(A.kampanyaVar && A.kampanyaVar(siteVeri,'anasayfa')){
+      yaz('aran-soru','1');
+      var b=document.createElement('a'); b.className='kmp-btn'; b.href='menu/'; b.textContent='Menüyü Gör →';
+      A.kampanyaGoster(siteVeri,'',b);
+    } else if(!oku('aran-soru')) soruAc();
+  }
   if(!oku('aran-acilis')){
     yaz('aran-acilis','1');
     acilis.hidden=false;
     var bitti=false;
-    var bitir=function(){ if(bitti) return; bitti=true; acilis.classList.add('gizlen'); setTimeout(function(){ acilis.hidden=true; if(!oku('aran-soru')) soruAc(); }, azHareket?0:650); };
+    var bitir=function(){ if(bitti) return; bitti=true; acilis.classList.add('gizlen'); setTimeout(function(){ acilis.hidden=true; acilisBitti=true; sonrasi(); }, azHareket?0:650); };
     acilis.addEventListener('click',bitir);
     setTimeout(bitir, azHareket ? 600 : 2500);
-  } else if(!oku('aran-soru')) {
-    soruAc();
-  }
+  } else acilisBitti=true;
+  // site.json gelmezse de soru gösterilsin
+  setTimeout(function(){ if(!siteVeri){ siteVeri={}; sonrasi(); } }, 4000);
 
   // ---- İçerik: site.json ----
   fetch('site.json?v='+Date.now(),{cache:'no-store'}).then(function(r){ return r.json(); }).then(function(s){
@@ -229,7 +281,18 @@
     if(a.hosgeldin!=null){ $('hosgeldin').textContent=a.hosgeldin; $('hosgeldin').hidden=!a.hosgeldin; }
     if(a.acilis_soru) $('soruBaslik').textContent=a.acilis_soru;
     if(i.telefon){ $('telYazi').textContent=telGoster(i.telefon); $('telLink').href=telLink(i.telefon); $('araBtn').href=telLink(i.telefon); }
-    if(i.adres){ $('adresYazi').textContent=i.adres; $('haritaLink').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent((i.ad||'Aran Lokantası')+' '+i.adres); }
+    if(i.adres){ $('adresYazi').textContent=i.adres; $('haritaAdres').textContent=i.adres; }
+    var q=A.haritaSorgu?A.haritaSorgu(i):((i.ad||'Aran Lokantası')+' '+(i.adres||''));
+    $('haritaLink').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+    $('haritaAc').href=$('haritaLink').href;
+    $('yolBtn').href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(q);
+    var yeniSrc='https://www.google.com/maps?q='+encodeURIComponent(q)+'&hl=tr&z=16&output=embed';
+    if($('haritaFrame').getAttribute('src')!==yeniSrc) $('haritaFrame').setAttribute('src',yeniSrc);
+    if(i.whatsapp && A.waLink){
+      var wl=A.waLink(i.whatsapp,'Merhaba, ');
+      $('waYazi').textContent=telGoster(i.whatsapp); $('waLink').href=wl; $('waSatir').hidden=false;
+      $('waAlt').href=wl; $('waAlt').hidden=false;
+    }
     if(i.saatler){ $('saatYazi').textContent=i.saatler; $('saatSatir').hidden=false; }
     if(i.instagram){
       var h=i.instagram.replace(/^https?:\/\/(www\.)?instagram\.com\//,'').replace(/^@/,'').replace(/\/.*$/,'');
@@ -246,7 +309,8 @@
     });
     $('altYazi').textContent='© '+(i.ad||'Aran Lokantası')+(i.slogan?' · '+i.slogan:'');
     if(A.say) A.say('anasayfa', s.sayac);
-  }).catch(function(){});
+    siteVeri=s; sonrasi();
+  }).catch(function(){ siteVeri={}; sonrasi(); });
 
   // ---- Günün yemeği (fiyatsız) ----
   fetch('menu.json?v='+Date.now(),{cache:'no-store'}).then(function(r){ return r.json(); }).then(function(d){

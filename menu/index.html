@@ -55,6 +55,9 @@
   .bugun{margin-top:18px;background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px}
   .bugun .etiket{flex-shrink:0;background:var(--bordo);color:#fff;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-radius:8px;padding:6px 8px;text-align:center;line-height:1.15;max-width:84px}
   .bugun .metin{flex:1;min-width:0}
+  .bugun .g-foto{flex-shrink:0;width:72px;height:72px;border-radius:12px;position:relative;border:0;padding:0;cursor:zoom-in;background:var(--cizgi)}
+  .bugun .g-foto img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:block}
+  .bugun .g-etiket{display:inline-block;background:var(--bordo);color:#fff;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 7px;margin-bottom:3px}
   .bugun small{display:block;color:var(--soluk);font-size:13px}
   .bugun strong{font-size:17px}
 
@@ -95,6 +98,17 @@
   .btn.cizgili{background:transparent;color:#fff;border:1.5px solid #fff}
   .adres{margin-top:14px;font-size:14px;opacity:.9}
   .ana-link{display:inline-block;margin-top:16px;color:#fff;opacity:.85;font-size:14px}
+  .btn.wa{background:#1f9e57;color:#fff}
+  .btn svg{width:18px;height:18px}
+
+  /* Kampanya penceresi */
+  .kmp{position:fixed;inset:0;z-index:95;background:rgba(20,8,11,.82);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px));animation:kmp-gel .35s ease}
+  .kmp-kutu{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:100%}
+  .kmp-kutu img{display:block;max-width:min(100%,420px);max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px);border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.45);background:#222}
+  .kmp-kapat{position:absolute;top:-14px;right:-10px;width:44px;height:44px;border-radius:50%;border:2px solid #fff;background:var(--bordo);color:#fff;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.35);z-index:2}
+  .kmp-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-width:200px;border:0;border-radius:14px;padding:14px 22px;background:#fff;color:var(--bordo);font:inherit;font-weight:700;font-size:17px;cursor:pointer}
+  @keyframes kmp-gel{from{opacity:0}to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.kmp{animation:none}}
 
   #buyuk{position:fixed;inset:0;z-index:50;background:rgba(20,10,12,.9);display:none;align-items:center;justify-content:center;flex-direction:column;padding:16px;cursor:zoom-out}
   #buyuk.acik{display:flex}
@@ -136,11 +150,13 @@
 /* Açılış animasyonu: her oturumda bir kez (ana sayfada görüldüyse tekrar gösterilmez). Dokununca geçer. */
 (function(){
   var a=document.getElementById('acilis'), g=null;
+  window.ARAN_ACILIS={bitti:false,bekleyen:[]};
+  function haber(){ window.ARAN_ACILIS.bitti=true; window.ARAN_ACILIS.bekleyen.forEach(function(f){ f(); }); window.ARAN_ACILIS.bekleyen=[]; }
   try{ g=sessionStorage.getItem('aran-acilis'); sessionStorage.setItem('aran-acilis','1'); }catch(e){}
-  if(g) return;
+  if(g){ haber(); return; }
   var az=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, bitti=false;
   a.hidden=false;
-  function bitir(){ if(bitti) return; bitti=true; a.classList.add('gizlen'); setTimeout(function(){ a.hidden=true; }, az?0:700); }
+  function bitir(){ if(bitti) return; bitti=true; a.classList.add('gizlen'); setTimeout(function(){ a.hidden=true; haber(); }, az?0:700); }
   a.addEventListener('click',bitir);
   setTimeout(bitir, az?500:2300);
 })();
@@ -169,6 +185,7 @@
 <footer><div class="ic">
   <div class="paket" data-y="paket">Paket Servis</div>
   <a class="btn" id="tel" href="tel:+902425126122">📞 <span id="telYazi">0242 512 61 22</span></a>
+  <a class="btn wa" id="waBtn" target="_blank" rel="noopener" href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.6 2.4 5 5.2 5.6l1-1.1 2 .9-.4 1.8c-4.4.4-8.4-3.5-8.1-7.9l1.8-.4.9 2z" fill="currentColor" stroke="none"/></svg>WhatsApp</a>
   <a class="btn cizgili" id="harita" target="_blank" rel="noopener" href="#">📍 <span data-y="yol">Yol Tarifi</span></a>
   <div class="adres" id="adres"></div>
   <a class="ana-link" href="../" data-y="anasayfa">Ana Sayfa</a>
@@ -250,9 +267,16 @@
     var gunun=null;
     (veri.kategoriler||[]).forEach(function(k){ (k.urunler||[]).forEach(function(u){ if(!gunun && !u.gizli && u.gun===bugun) gunun=u; }); });
     if(gunun){
-      var kart=el('div','bugun'), et=el('span','etiket',y('gunun_yemegi'));
-      kart.appendChild(et);
-      var m=el('div','metin'); m.appendChild(el('small',null,gunAdi(bugun))); m.appendChild(el('strong',null,urunAdi(gunun)));
+      var kart=el('div','bugun'), gAd=urunAdi(gunun), m=el('div','metin');
+      if(gunun.foto){
+        var gb=el('button','g-foto'); gb.type='button'; gb.setAttribute('aria-label',y('buyut')+': '+gAd);
+        var gi=el('img'); gi.src=yol(gunun.kucuk||gunun.foto); gi.alt=''; gb.appendChild(gi);
+        var gbt=el('span','buyutec'); gbt.innerHTML=IKON_BUYUT; gbt.setAttribute('aria-hidden','true'); gb.appendChild(gbt);
+        gb.addEventListener('click',function(){ buyut(yol(gunun.foto),gAd,gb); });
+        kart.appendChild(gb);
+        m.appendChild(el('span','g-etiket',y('gunun_yemegi')));
+      } else kart.appendChild(el('span','etiket',y('gunun_yemegi')));
+      m.appendChild(el('small',null,gunAdi(bugun))); m.appendChild(el('strong',null,gAd));
       if(gunun.tukendi){ m.appendChild(document.createTextNode(' ')); m.appendChild(el('span','yok',y('tukendi'))); }
       kart.appendChild(m); kart.appendChild(el('span','fiyat',fiyatYaz(gunun.fiyat)));
       main.appendChild(kart);
@@ -308,10 +332,20 @@
     if(i.telefon){ var tl=document.getElementById('tel'); tl.href=telLink(i.telefon); document.getElementById('telYazi').textContent=telGoster(i.telefon); }
     if(i.adres){
       document.getElementById('adres').textContent=i.adres;
-      document.getElementById('harita').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent((i.ad||'Aran Lokantası')+' '+i.adres);
     }
+    document.getElementById('harita').href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(A.haritaSorgu?A.haritaSorgu(i):((i.ad||'Aran Lokantası')+' '+(i.adres||'')));
+    if(i.whatsapp && A.waLink){ var wb=document.getElementById('waBtn'); wb.href=A.waLink(i.whatsapp, dil==='en'?'Hello, ':'Merhaba, '); wb.hidden=false; }
     ciz();
     if(A.say) A.say('menu', site.sayac);
+    // Kampanya görseli (açılış animasyonu bittikten sonra)
+    if(A.kampanyaVar && A.kampanyaVar(site,'menu')){
+      var goster=function(){
+        var b=el('button','kmp-btn',dil==='en'?'View menu':'Menüye geç'); b.type='button';
+        var kapat=A.kampanyaGoster(site,'../',b); b.addEventListener('click',function(){ kapat(); });
+      };
+      var ac=window.ARAN_ACILIS;
+      if(!ac || ac.bitti) goster(); else ac.bekleyen.push(goster);
+    }
   }).catch(function(){
     document.getElementById('menu').innerHTML='';
     document.getElementById('menu').appendChild(el('p','durum',y('hata')));

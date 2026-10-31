@@ -35,6 +35,7 @@
     'Gölevez': 'Taro Stew with Meat (Gölevez)',
     'Börülce': 'Black-Eyed Pea Stew',
     'Taze Fasülye': 'Green Bean Stew',
+    'Bezelye': 'Pea Stew',
     'Taze Fasulye': 'Green Bean Stew',
     'Pirinç Pilavı': 'Rice Pilaf',
     'Bulgur Pilavı': 'Bulgur Pilaf',
@@ -42,6 +43,8 @@
     'Fasülye Piyazı': 'White Bean Salad',
     'Bakla Piyazı': 'Broad Bean Salad',
     'Izgara Köfte': 'Grilled Meatballs',
+    'Izgara Köfte Porsiyon': 'Grilled Meatballs (Portion)',
+    'Ekmek Arası Köfte': 'Meatball Sandwich',
     'Şiş Köfte': 'Meatball Skewer',
     'Tavuk Şiş': 'Chicken Shish Kebab',
     'Çoban Salata': "Shepherd's Salad",
@@ -54,6 +57,8 @@
     'Şişe Kola': 'Cola (Bottle)',
     'Kola': 'Cola',
     'Fanta': 'Fanta',
+    'Yedigün': 'Yedigün (Orange Soda)',
+    'Sade Soda': 'Plain Sparkling Mineral Water',
     'Niğde Gazozu': 'Niğde Gazoz (Turkish Soda)',
     'Ayran': 'Ayran (Salted Yogurt Drink)',
     'Su': 'Water',
@@ -114,6 +119,46 @@
           .then(function(v){ return fetch(u,{method:'PUT',body:JSON.stringify((Number(v)||0)+1)}); })
           .catch(function(){});
       });
+  };
+
+  // WhatsApp bağlantısı (0532…, 532…, +90 532… hepsi kabul edilir)
+  C.waLink = function(no, mesaj){
+    var d=String(no||'').replace(/\D/g,'');
+    if(!d) return '';
+    if(d.indexOf('00')===0) d=d.slice(2);
+    if(d.charAt(0)==='0') d='90'+d.slice(1);
+    else if(d.length===10) d='90'+d;
+    return 'https://wa.me/'+d+(mesaj?'?text='+encodeURIComponent(mesaj):'');
+  };
+
+  // Haritada aranacak yer
+  C.haritaSorgu = function(i){ i=i||{}; return (i.harita||'').trim() || ((i.ad||'Aran Lokantası')+', '+(i.adres||'Alanya')); };
+
+  // Kampanya görseli: panelde açıksa, bu sayfa seçiliyse ve bitiş tarihi geçmediyse, oturumda bir kez gösterilir.
+  C.kampanyaVar = function(site, sayfa){
+    var k=site&&site.kampanya;
+    if(!k || !k.aktif || !k.foto || !k[sayfa]) return false;
+    if(k.bitis && C.tarih() > k.bitis) return false;
+    try{ if(sessionStorage.getItem('aran-kampanya')===k.foto) return false; }catch(e){}
+    return true;
+  };
+  C.kampanyaGoster = function(site, kok, ekButon, kapaninca){
+    var k=site.kampanya, onceki=document.activeElement;
+    try{ sessionStorage.setItem('aran-kampanya',k.foto); }catch(e){}
+    var d=document.createElement('div'); d.className='kmp'; d.setAttribute('role','dialog'); d.setAttribute('aria-modal','true'); d.setAttribute('aria-label','Kampanya');
+    var kutu=document.createElement('div'); kutu.className='kmp-kutu';
+    var x=document.createElement('button'); x.type='button'; x.className='kmp-kapat'; x.setAttribute('aria-label','Kapat'); x.innerHTML='&times;';
+    var img=document.createElement('img'); img.alt=k.aciklama||'Kampanya'; img.src=/^(https?:|data:)/.test(k.foto)?k.foto:(kok||'')+k.foto;
+    kutu.appendChild(x); kutu.appendChild(img);
+    if(ekButon) kutu.appendChild(ekButon);
+    d.appendChild(kutu); document.body.appendChild(d);
+    function kapat(){ if(!d.parentNode) return; d.parentNode.removeChild(d); document.removeEventListener('keydown',tus); if(onceki&&onceki.focus) try{onceki.focus({preventScroll:true});}catch(e){} if(kapaninca) kapaninca(); }
+    function tus(e){ if(e.key==='Escape') kapat(); }
+    x.addEventListener('click',kapat);
+    d.addEventListener('click',function(e){ if(e.target===d) kapat(); });
+    document.addEventListener('keydown',tus);
+    setTimeout(function(){ try{ x.focus({preventScroll:true}); }catch(e){} },50);
+    return kapat;
   };
 
   window.ARAN = C;

@@ -5,18 +5,31 @@
     "telefon": "+90 242 512 61 22",
     "adres": "Şekerhane Mah. Yunus Gücü Sok. Yaşam Hastanesi Karşısı, Alanya / Antalya",
     "saatler": "Pazartesi: 07:00 – 21:00\nSalı: 07:00 – 21:00\nÇarşamba: 07:00 – 21:00\nPerşembe: 07:00 – 21:00\nCuma: 07:00 – 21:00\nCumartesi: 07:00 – 21:00\nPazar: Kapalı",
-    "instagram": ""
+    "instagram": "",
+    "whatsapp": "",
+    "harita": ""
   },
   "anasayfa": {
-    "hosgeldin": "1986'dan beri Alanya'da, günlük pişen ev yemekleri, ızgara çeşitleri ve tatlılar.",
+    "hosgeldin": "1986'dan beri Alanya'da, her gün taze pişen ev yemekleri, ızgaralar ve kendi mutfağımızda hazırlanan tatlılar.",
     "acilis_soru": "Menümüzü görmek ister misiniz?",
     "bolumler": [
       {
         "baslik": "Hakkımızda",
-        "metin": "Aran Lokantası, 1986'dan beri Alanya'da hizmet veren bir esnaf lokantasıdır.\n\nMutfağımızda her gün çorbalar, tencere yemekleri, ızgaralar, pilavlar ve tatlılar hazırlanır. Bazı yemeklerimiz yalnızca haftanın belirli günlerinde pişer; günün yemeğini menümüzden takip edebilirsiniz."
+        "metin": "Aran Lokantası, 1986'dan beri Alanya'da hizmet veren bir esnaf lokantasıdır. Sabah erkenden yanan ocağımızla, sıcak bir çorba ya da bir tabak tencere yemeği arayan herkesi aynı özenle ağırlıyoruz.\n\nYıllardır değişmeyen anlayışımız basit: Kendi evimizde nasıl pişiriyorsak, misafirimize de öyle sunarız."
+      },
+      {
+        "baslik": "Mutfağımız",
+        "metin": "Menümüzdeki her şey her gün kendi mutfağımızda, taze malzemeyle hazırlanır. Çorbalarımızdan tencere yemeklerimize, pilavlarımızdan köftelerimize kadar hepsi o gün pişer.\n\nTatlılarımız da dışarıdan gelmez; sütlaçtan tel kadayıfa, kemalpaşaya kadar hepsini kendi ellerimizle yapıyoruz.\n\nBazı yemeklerimiz yalnızca haftanın belirli günlerinde pişer. Günün yemeğini menümüzden takip edebilir, paket servis için bizi arayabilirsiniz."
       }
     ]
   },
   "ceviri": {},
-  "sayac": "https://aran-sayac-default-rtdb.europe-west1.firebasedatabase.app"
+  "sayac": "https://aran-sayac-default-rtdb.europe-west1.firebasedatabase.app",
+  "kampanya": {
+    "aktif": false,
+    "foto": "",
+    "anasayfa": true,
+    "menu": true,
+    "bitis": ""
+  }
 }
