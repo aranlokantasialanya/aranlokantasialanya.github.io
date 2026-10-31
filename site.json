@@ -1,0 +1,22 @@
+{
+  "isletme": {
+    "ad": "Aran Lokantası",
+    "slogan": "1986'dan beri",
+    "telefon": "+90 242 512 61 22",
+    "adres": "Şekerhane Mah. Yunus Gücü Sok. Yaşam Hastanesi Karşısı, Alanya / Antalya",
+    "saatler": "",
+    "instagram": ""
+  },
+  "anasayfa": {
+    "hosgeldin": "1986'dan beri Alanya'da, her gün ocaktan inen ev yemekleri.",
+    "acilis_soru": "Menümüzü görmek ister misiniz?",
+    "bolumler": [
+      {
+        "baslik": "Hakkımızda",
+        "metin": "Aran Lokantası, 1986'dan beri Alanya'da hizmet veren bir esnaf lokantasıdır.\n\nMutfağımızda her gün çorbalar, tencere yemekleri, ızgaralar, pilavlar ve tatlılar hazırlanır. Bazı yemeklerimiz yalnızca haftanın belirli günlerinde pişer; günün yemeğini menümüzden takip edebilirsiniz."
+      }
+    ]
+  },
+  "ceviri": {},
+  "sayac": ""
+}

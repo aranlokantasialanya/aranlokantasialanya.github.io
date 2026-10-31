@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Aran Lokantası | Menü</title>
+<meta name="theme-color" content="#7b1f2e">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Aran Menü">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Basılı A5 menünün dijital hali: bordo başlık bandı, serif bölüm başlıkları, kutulu fiyatlar, gün etiketleri */
+  :root{
+    color-scheme:light;
+    --bordo:#7b1f2e; --bordo-koyu:#5e1622; --pembe:#f6e3e5; --krem:#fbf7f2; --kart:#ffffff;
+    --yazi:#2a2224; --soluk:#7f7174; --cizgi:#e8dcd6; --nokta:#cbb9b3; --kirmizi:#b3261e; --altin:#e9d7b7;
+    --baslik:"Libre Baskerville",Georgia,serif; --govde:"Source Sans 3",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none!important}
+  html{scroll-behavior:smooth;scroll-padding-top:64px;-webkit-text-size-adjust:100%}
+  body{font-family:var(--govde);background:var(--krem);color:var(--yazi);line-height:1.35;-webkit-font-smoothing:antialiased}
+  :focus-visible{outline:2px solid var(--bordo);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  .ic{max-width:620px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+  /* Başlık bandı */
+  header{background:var(--bordo);color:#fff;text-align:center;padding-top:env(safe-area-inset-top,0px)}
+  header .ic{padding-block:10px 16px}
+  .ust{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+  .geri{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px 8px 8px;border-radius:999px;background:rgba(255,255,255,.12)}
+  .geri svg{width:18px;height:18px}
+  .dil{display:inline-flex;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+  .dil button{border:0;background:transparent;color:#fff;font:inherit;font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px;cursor:pointer;letter-spacing:.04em}
+  .dil button[aria-pressed="true"]{background:#fff;color:var(--bordo)}
+  .cerceve{border:1px solid rgba(255,255,255,.45);padding:20px 8px 16px;position:relative}
+  .cerceve::after{content:"";position:absolute;inset:6px;border:1px solid rgba(233,215,183,.28);pointer-events:none}
+  .logo{font-family:var(--baslik);font-size:42px;letter-spacing:.32em;padding-left:.32em;line-height:1}
+  .cizgi-b{width:64px;height:2px;background:#fff;margin:11px auto}
+  .alt-logo{letter-spacing:.45em;padding-left:.45em;font-size:14px;text-transform:uppercase}
+  .slogan{margin-top:7px;font-family:var(--baslik);font-style:italic;color:var(--altin);font-size:14px}
+
+  /* Kategori şeridi */
+  nav{position:sticky;top:0;z-index:10;background:var(--krem);border-bottom:1px solid var(--cizgi)}
+  nav .serit{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-block:8px}
+  nav .serit::-webkit-scrollbar{display:none}
+  nav a{flex-shrink:0;padding:7px 12px;border-radius:999px;font-weight:600;font-size:14px;color:var(--bordo);text-decoration:none;white-space:nowrap}
+  nav a.aktif{background:var(--bordo);color:#fff}
+
+  /* Bugünün yemeği */
+  .bugun{margin-top:18px;background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+  .bugun .etiket{flex-shrink:0;background:var(--bordo);color:#fff;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-radius:8px;padding:6px 8px;text-align:center;line-height:1.15;max-width:84px}
+  .bugun .metin{flex:1;min-width:0}
+  .bugun small{display:block;color:var(--soluk);font-size:13px}
+  .bugun strong{font-size:17px}
+
+  main{padding-bottom:8px}
+  section{margin-top:26px}
+  h2{font-family:var(--baslik);color:var(--bordo);font-size:18px;letter-spacing:.1em;text-transform:uppercase;padding-bottom:7px;border-bottom:2px solid var(--bordo);text-wrap:balance}
+
+  .urun{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--cizgi)}
+  .urun:last-of-type{border-bottom:0}
+  .foto{width:76px;height:76px;border-radius:12px;flex-shrink:0;position:relative;max-width:100%}
+  .foto.bos{background:#f3ebe5;border:1px dashed #e0d2cb}
+  button.foto{border:0;padding:0;cursor:zoom-in;background:var(--cizgi);box-shadow:0 1px 3px rgba(0,0,0,.15);overflow:visible}
+  button.foto img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:block}
+  .buyutec{position:absolute;right:-5px;bottom:-5px;width:26px;height:26px;border-radius:50%;background:var(--bordo);color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid var(--krem);box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  .buyutec svg{width:14px;height:14px}
+  .govde{flex:1;min-width:0;display:flex;align-items:center;gap:8px}
+  .isim{min-width:0;font-size:17px}
+  .isim .y{color:var(--bordo);font-weight:700;margin-left:1px}
+  .orijinal{display:block;font-size:13px;color:var(--soluk);font-style:italic;margin-top:1px}
+  .meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+  .gun{display:inline-block;background:var(--pembe);color:var(--bordo);font-weight:700;font-size:12px;border-radius:999px;padding:2px 9px}
+  .gun.bugun-gun{background:var(--bordo);color:#fff}
+  .yok{display:inline-block;background:var(--kirmizi);color:#fff;font-weight:700;font-size:12px;border-radius:999px;padding:2px 9px}
+  .nokta{flex:1;min-width:10px;border-bottom:1.5px dotted var(--nokta);align-self:flex-end;margin-bottom:8px}
+  .fiyat{flex-shrink:0;min-width:58px;text-align:center;border:1.5px solid var(--cizgi);background:var(--kart);border-radius:8px;padding:4px 8px;font-weight:700;font-size:16px;color:var(--bordo-koyu);font-variant-numeric:tabular-nums}
+  .urun.tukendi .isim,.urun.tukendi .foto img{opacity:.45}
+  .urun.tukendi .fiyat{text-decoration:line-through;color:var(--soluk)}
+
+  .aciklama{margin-top:10px;background:var(--kart);border:1px solid var(--cizgi);border-radius:12px;padding:10px 12px;display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;font-size:14px;color:var(--soluk)}
+  .aciklama .y{color:var(--bordo);font-weight:700;text-align:center}
+
+  .durum{text-align:center;color:var(--soluk);padding:48px 0}
+
+  footer{background:var(--bordo);color:#fff;text-align:center;margin-top:34px;padding-bottom:env(safe-area-inset-bottom,0px)}
+  footer .ic{padding-block:26px 30px}
+  .paket{font-family:var(--baslik);font-size:18px;margin-bottom:12px}
+  .btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--bordo);text-decoration:none;font-weight:700;padding:11px 20px;border-radius:999px;margin:4px;font-size:16px}
+  .btn.cizgili{background:transparent;color:#fff;border:1.5px solid #fff}
+  .adres{margin-top:14px;font-size:14px;opacity:.9}
+  .ana-link{display:inline-block;margin-top:16px;color:#fff;opacity:.85;font-size:14px}
+
+  #buyuk{position:fixed;inset:0;z-index:50;background:rgba(20,10,12,.9);display:none;align-items:center;justify-content:center;flex-direction:column;padding:16px;cursor:zoom-out}
+  #buyuk.acik{display:flex}
+  #buyuk img{max-width:100%;max-height:76vh;border-radius:14px;background:#222}
+  #buyuk .baslik{color:#fff;margin-top:14px;font-family:var(--baslik);font-size:18px;text-align:center}
+  #buyuk .kapat{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:16px;width:44px;height:44px;color:#fff;font-size:34px;line-height:1;background:rgba(255,255,255,.12);border:0;border-radius:50%;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header><div class="ic">
+  <div class="ust">
+    <a class="geri" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg><span data-y="anasayfa">Ana Sayfa</span></a>
+    <div class="dil" role="group" aria-label="Dil / Language">
+      <button type="button" data-dil="tr" aria-pressed="true">TR</button>
+      <button type="button" data-dil="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+  <div class="cerceve">
+    <div class="logo">ARAN</div>
+    <div class="cizgi-b"></div>
+    <div class="alt-logo">Lokantası</div>
+    <div class="slogan" id="slogan">1986'dan beri</div>
+  </div>
+</div></header>
+
+<nav><div class="ic serit" id="nav"></div></nav>
+
+<main class="ic" id="menu"><p class="durum" data-y="yukleniyor">Menü yükleniyor…</p></main>
+
+<footer><div class="ic">
+  <div class="paket" data-y="paket">Paket Servis</div>
+  <a class="btn" id="tel" href="tel:+902425126122">📞 <span id="telYazi">0242 512 61 22</span></a>
+  <a class="btn cizgili" id="harita" target="_blank" rel="noopener" href="#">📍 <span data-y="yol">Yol Tarifi</span></a>
+  <div class="adres" id="adres"></div>
+  <a class="ana-link" href="../" data-y="anasayfa">Ana Sayfa</a>
+</div></footer>
+
+<div id="buyuk" role="dialog" aria-modal="true" aria-label="Fotoğraf">
+  <button class="kapat" aria-label="Kapat">&times;</button>
+  <img alt="">
+  <div class="baslik"></div>
+</div>
+
+<script src="../ceviri.js"></script>
+<script>
+(function(){
+  var A=window.ARAN||{kategori:{},urun:{},gun:{},arayuz:{tr:{},en:{}}};
+  var veri=null, site={}, dil='tr', bugun=A.bugunGun?A.bugunGun():'';
+  var IKON_BUYUT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M10.5 8v5M8 10.5h5"/></svg>';
+
+  // Dil seçimi: önce kayıtlı tercih, yoksa telefonun dili
+  try{ dil=localStorage.getItem('aran-dil')||''; }catch(e){}
+  if(dil!=='tr' && dil!=='en'){
+    var l=(navigator.languages&&navigator.languages[0])||navigator.language||'tr';
+    dil=/^tr/i.test(l)?'tr':'en';
+  }
+
+  function y(k){ var o=(dil==='en' && site.ceviri && site.ceviri[k]) ? site.ceviri[k] : null; return o || (A.arayuz[dil]&&A.arayuz[dil][k]) || A.arayuz.tr[k] || ''; }
+  function el(tag,cls,text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+  function slug(s){ return String(s).toLocaleLowerCase('tr').replace(/ç/g,'c').replace(/ğ/g,'g').replace(/ı/g,'i').replace(/ö/g,'o').replace(/ş/g,'s').replace(/ü/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+  function telGoster(t){ var d=(t||'').replace(/\D/g,''); if(d.indexOf('90')===0) d=d.slice(2); if(d.charAt(0)!=='0') d='0'+d; return d.length>=11 ? d.slice(0,4)+' '+d.slice(4,7)+' '+d.slice(7,9)+' '+d.slice(9) : t; }
+  function telLink(t){ var d=(t||'').replace(/\D/g,''); if(d.indexOf('0')===0) d='90'+d.slice(1); if(d.indexOf('90')!==0) d='90'+d; return 'tel:+'+d; }
+  function fiyatYaz(f){ return (Number(f)||0).toLocaleString('tr-TR')+'₺'; }
+  function yol(p){ return !p ? '' : /^(https?:|data:|\/)/.test(p) ? p : '../'+p; }
+  function urunAdi(u){ return dil==='en' ? (u.ad_en || A.urun[u.ad] || u.ad) : u.ad; }
+  function katAdi(k){ return dil==='en' ? (k.ad_en || A.kategori[k.ad] || k.ad) : k.ad; }
+  function gunAdi(g){ return dil==='en' ? (A.gun[g]||g) : g; }
+
+  var kutu=document.getElementById('buyuk'), bi=kutu.querySelector('img'), bb=kutu.querySelector('.baslik'), kapatBtn=kutu.querySelector('.kapat'), sonOdak=null;
+  function buyut(src,ad,btn){ sonOdak=btn; bi.src=src; bi.alt=ad; bb.textContent=ad; kutu.classList.add('acik'); kapatBtn.focus(); }
+  function kapat(){ kutu.classList.remove('acik'); if(sonOdak) sonOdak.focus(); }
+  kutu.addEventListener('click',kapat);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && kutu.classList.contains('acik')) kapat(); });
+
+  function urunSatiri(u){
+    var row=el('div','urun'+(u.tukendi?' tukendi':''));
+    var ad=urunAdi(u);
+    if(u.foto){
+      var b=el('button','foto'); b.type='button'; b.setAttribute('aria-label',y('buyut')+': '+ad);
+      var img=el('img'); img.src=yol(u.kucuk||u.foto); img.alt=''; img.loading='lazy'; img.decoding='async';
+      b.appendChild(img);
+      var bt=el('span','buyutec'); bt.innerHTML=IKON_BUYUT; bt.setAttribute('aria-hidden','true'); b.appendChild(bt);
+      b.addEventListener('click',function(){ buyut(yol(u.foto),ad,b); });
+      row.appendChild(b);
+    } else row.appendChild(el('span','foto bos'));
+    var govde=el('div','govde'), isim=el('div','isim');
+    isim.appendChild(document.createTextNode(ad));
+    if(u.yildiz){ var s=el('span','y','*'); s.title=y('aciklama_yildiz'); isim.appendChild(s); }
+    if(dil==='en' && ad!==u.ad) isim.appendChild(el('span','orijinal',u.ad));
+    if(u.gun||u.tukendi){
+      var meta=el('div','meta');
+      if(u.gun) meta.appendChild(el('span','gun'+(u.gun===bugun?' bugun-gun':''), u.gun===bugun?y('bugun'):gunAdi(u.gun)));
+      if(u.tukendi) meta.appendChild(el('span','yok',y('tukendi')));
+      isim.appendChild(meta);
+    }
+    govde.appendChild(isim); govde.appendChild(el('span','nokta'));
+    row.appendChild(govde);
+    row.appendChild(el('span','fiyat',fiyatYaz(u.fiyat)));
+    return row;
+  }
+
+  function ciz(){
+    document.documentElement.lang=dil;
+    document.querySelectorAll('.dil button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-dil')===dil)); });
+    document.querySelectorAll('[data-y]').forEach(function(e){ e.textContent=y(e.getAttribute('data-y')); });
+    kapatBtn.setAttribute('aria-label',y('kapat'));
+    if(!veri) return;
+    var nav=document.getElementById('nav'), main=document.getElementById('menu');
+    nav.innerHTML=''; main.innerHTML='';
+
+    var gunun=null;
+    (veri.kategoriler||[]).forEach(function(k){ (k.urunler||[]).forEach(function(u){ if(!gunun && !u.gizli && u.gun===bugun) gunun=u; }); });
+    if(gunun){
+      var kart=el('div','bugun'), et=el('span','etiket',y('gunun_yemegi'));
+      kart.appendChild(et);
+      var m=el('div','metin'); m.appendChild(el('small',null,gunAdi(bugun))); m.appendChild(el('strong',null,urunAdi(gunun)));
+      if(gunun.tukendi){ m.appendChild(document.createTextNode(' ')); m.appendChild(el('span','yok',y('tukendi'))); }
+      kart.appendChild(m); kart.appendChild(el('span','fiyat',fiyatYaz(gunun.fiyat)));
+      main.appendChild(kart);
+    }
+
+    (veri.kategoriler||[]).forEach(function(k){
+      var urunler=(k.urunler||[]).filter(function(u){ return !u.gizli; });
+      if(!urunler.length) return;
+      var id=slug(k.ad), ad=katAdi(k);
+      var a=el('a',null,ad); a.href='#'+id; nav.appendChild(a);
+      var s=el('section'); s.id=id; s.appendChild(el('h2',null,ad));
+      urunler.forEach(function(u){ s.appendChild(urunSatiri(u)); });
+      var gunVar=urunler.some(function(u){ return u.gun; }), yildizVar=urunler.some(function(u){ return u.yildiz; });
+      if(gunVar||yildizVar){
+        var ac=el('div','aciklama');
+        if(gunVar){ ac.appendChild(el('span','gun',y('gun_etiketi'))); ac.appendChild(el('span',null,y('aciklama_gun'))); }
+        if(yildizVar){ ac.appendChild(el('span','y','*')); ac.appendChild(el('span',null,y('aciklama_yildiz'))); }
+        s.appendChild(ac);
+      }
+      main.appendChild(s);
+    });
+    isaretle();
+  }
+
+  document.querySelectorAll('.dil button').forEach(function(b){
+    b.addEventListener('click',function(){
+      dil=b.getAttribute('data-dil'); try{ localStorage.setItem('aran-dil',dil); }catch(e){}
+      var yer=window.scrollY; ciz(); window.scrollTo(0,yer);
+    });
+  });
+
+  // Kaydırdıkça aktif kategoriyi işaretle
+  function isaretle(){
+    var nav=document.getElementById('nav');
+    var linkler=[].slice.call(nav.querySelectorAll('a')), bolumler=[].slice.call(document.querySelectorAll('main section'));
+    var yy=window.scrollY+80, aktif=0;
+    bolumler.forEach(function(b,ix){ if(b.offsetTop<=yy) aktif=ix; });
+    linkler.forEach(function(l,ix){
+      var ol=ix===aktif; if(l.classList.contains('aktif')!==ol){ l.classList.toggle('aktif',ol); if(ol) nav.scrollLeft=l.offsetLeft-nav.clientWidth/2+l.offsetWidth/2; }
+    });
+  }
+  window.addEventListener('scroll',isaretle,{passive:true});
+
+  ciz();
+  var t=Date.now();
+  Promise.all([
+    fetch('../menu.json?v='+t,{cache:'no-store'}).then(function(r){ if(!r.ok) throw r; return r.json(); }),
+    fetch('../site.json?v='+t,{cache:'no-store'}).then(function(r){ return r.ok?r.json():{}; }).catch(function(){ return {}; })
+  ]).then(function(r){
+    veri=r[0]; site=r[1]||{};
+    var i=site.isletme||veri.isletme||{};
+    if(i.slogan) document.getElementById('slogan').textContent=i.slogan;
+    if(i.telefon){ var tl=document.getElementById('tel'); tl.href=telLink(i.telefon); document.getElementById('telYazi').textContent=telGoster(i.telefon); }
+    if(i.adres){
+      document.getElementById('adres').textContent=i.adres;
+      document.getElementById('harita').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent((i.ad||'Aran Lokantası')+' '+i.adres);
+    }
+    ciz();
+    if(A.say) A.say('menu', site.sayac);
+  }).catch(function(){
+    document.getElementById('menu').innerHTML='';
+    document.getElementById('menu').appendChild(el('p','durum',y('hata')));
+  });
+})();
+</script>
+</body>
+</html>
