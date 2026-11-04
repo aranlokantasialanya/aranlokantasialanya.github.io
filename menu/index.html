@@ -204,7 +204,19 @@
   <div class="baslik"></div>
 </div>
 
-<script src="../ceviri.js"></script>
+<script src="../ceviri.js?v=20261105"></script>
+<script>
+/* Tarayıcı eski ceviri.js'yi hafızada tutuyorsa eksik yardımcıları tamamla */
+(function(){
+  var A=window.ARAN=window.ARAN||{kategori:{},urun:{},gun:{},arayuz:{tr:{},en:{}},arayuzEtiket:{}};
+  A.kategori=A.kategori||{}; A.urun=A.urun||{}; A.gun=A.gun||{}; A.arayuz=A.arayuz||{tr:{},en:{}}; A.arayuzEtiket=A.arayuzEtiket||{};
+  if(!A.HAFTA) A.HAFTA=['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'];
+  if(!A.gunler) A.gunler=function(u){ var l=Array.isArray(u&&u.gunler)?u.gunler:((u&&u.gun)?[u.gun]:[]); return A.HAFTA.filter(function(g){ return l.indexOf(g)>=0; }); };
+  if(!A.tarih) A.tarih=function(){ try{ return new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()); }catch(e){ return new Date().toISOString().slice(0,10); } };
+  if(!A.bugunGun) A.bugunGun=function(){ var g=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi']; try{ var s=new Intl.DateTimeFormat('tr-TR',{weekday:'long',timeZone:'Europe/Istanbul'}).format(new Date()); return s.charAt(0).toLocaleUpperCase('tr')+s.slice(1); }catch(e){ return g[new Date().getDay()]; } };
+  if(!A.haritaSorgu) A.haritaSorgu=function(i){ i=i||{}; return (i.harita||'').trim()||((i.ad||'Aran Lokantası')+', '+(i.adres||'Alanya')); };
+})();
+</script>
 <script>
 (function(){
   var A=window.ARAN||{kategori:{},urun:{},gun:{},arayuz:{tr:{},en:{}}};
