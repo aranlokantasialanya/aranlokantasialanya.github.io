@@ -250,9 +250,10 @@
     isim.appendChild(document.createTextNode(ad));
     if(u.yildiz){ var s=el('span','y','*'); s.title=y('aciklama_yildiz'); isim.appendChild(s); }
     if(dil==='en' && ad!==u.ad) isim.appendChild(el('span','orijinal',u.ad));
-    if(u.gun||u.tukendi){
+    var gl=A.gunler(u);
+    if(gl.length||u.tukendi){
       var meta=el('div','meta');
-      if(u.gun) meta.appendChild(el('span','gun'+(u.gun===bugun?' bugun-gun':''), u.gun===bugun?y('bugun'):gunAdi(u.gun)));
+      gl.forEach(function(g){ meta.appendChild(el('span','gun'+(g===bugun?' bugun-gun':''), g===bugun?(gl.length>1?y('bugun')+' · '+gunAdi(g):y('bugun')):gunAdi(g))); });
       if(u.tukendi) meta.appendChild(el('span','yok',y('tukendi')));
       isim.appendChild(meta);
     }
@@ -272,7 +273,7 @@
     nav.innerHTML=''; main.innerHTML='';
 
     var gunun=null;
-    (veri.kategoriler||[]).forEach(function(k){ (k.urunler||[]).forEach(function(u){ if(!gunun && !u.gizli && u.gun===bugun) gunun=u; }); });
+    (veri.kategoriler||[]).forEach(function(k){ (k.urunler||[]).forEach(function(u){ if(!gunun && !u.gizli && A.gunler(u).indexOf(bugun)>=0) gunun=u; }); });
     if(gunun){
       var kart=el('div','bugun'), gAd=urunAdi(gunun), m=el('div','metin');
       if(gunun.foto){
@@ -296,7 +297,7 @@
       var a=el('a',null,ad); a.href='#'+id; nav.appendChild(a);
       var s=el('section'); s.id=id; s.appendChild(el('h2',null,ad));
       urunler.forEach(function(u){ s.appendChild(urunSatiri(u)); });
-      var gunVar=urunler.some(function(u){ return u.gun; }), yildizVar=urunler.some(function(u){ return u.yildiz; });
+      var gunVar=urunler.some(function(u){ return A.gunler(u).length; }), yildizVar=urunler.some(function(u){ return u.yildiz; });
       if(gunVar||yildizVar){
         var ac=el('div','aciklama');
         if(gunVar){ ac.appendChild(el('span','gun',y('gun_etiketi'))); ac.appendChild(el('span',null,y('aciklama_gun'))); }

@@ -89,8 +89,14 @@
   .tukendi-k input{width:20px;height:20px;accent-color:var(--kirmizi)}
   .tukendi-k:has(input:checked){border-color:var(--kirmizi);color:var(--kirmizi);background:#fdecea}
   .secenekler{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
-  .gun-sec{border:1px solid var(--cizgi);background:var(--kart);border-radius:10px;padding:7px 8px;font-size:14px;max-width:100%}
-  .gun-sec.dolu{background:var(--pembe);border-color:#e8c4c9;color:var(--bordo);font-weight:700}
+  .gunler{display:flex;flex-wrap:wrap;align-items:center;gap:4px;width:100%}
+  .gunler .baslik{font-size:13px;color:var(--soluk);margin-right:2px}
+  .gunler .hepsi{font-size:13px;font-weight:700;color:var(--yesil)}
+  .gun-k{position:relative}
+  .gun-k input{position:absolute;opacity:0;width:1px;height:1px}
+  .gun-k span{display:block;min-width:36px;text-align:center;border:1px solid var(--cizgi);background:var(--kart);border-radius:8px;padding:5px 6px;font-size:13px;font-weight:600;color:var(--soluk);cursor:pointer;user-select:none}
+  .gun-k input:checked+span{background:var(--bordo);border-color:var(--bordo);color:#fff}
+  .gun-k input:focus-visible+span{outline:2px solid var(--bordo);outline-offset:2px}
   .kucuk{display:flex;align-items:center;gap:4px;font-size:14px;color:var(--soluk);user-select:none;white-space:nowrap}
   .kucuk input{width:18px;height:18px;accent-color:var(--bordo)}
   .sil{margin-left:auto;border:0;background:transparent;color:var(--soluk);padding:6px;border-radius:8px;font-size:14px;display:flex;align-items:center;gap:4px;flex-shrink:0}
@@ -358,11 +364,20 @@
     gizK.addEventListener('change',function(){ u.gizli=gizK.checked; satir.classList.toggle('gizli',u.gizli); degisiklik(); });
     var yilK=el('input',{type:'checkbox'}); yilK.checked=!!u.yildiz;
     yilK.addEventListener('change',function(){ u.yildiz=yilK.checked; degisiklik(); });
-    var gunS=el('select',{class:'gun-sec'+(u.gun?' dolu':''),'aria-label':'Pişme günü'});
-    [['','Her gün'],['Pazartesi'],['Salı'],['Çarşamba'],['Perşembe'],['Cuma'],['Cumartesi'],['Pazar']].forEach(function(g){
-      var o=el('option',{value:g[0],text:g[1]||('Sadece '+g[0])}); if((u.gun||'')===g[0]) o.selected=true; gunS.appendChild(o);
+    // Pişme günleri: hiçbiri seçili değilse her gün
+    u.gunler=A.gunler?A.gunler(u):(u.gun?[u.gun]:[]); delete u.gun;
+    var hepsiYazi=el('span',{class:'hepsi',text:'Her gün'});
+    var gunS=el('div',{class:'gunler',role:'group','aria-label':'Pişme günleri'},[el('span',{class:'baslik',text:'Günler:'})]);
+    [['Pazartesi','Pzt'],['Salı','Sal'],['Çarşamba','Çar'],['Perşembe','Per'],['Cuma','Cum'],['Cumartesi','Cmt'],['Pazar','Paz']].forEach(function(g){
+      var c=el('input',{type:'checkbox','aria-label':g[0]}); c.checked=u.gunler.indexOf(g[0])>=0;
+      c.addEventListener('change',function(){
+        var l=u.gunler.filter(function(x){ return x!==g[0]; }); if(c.checked) l.push(g[0]);
+        u.gunler=(A.HAFTA||[]).filter(function(x){ return l.indexOf(x)>=0; });
+        hepsiYazi.hidden=u.gunler.length>0; degisiklik();
+      });
+      gunS.appendChild(el('label',{class:'gun-k',title:g[0]},[c, el('span',{text:g[1]})]));
     });
-    gunS.addEventListener('change',function(){ u.gun=gunS.value; gunS.classList.toggle('dolu',!!u.gun); degisiklik(); });
+    hepsiYazi.hidden=u.gunler.length>0; gunS.appendChild(hepsiYazi);
 
     var sil=silButonu('Ürünü sil','Silinsin mi?',function(){
       var k=(satir.parentNode&&satir.parentNode.parentNode&&satir.parentNode.parentNode._kat)||kat;
@@ -413,7 +428,7 @@
       bolum._kat=kat;
       kat.urunler.forEach(function(u){ ul.appendChild(urunSatiri(u,kat)); });
       bolum.appendChild(el('button',{class:'ekle',type:'button',text:'+ '+(kat.ad||'Bu kategoriye')+' ürün ekle',onclick:function(){
-        kat.urunler.push({ad:'',ad_en:'',fiyat:0,foto:'',kucuk:'',gun:'',yildiz:false,tukendi:false,gizli:false}); degisiklik(); menuCiz();
+        kat.urunler.push({ad:'',ad_en:'',fiyat:0,foto:'',kucuk:'',gunler:[],yildiz:false,tukendi:false,gizli:false}); degisiklik(); menuCiz();
         var son=ana.querySelectorAll('.kategori')[menu.kategoriler.indexOf(kat)].querySelectorAll('.ad');
         if(son.length) son[son.length-1].focus();
       }}));
@@ -669,7 +684,7 @@
         r.fiyat=Number(u.fiyat)||0;
         r.foto=u._yeniFoto?u._yeniFoto.yol:(u.foto||'');
         r.kucuk=u._yeniFoto?u._yeniFoto.kyol:(u.foto?(u.kucuk||''):'');
-        r.gun=u.gun||''; r.yildiz=!!u.yildiz; r.tukendi=!!u.tukendi; r.gizli=!!u.gizli;
+        r.gunler=(A.gunler?A.gunler(u):(u.gun?[u.gun]:[])); r.yildiz=!!u.yildiz; r.tukendi=!!u.tukendi; r.gizli=!!u.gizli;
         return r;
       });
       return o;

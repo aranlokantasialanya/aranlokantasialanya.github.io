@@ -93,6 +93,13 @@
     paket:'"Paket Servis"', yol:'"Yol Tarifi"'
   };
 
+  // Bir ürünün pişme günleri (eski tek gün kaydını da okur), hafta sırasıyla
+  C.HAFTA=['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'];
+  C.gunler = function(u){
+    var l = Array.isArray(u && u.gunler) ? u.gunler : ((u && u.gun) ? [u.gun] : []);
+    return C.HAFTA.filter(function(g){ return l.indexOf(g)>=0; });
+  };
+
   // İstanbul saatine göre bugünün tarihi (YYYY-MM-DD) ve gün adı
   C.tarih = function(d){
     d = d || new Date();
