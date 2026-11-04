@@ -38,7 +38,9 @@
           "fiyat": 300,
           "foto": "images/tas-kebap-1793608772264.jpg",
           "kucuk": "images/tas-kebap-1793608772264-k.jpg",
-          "gunler": [],
+          "gunler": [
+            "Pazartesi"
+          ],
           "yildiz": false,
           "tukendi": false,
           "gizli": false
@@ -49,7 +51,10 @@
           "fiyat": 250,
           "foto": "images/tavuk-haslama-1793432188033.jpg",
           "kucuk": "images/tavuk-haslama-1793432188033-k.jpg",
-          "gunler": [],
+          "gunler": [
+            "Salı",
+            "Cumartesi"
+          ],
           "yildiz": false,
           "tukendi": false,
           "gizli": false
@@ -60,7 +65,9 @@
           "fiyat": 300,
           "foto": "images/salcali-kofte-1793791886785.jpg",
           "kucuk": "images/salcali-kofte-1793791886785-k.jpg",
-          "gunler": [],
+          "gunler": [
+            "Çarşamba"
+          ],
           "yildiz": false,
           "tukendi": false,
           "gizli": false
@@ -71,7 +78,9 @@
           "fiyat": 250,
           "foto": "images/tavuk-sote-1793804167152.jpg",
           "kucuk": "images/tavuk-sote-1793804167152-k.jpg",
-          "gunler": [],
+          "gunler": [
+            "Perşembe"
+          ],
           "yildiz": false,
           "tukendi": false,
           "gizli": false
@@ -82,7 +91,9 @@
           "fiyat": 300,
           "foto": "images/yogurtlu-kofte-1793362818365.jpg",
           "kucuk": "images/yogurtlu-kofte-1793362818365-k.jpg",
-          "gunler": [],
+          "gunler": [
+            "Cuma"
+          ],
           "yildiz": false,
           "tukendi": false,
           "gizli": false
