@@ -101,7 +101,7 @@
         {
           "ad": "Patlıcan Musakka",
           "ad_en": "Eggplant Moussaka",
-          "fiyat": 140,
+          "fiyat": 150,
           "foto": "images/patlican-musakka-1793346091222.jpg",
           "kucuk": "images/patlican-musakka-1793346091222-k.jpg",
           "gun": "",
@@ -156,7 +156,7 @@
         {
           "ad": "Bezelye",
           "ad_en": "Green Pea Stew",
-          "fiyat": 140,
+          "fiyat": 150,
           "foto": "images/bezelye-1793438408137.jpg",
           "kucuk": "images/bezelye-1793438408137-k.jpg",
           "gun": "",
@@ -167,7 +167,7 @@
         {
           "ad": "Biber Dolma",
           "ad_en": "Stuffed Peppers",
-          "fiyat": 140,
+          "fiyat": 150,
           "foto": "images/biber-dolma-1793346099405.jpg",
           "kucuk": "images/biber-dolma-1793346099405-k.jpg",
           "gun": "",
@@ -178,7 +178,7 @@
         {
           "ad": "Göleviz",
           "ad_en": "Taro Stew with Meat (Gölevez)",
-          "fiyat": 140,
+          "fiyat": 150,
           "foto": "images/goleviz-1793797046281.jpg",
           "kucuk": "images/goleviz-1793797046281-k.jpg",
           "gun": "",
