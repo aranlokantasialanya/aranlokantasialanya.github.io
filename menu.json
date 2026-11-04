@@ -243,6 +243,16 @@
       "ad_en": "Bean Salads (Piyaz)",
       "urunler": [
         {
+          "ad": "Talaturlu Yumurtalı Fasulye Piyazı",
+          "fiyat": 150,
+          "foto": "images/talaturlu-yumurtali-fasulye-piyazi-1793810429291.jpg",
+          "kucuk": "images/talaturlu-yumurtali-fasulye-piyazi-1793810429291-k.jpg",
+          "gun": "",
+          "yildiz": false,
+          "tukendi": false,
+          "gizli": false
+        },
+        {
           "ad": "Yumurtalı Fasülye Piyazı",
           "ad_en": "White Bean Salad with Egg",
           "fiyat": 150,
