@@ -112,7 +112,7 @@
         {
           "ad": "Kuru Fasülye",
           "ad_en": "White Bean Stew",
-          "fiyat": 130,
+          "fiyat": 140,
           "foto": "images/kuru-fasulye-1793345218860.jpg",
           "kucuk": "images/kuru-fasulye-1793345218860-k.jpg",
           "gunler": [],
@@ -123,7 +123,7 @@
         {
           "ad": "Nohut",
           "ad_en": "Chickpea Stew",
-          "fiyat": 130,
+          "fiyat": 140,
           "foto": "images/nohut-1793345223155.jpg",
           "kucuk": "images/nohut-1793345223155-k.jpg",
           "gunler": [],
@@ -134,7 +134,7 @@
         {
           "ad": "Yoğurtlu Kızartma",
           "ad_en": "Fried Vegetables with Yogurt",
-          "fiyat": 130,
+          "fiyat": 140,
           "foto": "images/yogurtlu-kizartma-1793439926511.jpg",
           "kucuk": "images/yogurtlu-kizartma-1793439926511-k.jpg",
           "gunler": [],
@@ -200,7 +200,7 @@
         {
           "ad": "Taze Fasülye",
           "ad_en": "Green Bean Stew",
-          "fiyat": 130,
+          "fiyat": 140,
           "foto": "images/taze-fasulye-1793807686917.jpg",
           "kucuk": "images/taze-fasulye-1793807686917-k.jpg",
           "gunler": [],
@@ -278,7 +278,7 @@
         {
           "ad": "Bakla Piyazı",
           "ad_en": "Broad Bean Salad",
-          "fiyat": 130,
+          "fiyat": 140,
           "foto": "images/bakla-piyazi-1793804176542.jpg",
           "kucuk": "images/bakla-piyazi-1793804176542-k.jpg",
           "gunler": [],
