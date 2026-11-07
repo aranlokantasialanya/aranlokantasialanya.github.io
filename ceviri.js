@@ -77,13 +77,13 @@
       anasayfa:'Ana Sayfa', gunun_yemegi:'Günün yemeği', bugun:'Bugün', tukendi:'Tükendi',
       aciklama_gun:'Günün yemeği, sadece o gün pişer.', aciklama_yildiz:'Her gün pişmez, lütfen sorunuz.',
       gun_etiketi:'Gün', paket:'Paket Servis', yol:'Yol Tarifi', yukleniyor:'Menü yükleniyor…',
-      hata:'Menü yüklenemedi. Lütfen sayfayı yenileyin.', buyut:'Fotoğrafı büyüt', kapat:'Kapat'
+      hata:'Menü yüklenemedi. Lütfen sayfayı yenileyin.', buyut:'Fotoğrafı büyüt', kapat:'Kapat', gizlilik:'Gizlilik'
     },
     en: {
       anasayfa:'Home', gunun_yemegi:'Dish of the day', bugun:'Today', tukendi:'Sold out',
       aciklama_gun:'Dish of the day – cooked only on that day.', aciklama_yildiz:'Not cooked every day, please ask.',
       gun_etiketi:'Day', paket:'Takeaway', yol:'Directions', yukleniyor:'Loading menu…',
-      hata:'The menu could not be loaded. Please refresh the page.', buyut:'Enlarge photo', kapat:'Close'
+      hata:'The menu could not be loaded. Please refresh the page.', buyut:'Enlarge photo', kapat:'Close', gizlilik:'Privacy'
     }
   };
   // Panelde düzenlenebilen İngilizce yazılar ve Türkçe açıklamaları

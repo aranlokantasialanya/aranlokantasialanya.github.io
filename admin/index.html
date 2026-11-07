@@ -196,7 +196,7 @@
 <input type="file" id="dosya" accept="image/*" hidden>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
-<script src="../ceviri.js?v=20261105"></script>
+<script src="../ceviri.js?v=20261107"></script>
 <script>
 /* Tarayıcı eski ceviri.js'yi hafızada tutuyorsa eksik yardımcıları tamamla */
 (function(){
@@ -301,7 +301,7 @@
   }
   function varsayilanSite(eskiIsletme){
     var i=eskiIsletme||{};
-    return {isletme:{ad:'Aran Lokantası',slogan:i.slogan||"1986'dan beri",telefon:i.telefon||'',adres:i.adres||'',saatler:'',instagram:''},
+    return {isletme:{ad:'Aran Lokantası',slogan:i.slogan||"1989'dan beri",telefon:i.telefon||'',adres:i.adres||'',saatler:'',instagram:''},
             anasayfa:{hosgeldin:'',acilis_soru:'Menümüzü görmek ister misiniz?',bolumler:[]},ceviri:{},sayac:''};
   }
   function yukle(){
@@ -480,7 +480,7 @@
 
     ana.appendChild(el('div',{class:'kart'},[ el('h3',{text:'İşletme bilgileri'}),
       alan('İşletme adı', i, 'ad'),
-      alan('Logonun altındaki yazı', i, 'slogan', {ph:"1986'dan beri"}),
+      alan('Logonun altındaki yazı', i, 'slogan', {ph:"1989'dan beri"}),
       alan('Telefon', i, 'telefon', {tip:'tel', im:'tel', ipucu:'Hem ana sayfada hem menüde görünür.'}),
       alan('WhatsApp numarası', i, 'whatsapp', {tip:'tel', im:'tel', ph:'0532 123 45 67', ipucu:'Ana sayfada ve menünün altında WhatsApp butonu çıkar. Boş bırakırsanız görünmez.'}),
       alan('Adres', i, 'adres', {cok:true, satir:2}),

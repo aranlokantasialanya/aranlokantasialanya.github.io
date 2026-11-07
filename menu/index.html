@@ -150,7 +150,7 @@
     <div class="a-logo">ARAN</div>
     <div class="a-cizgi"></div>
     <div class="a-alt">Lokantası</div>
-    <div class="a-yil" id="acilisYil">1986'dan beri</div>
+    <div class="a-yil" id="acilisYil">1989'dan beri</div>
   </div>
 </div>
 <script>
@@ -181,7 +181,7 @@
     <div class="logo">ARAN</div>
     <div class="cizgi-b"></div>
     <div class="alt-logo">Lokantası</div>
-    <div class="slogan" id="slogan">1986'dan beri</div>
+    <div class="slogan" id="slogan">1989'dan beri</div>
   </div>
 </div></header>
 
@@ -195,7 +195,7 @@
   <a class="btn wa" id="waBtn" target="_blank" rel="noopener" href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.6 2.4 5 5.2 5.6l1-1.1 2 .9-.4 1.8c-4.4.4-8.4-3.5-8.1-7.9l1.8-.4.9 2z" fill="currentColor" stroke="none"/></svg>WhatsApp</a>
   <a class="btn cizgili" id="harita" target="_blank" rel="noopener" href="#">📍 <span data-y="yol">Yol Tarifi</span></a>
   <div class="adres" id="adres"></div>
-  <a class="ana-link" href="../" data-y="anasayfa">Ana Sayfa</a>
+  <a class="ana-link" href="../" data-y="anasayfa">Ana Sayfa</a> <span style="opacity:.6">·</span> <a class="ana-link" href="../gizlilik/" data-y="gizlilik">Gizlilik</a>
 </div></footer>
 
 <div id="buyuk" role="dialog" aria-modal="true" aria-label="Fotoğraf">
@@ -204,12 +204,13 @@
   <div class="baslik"></div>
 </div>
 
-<script src="../ceviri.js?v=20261105"></script>
+<script src="../ceviri.js?v=20261107"></script>
 <script>
 /* Tarayıcı eski ceviri.js'yi hafızada tutuyorsa eksik yardımcıları tamamla */
 (function(){
   var A=window.ARAN=window.ARAN||{kategori:{},urun:{},gun:{},arayuz:{tr:{},en:{}},arayuzEtiket:{}};
   A.kategori=A.kategori||{}; A.urun=A.urun||{}; A.gun=A.gun||{}; A.arayuz=A.arayuz||{tr:{},en:{}}; A.arayuzEtiket=A.arayuzEtiket||{};
+  A.arayuz.tr=A.arayuz.tr||{}; A.arayuz.en=A.arayuz.en||{}; if(!A.arayuz.tr.gizlilik){ A.arayuz.tr.gizlilik='Gizlilik'; A.arayuz.en.gizlilik='Privacy'; }
   if(!A.HAFTA) A.HAFTA=['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'];
   if(!A.gunler) A.gunler=function(u){ var l=Array.isArray(u&&u.gunler)?u.gunler:((u&&u.gun)?[u.gun]:[]); return A.HAFTA.filter(function(g){ return l.indexOf(g)>=0; }); };
   if(!A.tarih) A.tarih=function(){ try{ return new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()); }catch(e){ return new Date().toISOString().slice(0,10); } };
