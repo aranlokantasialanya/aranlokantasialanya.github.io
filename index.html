@@ -6,7 +6,7 @@
 <title>Aran Lokantası | Alanya – 1989'dan Beri</title>
 <meta name="description" content="Aran Lokantası, 1989'dan beri Alanya'da. Çorbalar, tencere yemekleri, ızgaralar ve tatlılar. Adres, telefon ve yol tarifi.">
 <link rel="canonical" href="https://aranlokantasi.com.tr/">
-<meta name="theme-color" content="#7b1f2e">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-title" content="Aran Lokantası">
@@ -20,14 +20,14 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* Basılı menüyle aynı kimlik: bordo bant, krem zemin, serif başlıklar */
   :root{
     color-scheme:light;
-    --bordo:#7b1f2e; --bordo-koyu:#5e1622; --pembe:#f6e3e5; --krem:#fbf7f2; --kart:#ffffff;
+    --bordo:#7a1f2b; --bordo-koyu:#5c1620; --pembe:#f6e3e5; --krem:#ffffff; --logo-zemin:#ffffff; --altin-k:#a8834f; --kart:#ffffff;
     --yazi:#2a2224; --soluk:#7f7174; --cizgi:#e8dcd6; --altin:#e9d7b7;
-    --baslik:"Libre Baskerville",Georgia,serif; --govde:"Source Sans 3",system-ui,-apple-system,sans-serif;
+    --baslik:"Playfair Display",Georgia,serif; --govde:"Montserrat",system-ui,-apple-system,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   [hidden]{display:none!important}
@@ -37,20 +37,29 @@
   :focus-visible{outline:2px solid var(--bordo);outline-offset:3px}
   .ic{max-width:640px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
 
-  /* ---------- Açılış ---------- */
-  #acilis{position:fixed;inset:0;z-index:100;background:var(--bordo);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:opacity .7s ease, transform .7s ease}
-  #acilis.gizlen{opacity:0;transform:translateY(-3%);pointer-events:none}
-  #acilis .cerceve{position:relative;padding:44px 34px 34px;min-width:min(78vw,340px)}
-  #acilis .cerceve::before,#acilis .cerceve::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.55);transform:scale(.92);opacity:0;animation:cerceve 1s .15s ease forwards}
-  #acilis .cerceve::after{inset:7px;border-color:rgba(233,215,183,.45);animation-delay:.35s}
-  #acilis .logo{font-family:var(--baslik);font-weight:700;font-size:clamp(46px,14vw,64px);line-height:1;letter-spacing:.5em;padding-left:.5em;opacity:0;animation:logo 1.1s .4s cubic-bezier(.2,.7,.2,1) forwards}
-  #acilis .cizgi{height:2px;background:#fff;width:0;margin:16px auto;animation:cizgi .7s 1s ease forwards}
-  #acilis .alt{letter-spacing:.45em;padding-left:.45em;font-size:15px;text-transform:uppercase;opacity:0;animation:belir .6s 1.25s ease forwards}
-  #acilis .yil{margin-top:10px;font-family:var(--baslik);font-style:italic;color:var(--altin);font-size:15px;opacity:0;animation:belir .6s 1.5s ease forwards}
-  @keyframes cerceve{to{transform:scale(1);opacity:1}}
-  @keyframes logo{from{opacity:0;letter-spacing:.9em;padding-left:.9em}to{opacity:1;letter-spacing:.32em;padding-left:.32em}}
-  @keyframes cizgi{to{width:70px}}
-  @keyframes belir{to{opacity:1}}
+
+  /* ---------- Açılış: logo animasyonu ---------- */
+  #acilis{position:fixed;inset:0;z-index:100;background:var(--krem);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .7s ease, transform .7s ease}
+  #acilis.gizlen{opacity:0;transform:scale(1.04);pointer-events:none}
+  #acilis svg{width:min(78vw,420px);height:auto;overflow:visible}
+  #acilis .arc{stroke-dasharray:0 1100;animation:al-arc 1.3s .9s cubic-bezier(.45,0,.55,1) forwards}
+  #acilis .arc.o{--L:356} #acilis .arc.i{--L:331}
+  @keyframes al-arc{to{stroke-dasharray:var(--L) 1100}}
+  #acilis .pop{transform-box:fill-box;transform-origin:center;transform:scale(0);opacity:0;animation:al-pop .5s ease-out forwards}
+  #acilis .p1{animation-delay:.1s} #acilis .p2{animation-delay:.3s} #acilis .p3{animation-delay:.5s}
+  @keyframes al-pop{60%{transform:scale(1.25);opacity:1}to{transform:scale(1);opacity:1}}
+  #acilis .orbit{transform-origin:200px 200px;animation:al-first 1.3s .9s cubic-bezier(.45,0,.55,1) forwards}
+  @keyframes al-first{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  #acilis .t{opacity:0;transform:translateY(10px);transform-box:fill-box;animation:al-up .7s ease-out forwards}
+  #acilis .t1{animation-delay:2.2s} #acilis .t3{animation-delay:2.75s} #acilis .t4{animation-delay:3s}
+  #acilis .line{transform-origin:center;transform:scaleX(0);transform-box:fill-box;animation:al-grow .6s 2.5s ease-out forwards}
+  @keyframes al-up{to{opacity:1;transform:none}}
+  @keyframes al-grow{to{transform:scaleX(1)}}
+  @media (prefers-reduced-motion:reduce){
+    #acilis,#acilis *{animation:none!important;transition:none!important}
+    #acilis .arc.o{stroke-dasharray:356 1100} #acilis .arc.i{stroke-dasharray:331 1100}
+    #acilis .pop,#acilis .t{opacity:1;transform:none} #acilis .line{transform:none} #acilis .orbit{transform:none}
+  }
 
   /* ---------- Menü sorusu ---------- */
   #soru{position:fixed;inset:0;z-index:90;background:rgba(43,16,22,.55);display:flex;align-items:flex-end;justify-content:center;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom,0px))}
@@ -67,20 +76,15 @@
   .buton.dolu{background:var(--bordo);color:#fff}
   .buton.bos{background:transparent;color:var(--soluk);font-weight:600;font-size:15px;padding:10px;margin-top:6px}
 
-  /* ---------- Üst bant ---------- */
-  header{background:var(--bordo);color:#fff;text-align:center;padding-top:env(safe-area-inset-top,0px)}
-  header .ic{padding-block:16px 30px}
-  .cerceve-b{border:1px solid rgba(255,255,255,.45);padding:28px 10px 22px;position:relative}
-  .cerceve-b::after{content:"";position:absolute;inset:6px;border:1px solid rgba(233,215,183,.3);pointer-events:none}
-  .logo-b{font-family:var(--baslik);font-weight:700;font-size:46px;letter-spacing:.32em;padding-left:.32em;line-height:1}
-  .cizgi-b{width:64px;height:2px;background:#fff;margin:14px auto}
-  .alt-b{letter-spacing:.45em;padding-left:.45em;font-size:15px;text-transform:uppercase}
-  .yil-b{margin-top:8px;font-family:var(--baslik);font-style:italic;color:var(--altin);font-size:15px}
-  .hosgeldin{margin:22px auto 0;max-width:30ch;font-size:18px;line-height:1.45;opacity:.95;text-wrap:balance}
+  /* ---------- Üst kısım: logo ---------- */
+  header{background:var(--krem);color:var(--bordo);text-align:center;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid var(--cizgi)}
+  header .ic{padding-block:22px 28px}
+  .logo-svg{display:block;width:min(64vw,270px);height:auto;margin:0 auto}
+  .hosgeldin{margin:18px auto 0;max-width:30ch;font-family:var(--baslik);font-style:italic;font-size:19px;line-height:1.45;color:var(--yazi);text-wrap:balance}
   .butonlar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-  .butonlar a{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:14px 10px;font-weight:700;text-decoration:none;font-size:16px}
-  .butonlar .menu-btn{background:#fff;color:var(--bordo)}
-  .butonlar .ara-btn{border:1.5px solid rgba(255,255,255,.85);color:#fff}
+  .butonlar a{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:14px 10px;font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.02em}
+  .butonlar .menu-btn{background:var(--bordo);color:#fff}
+  .butonlar .ara-btn{border:1.5px solid var(--bordo);color:var(--bordo)}
   .butonlar svg{width:20px;height:20px;flex-shrink:0}
 
   main .ic{padding-block:6px 30px}
@@ -106,7 +110,7 @@
   .satir .deger{font-weight:600;overflow-wrap:anywhere;white-space:pre-line}
   .satir .eylem{display:inline-block;margin-top:6px;color:var(--bordo);font-weight:700;text-decoration:none;font-size:15px}
 
-  .alt-cubuk{position:sticky;bottom:0;z-index:20;background:linear-gradient(to top,var(--krem) 70%,rgba(251,247,242,0));padding-top:14px;padding-bottom:max(14px,env(safe-area-inset-bottom,0px))}
+  .alt-cubuk{position:sticky;bottom:0;z-index:20;background:linear-gradient(to top,var(--krem) 70%,rgba(255,255,255,0));padding-top:14px;padding-bottom:max(14px,env(safe-area-inset-bottom,0px))}
   .alt-cubuk .buton{box-shadow:0 8px 22px rgba(123,31,46,.3)}
   .alt-cubuk svg{width:20px;height:20px}
 
@@ -146,21 +150,21 @@
   @keyframes kmp-gel{from{opacity:0}to{opacity:1}}
 
   @media (prefers-reduced-motion:reduce){
-    #acilis,#acilis *, #soru .kutu, .kmp{animation:none!important;transition:none!important}
-    #acilis .logo,#acilis .alt,#acilis .yil,#acilis .cerceve::before,#acilis .cerceve::after{opacity:1;transform:none}
-    #acilis .cizgi{width:70px}
+    #soru .kutu, .kmp{animation:none!important;transition:none!important}
   }
 </style>
 </head>
 <body>
 
 <div id="acilis" role="presentation" hidden>
-  <div class="cerceve">
-    <div class="logo">ARAN</div>
-    <div class="cizgi"></div>
-    <div class="alt">Lokantası</div>
-    <div class="yil" id="acilisYil">1989'dan beri</div>
-  </div>
+  <svg viewBox="0 0 400 400" role="img" aria-label="Aran Lokantası, 1989'dan beri">
+  <circle class="arc o" cx="200" cy="200" r="170" fill="none" stroke="#7a1f2b" stroke-width="9" transform="rotate(-90 200 200)"/><circle class="arc i" cx="200" cy="200" r="158" fill="none" stroke="#7a1f2b" stroke-width="1.6" transform="rotate(-90 200 200)"/><circle class="arc o" cx="200" cy="200" r="170" fill="none" stroke="#7a1f2b" stroke-width="9" transform="rotate(30 200 200)"/><circle class="arc i" cx="200" cy="200" r="158" fill="none" stroke="#7a1f2b" stroke-width="1.6" transform="rotate(30 200 200)"/><circle class="arc o" cx="200" cy="200" r="170" fill="none" stroke="#7a1f2b" stroke-width="9" transform="rotate(150 200 200)"/><circle class="arc i" cx="200" cy="200" r="158" fill="none" stroke="#7a1f2b" stroke-width="1.6" transform="rotate(150 200 200)"/>
+  <g class="orbit" fill="#7a1f2b"><g transform="rotate(0 200 200) translate(200 30)"><g class="pop p1"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><rect x="-7" y="-28" width="2.6" height="12" rx="1.2"/><rect x="-1.3" y="-28" width="2.6" height="12" rx="1.2"/><rect x="4.4" y="-28" width="2.6" height="12" rx="1.2"/><path d="M-7,-17 L7,-17 L7,-13 Q7,-7 2,-5 L2.2,26 Q0,29.5 -2.2,26 L-2,-5 Q-7,-7 -7,-13 Z"/></g></g></g><g transform="rotate(120 200 200) translate(200 30)"><g class="pop p2"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><ellipse cx="0" cy="-17" rx="7.5" ry="10.5"/><path d="M-2,-8 L-2.2,26 Q0,29.5 2.2,26 L2,-8 Z"/></g></g></g><g transform="rotate(240 200 200) translate(200 30)"><g class="pop p3"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><path d="M-2.4,-29 Q6,-23 6,-7 L6,-1 L-2.4,-1 Z"/><rect x="-2.6" y="0" width="5.2" height="27" rx="2.6"/></g></g></g></g>
+  <text class="t t1" x="200" y="205" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="900" font-size="88" letter-spacing="-1" fill="#7a1f2b">ARAN</text>
+  <line class="line" x1="136" y1="228" x2="264" y2="228" stroke="#a8834f" stroke-width="1.6"/>
+  <text class="t t3" x="203.5" y="266" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="600" font-size="21" letter-spacing="7" fill="#7a1f2b">LOKANTASI</text>
+  <text class="t t4" id="acilisYil" x="202.5" y="296" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="500" font-size="11.5" letter-spacing="5" fill="#a8834f">1989'DAN BERİ</text>
+</svg>
 </div>
 
 <div id="soru" role="dialog" aria-modal="true" aria-labelledby="soruBaslik" hidden>
@@ -175,12 +179,21 @@
 </div>
 
 <header><div class="ic">
-  <div class="cerceve-b">
-    <div class="logo-b">ARAN</div>
-    <div class="cizgi-b"></div>
-    <div class="alt-b">Lokantası</div>
-    <div class="yil-b" id="slogan">1989'dan beri</div>
-  </div>
+  <svg class="logo-svg" viewBox="0 0 400 400" role="img" aria-label="Aran Lokantası, 1989'dan beri">
+  <g fill="none" stroke="#7a1f2b">
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(-90 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(-90 200 200)"/>
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(30 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(30 200 200)"/>
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(150 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(150 200 200)"/>
+  </g>
+  <g fill="#7a1f2b"><g transform="rotate(0 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><rect x="-7" y="-28" width="2.6" height="12" rx="1.2"/><rect x="-1.3" y="-28" width="2.6" height="12" rx="1.2"/><rect x="4.4" y="-28" width="2.6" height="12" rx="1.2"/><path d="M-7,-17 L7,-17 L7,-13 Q7,-7 2,-5 L2.2,26 Q0,29.5 -2.2,26 L-2,-5 Q-7,-7 -7,-13 Z"/></g></g><g transform="rotate(120 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><ellipse cx="0" cy="-17" rx="7.5" ry="10.5"/><path d="M-2,-8 L-2.2,26 Q0,29.5 2.2,26 L2,-8 Z"/></g></g><g transform="rotate(240 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><path d="M-2.4,-29 Q6,-23 6,-7 L6,-1 L-2.4,-1 Z"/><rect x="-2.6" y="0" width="5.2" height="27" rx="2.6"/></g></g></g>
+  <text x="200" y="205" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="900" font-size="88" letter-spacing="-1" fill="#7a1f2b">ARAN</text>
+  <line x1="136" y1="228" x2="264" y2="228" stroke="#a8834f" stroke-width="1.6"/>
+  <text x="203.5" y="266" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="600" font-size="21" letter-spacing="7" fill="#7a1f2b">LOKANTASI</text>
+  <text id="slogan" x="202.5" y="296" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="500" font-size="11.5" letter-spacing="5" fill="#a8834f">1989'DAN BERİ</text>
+</svg>
   <p class="hosgeldin" id="hosgeldin">1989'dan beri Alanya'da, her gün ocaktan inen ev yemekleri.</p>
   <div class="butonlar">
     <a class="menu-btn" href="menu/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h11a3 3 0 0 1 3 3v15H8a3 3 0 0 1-3-3z"/><path d="M9 7h6M9 10.5h6"/></svg>Menü</a>
@@ -291,7 +304,7 @@
     var bitti=false;
     var bitir=function(){ if(bitti) return; bitti=true; acilis.classList.add('gizlen'); setTimeout(function(){ acilis.hidden=true; acilisBitti=true; sonrasi(); }, azHareket?0:650); };
     acilis.addEventListener('click',bitir);
-    setTimeout(bitir, azHareket ? 600 : 2500);
+    setTimeout(bitir, azHareket ? 600 : 3900);
   } else acilisBitti=true;
   // site.json gelmezse de soru gösterilsin
   setTimeout(function(){ if(!siteVeri){ siteVeri={}; sonrasi(); } }, 4000);
@@ -299,7 +312,7 @@
   // ---- İçerik: site.json ----
   fetch('site.json?v='+Date.now(),{cache:'no-store'}).then(function(r){ return r.json(); }).then(function(s){
     var i=s.isletme||{}, a=s.anasayfa||{};
-    if(i.slogan){ $('slogan').textContent=i.slogan; $('acilisYil').textContent=i.slogan; }
+    if(i.slogan){ var sl=i.slogan.toLocaleUpperCase('tr'); $('slogan').textContent=sl; $('acilisYil').textContent=sl; }
     if(a.hosgeldin!=null){ $('hosgeldin').textContent=a.hosgeldin; $('hosgeldin').hidden=!a.hosgeldin; }
     if(a.acilis_soru) $('soruBaslik').textContent=a.acilis_soru;
     if(i.telefon){ $('telYazi').textContent=telGoster(i.telefon); $('telLink').href=telLink(i.telefon); $('araBtn').href=telLink(i.telefon); }

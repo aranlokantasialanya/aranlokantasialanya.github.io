@@ -5,24 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gizlilik | Aran Lokantası</title>
 <meta name="description" content="Aran Lokantası web sitesi gizlilik bilgilendirmesi.">
-<meta name="theme-color" content="#7b1f2e">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{color-scheme:light;--bordo:#7b1f2e;--krem:#fbf7f2;--yazi:#2a2224;--soluk:#7f7174;--cizgi:#e8dcd6;--altin:#e9d7b7;
-    --baslik:"Libre Baskerville",Georgia,serif;--govde:"Source Sans 3",system-ui,-apple-system,sans-serif}
+  :root{color-scheme:light;--bordo:#7a1f2b;--krem:#ffffff; --logo-zemin:#ffffff; --altin-k:#a8834f;--yazi:#2a2224;--soluk:#7f7174;--cizgi:#e8dcd6;--altin:#e9d7b7;
+    --baslik:"Playfair Display",Georgia,serif;--govde:"Montserrat",system-ui,-apple-system,sans-serif}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:var(--govde);background:var(--krem);color:var(--yazi);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--govde);background:var(--krem);color:var(--yazi);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
   .ic{max-width:640px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
-  header{background:var(--bordo);color:#fff;padding-top:env(safe-area-inset-top,0px)}
-  header .ic{padding-block:14px 22px}
-  .geri{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px 8px 8px;border-radius:999px;background:rgba(255,255,255,.12)}
+  header{background:var(--krem);color:var(--bordo);padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid var(--cizgi)}
+  header .ic{padding-block:12px 18px;text-align:center}
+  .ust{text-align:left}
+  .geri{display:inline-flex;align-items:center;gap:6px;color:var(--bordo);text-decoration:none;font-weight:600;font-size:14px;padding:8px 12px 8px 8px;border-radius:999px;background:#fff;border:1px solid var(--cizgi)}
   .geri svg{width:18px;height:18px}
-  .logo{margin-top:18px;font-family:var(--baslik);font-size:30px;letter-spacing:.3em;padding-left:.3em;text-align:center}
-  .alt{text-align:center;letter-spacing:.4em;padding-left:.4em;font-size:13px;text-transform:uppercase;margin-top:6px;opacity:.9}
+  .logo-svg{display:block;width:150px;height:auto;margin:6px auto 0}
   main .ic{padding-block:26px 40px}
   h1,h2{font-family:var(--baslik);color:var(--bordo);text-wrap:balance}
   h1{font-size:24px;margin-bottom:16px}
@@ -35,9 +35,22 @@
 </head>
 <body>
 <header><div class="ic">
-  <a class="geri" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Ana Sayfa</a>
-  <div class="logo">ARAN</div>
-  <div class="alt">Lokantası</div>
+  <div class="ust"><a class="geri" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Ana Sayfa</a></div>
+  <svg class="logo-svg" viewBox="0 0 400 400" role="img" aria-label="Aran Lokantası, 1989'dan beri">
+  <g fill="none" stroke="#7a1f2b">
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(-90 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(-90 200 200)"/>
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(30 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(30 200 200)"/>
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(150 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(150 200 200)"/>
+  </g>
+  <g fill="#7a1f2b"><g transform="rotate(0 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><rect x="-7" y="-28" width="2.6" height="12" rx="1.2"/><rect x="-1.3" y="-28" width="2.6" height="12" rx="1.2"/><rect x="4.4" y="-28" width="2.6" height="12" rx="1.2"/><path d="M-7,-17 L7,-17 L7,-13 Q7,-7 2,-5 L2.2,26 Q0,29.5 -2.2,26 L-2,-5 Q-7,-7 -7,-13 Z"/></g></g><g transform="rotate(120 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><ellipse cx="0" cy="-17" rx="7.5" ry="10.5"/><path d="M-2,-8 L-2.2,26 Q0,29.5 2.2,26 L2,-8 Z"/></g></g><g transform="rotate(240 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><path d="M-2.4,-29 Q6,-23 6,-7 L6,-1 L-2.4,-1 Z"/><rect x="-2.6" y="0" width="5.2" height="27" rx="2.6"/></g></g></g>
+  <text x="200" y="205" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="900" font-size="88" letter-spacing="-1" fill="#7a1f2b">ARAN</text>
+  <line x1="136" y1="228" x2="264" y2="228" stroke="#a8834f" stroke-width="1.6"/>
+  <text x="203.5" y="266" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="600" font-size="21" letter-spacing="7" fill="#7a1f2b">LOKANTASI</text>
+  <text x="202.5" y="296" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="500" font-size="11.5" letter-spacing="5" fill="#a8834f">1989'DAN BERİ</text>
+</svg>
 </div></header>
 
 <main><div class="ic">

@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Aran Lokantası | Menü</title>
-<meta name="theme-color" content="#7b1f2e">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta name="apple-mobile-web-app-title" content="Aran Menü">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* Basılı A5 menünün dijital hali: bordo başlık bandı, serif bölüm başlıkları, kutulu fiyatlar, gün etiketleri */
   :root{
     color-scheme:light;
-    --bordo:#7b1f2e; --bordo-koyu:#5e1622; --pembe:#f6e3e5; --krem:#fbf7f2; --kart:#ffffff;
+    --bordo:#7a1f2b; --bordo-koyu:#5c1620; --pembe:#f6e3e5; --krem:#ffffff; --logo-zemin:#ffffff; --altin-k:#a8834f; --kart:#ffffff;
     --yazi:#2a2224; --soluk:#7f7174; --cizgi:#e8dcd6; --nokta:#cbb9b3; --kirmizi:#b3261e; --altin:#e9d7b7;
-    --baslik:"Libre Baskerville",Georgia,serif; --govde:"Source Sans 3",system-ui,-apple-system,sans-serif;
+    --baslik:"Playfair Display",Georgia,serif; --govde:"Montserrat",system-ui,-apple-system,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   [hidden]{display:none!important}
@@ -28,21 +28,16 @@
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   .ic{max-width:620px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 
-  /* Başlık bandı */
-  header{background:var(--bordo);color:#fff;text-align:center;padding-top:env(safe-area-inset-top,0px)}
-  header .ic{padding-block:10px 16px}
-  .ust{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-  .geri{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px 8px 8px;border-radius:999px;background:rgba(255,255,255,.12)}
+  /* Üst kısım: logo */
+  header{background:var(--krem);color:var(--bordo);text-align:center;padding-top:env(safe-area-inset-top,0px)}
+  header .ic{padding-block:10px 14px}
+  .ust{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .geri{display:inline-flex;align-items:center;gap:6px;color:var(--bordo);text-decoration:none;font-weight:600;font-size:14px;padding:8px 12px 8px 8px;border-radius:999px;background:#fff;border:1px solid var(--cizgi)}
   .geri svg{width:18px;height:18px}
-  .dil{display:inline-flex;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
-  .dil button{border:0;background:transparent;color:#fff;font:inherit;font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px;cursor:pointer;letter-spacing:.04em}
-  .dil button[aria-pressed="true"]{background:#fff;color:var(--bordo)}
-  .cerceve{border:1px solid rgba(255,255,255,.45);padding:20px 8px 16px;position:relative}
-  .cerceve::after{content:"";position:absolute;inset:6px;border:1px solid rgba(233,215,183,.28);pointer-events:none}
-  .logo{font-family:var(--baslik);font-size:42px;letter-spacing:.32em;padding-left:.32em;line-height:1}
-  .cizgi-b{width:64px;height:2px;background:#fff;margin:11px auto}
-  .alt-logo{letter-spacing:.45em;padding-left:.45em;font-size:14px;text-transform:uppercase}
-  .slogan{margin-top:7px;font-family:var(--baslik);font-style:italic;color:var(--altin);font-size:14px}
+  .dil{display:inline-flex;background:#fff;border:1px solid var(--cizgi);border-radius:999px;padding:3px}
+  .dil button{border:0;background:transparent;color:var(--bordo);font:inherit;font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;cursor:pointer;letter-spacing:.06em}
+  .dil button[aria-pressed="true"]{background:var(--bordo);color:#fff}
+  .logo-svg{display:block;width:min(46vw,190px);height:auto;margin:4px auto 0}
 
   /* Kategori şeridi */
   nav{position:sticky;top:0;z-index:10;background:var(--krem);border-bottom:1px solid var(--cizgi)}
@@ -74,7 +69,7 @@
   .buyutec{position:absolute;right:-5px;bottom:-5px;width:26px;height:26px;border-radius:50%;background:var(--bordo);color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid var(--krem);box-shadow:0 1px 3px rgba(0,0,0,.25)}
   .buyutec svg{width:14px;height:14px}
   .govde{flex:1;min-width:0;display:flex;align-items:center;gap:8px}
-  .isim{min-width:0;font-size:17px}
+  .isim{min-width:0;font-size:16px;font-weight:500}
   .isim .y{color:var(--bordo);font-weight:700;margin-left:1px}
   .orijinal{display:block;font-size:13px;color:var(--soluk);font-style:italic;margin-top:1px}
   .meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
@@ -82,7 +77,7 @@
   .gun.bugun-gun{background:var(--bordo);color:#fff}
   .yok{display:inline-block;background:var(--kirmizi);color:#fff;font-weight:700;font-size:12px;border-radius:999px;padding:2px 9px}
   .nokta{flex:1;min-width:10px;border-bottom:1.5px dotted var(--nokta);align-self:flex-end;margin-bottom:8px}
-  .fiyat{flex-shrink:0;min-width:58px;text-align:center;border:1.5px solid var(--cizgi);background:var(--kart);border-radius:8px;padding:4px 8px;font-weight:700;font-size:16px;color:var(--bordo-koyu);font-variant-numeric:tabular-nums}
+  .fiyat{flex-shrink:0;min-width:60px;font-size:15px!important;text-align:center;border:1.5px solid var(--cizgi);background:var(--kart);border-radius:8px;padding:4px 8px;font-weight:700;font-size:16px;color:var(--bordo-koyu);font-variant-numeric:tabular-nums}
   .urun.tukendi .isim,.urun.tukendi .foto img{opacity:.45}
   .urun.tukendi .fiyat{text-decoration:line-through;color:var(--soluk)}
 
@@ -122,36 +117,42 @@
   #buyuk img{max-width:100%;max-height:76vh;border-radius:14px;background:#222}
   #buyuk .baslik{color:#fff;margin-top:14px;font-family:var(--baslik);font-size:18px;text-align:center}
   #buyuk .kapat{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:16px;width:44px;height:44px;color:#fff;font-size:34px;line-height:1;background:rgba(255,255,255,.12);border:0;border-radius:50%;cursor:pointer}
-  /* ---------- Açılış (ana sayfayla aynı) ---------- */
-  #acilis{position:fixed;inset:0;z-index:100;background:var(--bordo);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:opacity .7s ease, transform .7s ease}
-  #acilis.gizlen{opacity:0;transform:translateY(-3%);pointer-events:none}
-  #acilis .a-cerceve{position:relative;padding:44px 34px 34px;min-width:min(78vw,340px)}
-  #acilis .a-cerceve::before,#acilis .a-cerceve::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.55);transform:scale(.92);opacity:0;animation:a-cerceve 1s .15s ease forwards}
-  #acilis .a-cerceve::after{inset:7px;border-color:rgba(233,215,183,.45);animation-delay:.35s}
-  #acilis .a-logo{font-family:var(--baslik);font-weight:700;font-size:clamp(46px,14vw,64px);line-height:1;letter-spacing:.5em;padding-left:.5em;opacity:0;animation:a-logo 1.1s .4s cubic-bezier(.2,.7,.2,1) forwards}
-  #acilis .a-cizgi{height:2px;background:#fff;width:0;margin:16px auto;animation:a-cizgi .7s 1s ease forwards}
-  #acilis .a-alt{letter-spacing:.45em;padding-left:.45em;font-size:15px;text-transform:uppercase;opacity:0;animation:a-belir .6s 1.25s ease forwards}
-  #acilis .a-yil{margin-top:10px;font-family:var(--baslik);font-style:italic;color:var(--altin);font-size:15px;opacity:0;animation:a-belir .6s 1.5s ease forwards}
-  @keyframes a-cerceve{to{transform:scale(1);opacity:1}}
-  @keyframes a-logo{from{opacity:0;letter-spacing:.9em;padding-left:.9em}to{opacity:1;letter-spacing:.32em;padding-left:.32em}}
-  @keyframes a-cizgi{to{width:70px}}
-  @keyframes a-belir{to{opacity:1}}
+
+  /* ---------- Açılış: logo animasyonu ---------- */
+  #acilis{position:fixed;inset:0;z-index:100;background:var(--krem);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .7s ease, transform .7s ease}
+  #acilis.gizlen{opacity:0;transform:scale(1.04);pointer-events:none}
+  #acilis svg{width:min(78vw,420px);height:auto;overflow:visible}
+  #acilis .arc{stroke-dasharray:0 1100;animation:al-arc 1.3s .9s cubic-bezier(.45,0,.55,1) forwards}
+  #acilis .arc.o{--L:356} #acilis .arc.i{--L:331}
+  @keyframes al-arc{to{stroke-dasharray:var(--L) 1100}}
+  #acilis .pop{transform-box:fill-box;transform-origin:center;transform:scale(0);opacity:0;animation:al-pop .5s ease-out forwards}
+  #acilis .p1{animation-delay:.1s} #acilis .p2{animation-delay:.3s} #acilis .p3{animation-delay:.5s}
+  @keyframes al-pop{60%{transform:scale(1.25);opacity:1}to{transform:scale(1);opacity:1}}
+  #acilis .orbit{transform-origin:200px 200px;animation:al-first 1.3s .9s cubic-bezier(.45,0,.55,1) forwards}
+  @keyframes al-first{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  #acilis .t{opacity:0;transform:translateY(10px);transform-box:fill-box;animation:al-up .7s ease-out forwards}
+  #acilis .t1{animation-delay:2.2s} #acilis .t3{animation-delay:2.75s} #acilis .t4{animation-delay:3s}
+  #acilis .line{transform-origin:center;transform:scaleX(0);transform-box:fill-box;animation:al-grow .6s 2.5s ease-out forwards}
+  @keyframes al-up{to{opacity:1;transform:none}}
+  @keyframes al-grow{to{transform:scaleX(1)}}
   @media (prefers-reduced-motion:reduce){
     #acilis,#acilis *{animation:none!important;transition:none!important}
-    #acilis .a-logo,#acilis .a-alt,#acilis .a-yil,#acilis .a-cerceve::before,#acilis .a-cerceve::after{opacity:1;transform:none}
-    #acilis .a-cizgi{width:70px}
+    #acilis .arc.o{stroke-dasharray:356 1100} #acilis .arc.i{stroke-dasharray:331 1100}
+    #acilis .pop,#acilis .t{opacity:1;transform:none} #acilis .line{transform:none} #acilis .orbit{transform:none}
   }
 </style>
 </head>
 <body>
 
 <div id="acilis" role="presentation" hidden>
-  <div class="a-cerceve">
-    <div class="a-logo">ARAN</div>
-    <div class="a-cizgi"></div>
-    <div class="a-alt">Lokantası</div>
-    <div class="a-yil" id="acilisYil">1989'dan beri</div>
-  </div>
+  <svg viewBox="0 0 400 400" role="img" aria-label="Aran Lokantası, 1989'dan beri">
+  <circle class="arc o" cx="200" cy="200" r="170" fill="none" stroke="#7a1f2b" stroke-width="9" transform="rotate(-90 200 200)"/><circle class="arc i" cx="200" cy="200" r="158" fill="none" stroke="#7a1f2b" stroke-width="1.6" transform="rotate(-90 200 200)"/><circle class="arc o" cx="200" cy="200" r="170" fill="none" stroke="#7a1f2b" stroke-width="9" transform="rotate(30 200 200)"/><circle class="arc i" cx="200" cy="200" r="158" fill="none" stroke="#7a1f2b" stroke-width="1.6" transform="rotate(30 200 200)"/><circle class="arc o" cx="200" cy="200" r="170" fill="none" stroke="#7a1f2b" stroke-width="9" transform="rotate(150 200 200)"/><circle class="arc i" cx="200" cy="200" r="158" fill="none" stroke="#7a1f2b" stroke-width="1.6" transform="rotate(150 200 200)"/>
+  <g class="orbit" fill="#7a1f2b"><g transform="rotate(0 200 200) translate(200 30)"><g class="pop p1"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><rect x="-7" y="-28" width="2.6" height="12" rx="1.2"/><rect x="-1.3" y="-28" width="2.6" height="12" rx="1.2"/><rect x="4.4" y="-28" width="2.6" height="12" rx="1.2"/><path d="M-7,-17 L7,-17 L7,-13 Q7,-7 2,-5 L2.2,26 Q0,29.5 -2.2,26 L-2,-5 Q-7,-7 -7,-13 Z"/></g></g></g><g transform="rotate(120 200 200) translate(200 30)"><g class="pop p2"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><ellipse cx="0" cy="-17" rx="7.5" ry="10.5"/><path d="M-2,-8 L-2.2,26 Q0,29.5 2.2,26 L2,-8 Z"/></g></g></g><g transform="rotate(240 200 200) translate(200 30)"><g class="pop p3"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><path d="M-2.4,-29 Q6,-23 6,-7 L6,-1 L-2.4,-1 Z"/><rect x="-2.6" y="0" width="5.2" height="27" rx="2.6"/></g></g></g></g>
+  <text class="t t1" x="200" y="205" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="900" font-size="88" letter-spacing="-1" fill="#7a1f2b">ARAN</text>
+  <line class="line" x1="136" y1="228" x2="264" y2="228" stroke="#a8834f" stroke-width="1.6"/>
+  <text class="t t3" x="203.5" y="266" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="600" font-size="21" letter-spacing="7" fill="#7a1f2b">LOKANTASI</text>
+  <text class="t t4" id="acilisYil" x="202.5" y="296" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="500" font-size="11.5" letter-spacing="5" fill="#a8834f">1989'DAN BERİ</text>
+</svg>
 </div>
 <script>
 /* Açılış animasyonu: her oturumda bir kez (ana sayfada görüldüyse tekrar gösterilmez). Dokununca geçer. */
@@ -165,7 +166,7 @@
   a.hidden=false;
   function bitir(){ if(bitti) return; bitti=true; a.classList.add('gizlen'); setTimeout(function(){ a.hidden=true; haber(); }, az?0:700); }
   a.addEventListener('click',bitir);
-  setTimeout(bitir, az?500:2300);
+  setTimeout(bitir, az?500:3900);
 })();
 </script>
 
@@ -177,12 +178,21 @@
       <button type="button" data-dil="en" aria-pressed="false">EN</button>
     </div>
   </div>
-  <div class="cerceve">
-    <div class="logo">ARAN</div>
-    <div class="cizgi-b"></div>
-    <div class="alt-logo">Lokantası</div>
-    <div class="slogan" id="slogan">1989'dan beri</div>
-  </div>
+  <svg class="logo-svg" viewBox="0 0 400 400" role="img" aria-label="Aran Lokantası, 1989'dan beri">
+  <g fill="none" stroke="#7a1f2b">
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(-90 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(-90 200 200)"/>
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(30 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(30 200 200)"/>
+    <circle cx="200" cy="200" r="170" stroke-width="9" stroke-dasharray="356 1100" transform="rotate(150 200 200)"/>
+    <circle cx="200" cy="200" r="158" stroke-width="1.6" stroke-dasharray="331 1100" transform="rotate(150 200 200)"/>
+  </g>
+  <g fill="#7a1f2b"><g transform="rotate(0 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><rect x="-7" y="-28" width="2.6" height="12" rx="1.2"/><rect x="-1.3" y="-28" width="2.6" height="12" rx="1.2"/><rect x="4.4" y="-28" width="2.6" height="12" rx="1.2"/><path d="M-7,-17 L7,-17 L7,-13 Q7,-7 2,-5 L2.2,26 Q0,29.5 -2.2,26 L-2,-5 Q-7,-7 -7,-13 Z"/></g></g><g transform="rotate(120 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><ellipse cx="0" cy="-17" rx="7.5" ry="10.5"/><path d="M-2,-8 L-2.2,26 Q0,29.5 2.2,26 L2,-8 Z"/></g></g><g transform="rotate(240 200 200) translate(200 30)"><rect x="-46" y="-19" width="92" height="38" fill="var(--logo-zemin,#f5ede2)"/><g transform="rotate(90) scale(1.35)"><path d="M-2.4,-29 Q6,-23 6,-7 L6,-1 L-2.4,-1 Z"/><rect x="-2.6" y="0" width="5.2" height="27" rx="2.6"/></g></g></g>
+  <text x="200" y="205" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="900" font-size="88" letter-spacing="-1" fill="#7a1f2b">ARAN</text>
+  <line x1="136" y1="228" x2="264" y2="228" stroke="#a8834f" stroke-width="1.6"/>
+  <text x="203.5" y="266" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="600" font-size="21" letter-spacing="7" fill="#7a1f2b">LOKANTASI</text>
+  <text id="slogan" x="202.5" y="296" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="500" font-size="11.5" letter-spacing="5" fill="#a8834f">1989'DAN BERİ</text>
+</svg>
 </div></header>
 
 <nav><div class="ic serit" id="nav"></div></nav>
@@ -349,7 +359,7 @@
   ]).then(function(r){
     veri=r[0]; site=r[1]||{};
     var i=site.isletme||veri.isletme||{};
-    if(i.slogan){ document.getElementById('slogan').textContent=i.slogan; document.getElementById('acilisYil').textContent=i.slogan; }
+    if(i.slogan){ var sl=i.slogan.toLocaleUpperCase('tr'); document.getElementById('slogan').textContent=sl; document.getElementById('acilisYil').textContent=sl; }
     if(i.telefon){ var tl=document.getElementById('tel'); tl.href=telLink(i.telefon); document.getElementById('telYazi').textContent=telGoster(i.telefon); }
     if(i.adres){
       document.getElementById('adres').textContent=i.adres;
